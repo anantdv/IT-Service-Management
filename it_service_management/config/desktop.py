@@ -10,6 +10,7 @@ def get_data():
 			"color": "#2563eb",
 			"icon": "octicon octicon-tools",
 			"type": "module",
+			"link": "it-service-management",
 			"description": _("IT service, equipment lifecycle, and contracts"),
 		}
 	]
