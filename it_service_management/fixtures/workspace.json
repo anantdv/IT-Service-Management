@@ -30,7 +30,8 @@
         "label": "IT Service Settings",
         "link_to": "IT Service Settings"
       }
-    ]
+    ],
+    "type": "Workspace"
   },
   {
     "doctype": "Workspace",
@@ -103,6 +104,7 @@
         "label": "Completed Jobs Pending Billing",
         "link_to": "Completed Service Jobs Pending Billing"
       }
-    ]
+    ],
+    "type": "Workspace"
   }
 ]

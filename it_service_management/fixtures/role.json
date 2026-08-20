@@ -1,11 +1,56 @@
 [
-  {"doctype": "Role", "role_name": "Service Manager", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Dispatcher", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Engineer", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Technician", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Billing User", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Contract Manager", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Rental Manager", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Rental User", "desk_access": 1},
-  {"doctype": "Role", "role_name": "Service Auditor", "desk_access": 1}
+  {
+    "doctype": "Role",
+    "role_name": "Service Manager",
+    "desk_access": 1,
+    "name": "Service Manager"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Dispatcher",
+    "desk_access": 1,
+    "name": "Service Dispatcher"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Engineer",
+    "desk_access": 1,
+    "name": "Service Engineer"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Technician",
+    "desk_access": 1,
+    "name": "Service Technician"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Billing User",
+    "desk_access": 1,
+    "name": "Service Billing User"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Contract Manager",
+    "desk_access": 1,
+    "name": "Service Contract Manager"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Rental Manager",
+    "desk_access": 1,
+    "name": "Rental Manager"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Rental User",
+    "desk_access": 1,
+    "name": "Rental User"
+  },
+  {
+    "doctype": "Role",
+    "role_name": "Service Auditor",
+    "desk_access": 1,
+    "name": "Service Auditor"
+  }
 ]
