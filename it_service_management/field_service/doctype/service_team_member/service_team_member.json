@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "user",
+  "role_in_team",
+  "technician_level",
+  "primary",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "role_in_team",
+   "fieldtype": "Data",
+   "label": "Role In Team"
+  },
+  {
+   "fieldname": "technician_level",
+   "fieldtype": "Select",
+   "label": "Technician Level",
+   "options": "Junior\nEngineer\nSenior Engineer\nSpecialist"
+  },
+  {
+   "fieldname": "primary",
+   "fieldtype": "Check",
+   "label": "Primary"
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Field Service",
+ "name": "Service Team Member",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

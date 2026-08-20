@@ -1,0 +1,11 @@
+[
+  {"doctype": "Role", "role_name": "Service Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Dispatcher", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Engineer", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Technician", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Billing User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Contract Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Rental Manager", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Rental User", "desk_access": 1},
+  {"doctype": "Role", "role_name": "Service Auditor", "desk_access": 1}
+]

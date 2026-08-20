@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "charge_code",
+  "charge_name",
+  "charge_type",
+  "item_code",
+  "default_rate",
+  "uom",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "charge_code",
+   "fieldtype": "Data",
+   "label": "Charge Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "charge_name",
+   "fieldtype": "Data",
+   "label": "Charge Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "charge_type",
+   "fieldtype": "Select",
+   "label": "Charge Type",
+   "options": "Labour\nCallout\nTravel\nMileage\nInstallation\nRemote Support\nEmergency\nAfter Hours\nAccommodation\nFood\nAirfare\nFreight\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_rate",
+   "fieldtype": "Currency",
+   "label": "Default Rate"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "Uom",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  }
+ ],
+ "istable": 0,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Service Billing",
+ "name": "Service Charge",
+ "permissions": [
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1
+  },
+  {
+   "role": "Service Billing User",
+   "read": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "autoname": "field:charge_code"
+}

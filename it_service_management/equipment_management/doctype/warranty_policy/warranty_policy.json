@@ -1,0 +1,40 @@
+{
+ "allow_rename": 1,
+ "autoname": "field:policy_name",
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["policy_name", "duration_months", "applies_to_section", "item_code", "item_group", "coverage_section", "labour_covered", "parts_covered", "remote_support_covered", "onsite_support_covered", "travel_covered", "accommodation_covered", "food_covered", "consumables_covered", "installation_covered", "max_visits", "exclusions", "notes"],
+ "fields": [
+  {"fieldname": "policy_name", "fieldtype": "Data", "in_list_view": 1, "label": "Policy Name", "reqd": 1, "unique": 1},
+  {"fieldname": "duration_months", "fieldtype": "Int", "label": "Duration Months", "reqd": 1},
+  {"fieldname": "applies_to_section", "fieldtype": "Section Break", "label": "Applies To"},
+  {"fieldname": "item_code", "fieldtype": "Link", "label": "Item", "options": "Item"},
+  {"fieldname": "item_group", "fieldtype": "Link", "label": "Item Group", "options": "Item Group"},
+  {"fieldname": "coverage_section", "fieldtype": "Section Break", "label": "Coverage"},
+  {"default": "1", "fieldname": "labour_covered", "fieldtype": "Check", "label": "Labour Covered"},
+  {"default": "1", "fieldname": "parts_covered", "fieldtype": "Check", "label": "Parts Covered"},
+  {"default": "1", "fieldname": "remote_support_covered", "fieldtype": "Check", "label": "Remote Support Covered"},
+  {"default": "1", "fieldname": "onsite_support_covered", "fieldtype": "Check", "label": "Onsite Support Covered"},
+  {"fieldname": "travel_covered", "fieldtype": "Check", "label": "Travel Covered"},
+  {"fieldname": "accommodation_covered", "fieldtype": "Check", "label": "Accommodation Covered"},
+  {"fieldname": "food_covered", "fieldtype": "Check", "label": "Food Covered"},
+  {"fieldname": "consumables_covered", "fieldtype": "Check", "label": "Consumables Covered"},
+  {"fieldname": "installation_covered", "fieldtype": "Check", "label": "Installation Covered"},
+  {"fieldname": "max_visits", "fieldtype": "Int", "label": "Max Visits"},
+  {"fieldname": "exclusions", "fieldtype": "Small Text", "label": "Exclusions"},
+  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"}
+ ],
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Equipment Management",
+ "name": "Warranty Policy",
+ "permissions": [
+  {"role": "Service Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "Service Contract Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "Service Technician", "read": 1},
+  {"role": "Service Auditor", "read": 1}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

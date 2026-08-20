@@ -1,0 +1,99 @@
+{
+ "allow_rename": 1,
+ "autoname": "field:zone_name",
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zone_name",
+  "default_callout_charge",
+  "default_travel_charge",
+  "default_installation_charge",
+  "per_km_charge",
+  "food_allowance",
+  "accommodation_charge",
+  "airfare_actual",
+  "default_travel_time",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "default_callout_charge",
+   "fieldtype": "Currency",
+   "label": "Default Callout Charge"
+  },
+  {
+   "fieldname": "default_travel_charge",
+   "fieldtype": "Currency",
+   "label": "Default Travel Charge"
+  },
+  {
+   "fieldname": "default_installation_charge",
+   "fieldtype": "Currency",
+   "label": "Default Installation Charge"
+  },
+  {
+   "fieldname": "per_km_charge",
+   "fieldtype": "Currency",
+   "label": "Per KM Charge"
+  },
+  {
+   "fieldname": "food_allowance",
+   "fieldtype": "Currency",
+   "label": "Food Allowance"
+  },
+  {
+   "fieldname": "accommodation_charge",
+   "fieldtype": "Currency",
+   "label": "Accommodation Charge"
+  },
+  {
+   "fieldname": "airfare_actual",
+   "fieldtype": "Check",
+   "label": "Airfare Actual"
+  },
+  {
+   "fieldname": "default_travel_time",
+   "fieldtype": "Duration",
+   "label": "Default Travel Time"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  }
+ ],
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Field Service",
+ "name": "Service Zone",
+ "permissions": [
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "it_service_management"
+version = "0.0.1"
+description = "Native Frappe/ERPNext IT service management app"
+authors = [{ name = "IT Service Management" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["it_service_management*"]

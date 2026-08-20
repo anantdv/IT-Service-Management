@@ -1,0 +1,108 @@
+[
+  {
+    "doctype": "Workspace",
+    "name": "IT Service Management",
+    "label": "IT Service Management",
+    "title": "IT Service Management",
+    "module": "IT Service Management",
+    "public": 1,
+    "is_standard": 1,
+    "icon": "tool",
+    "content": "[{\"id\":\"contracts\",\"type\":\"header\",\"data\":{\"text\":\"Contracts and Equipment\"}},{\"id\":\"customer-equipment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Equipment\",\"col\":3}},{\"id\":\"customer-site\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Site\",\"col\":3}},{\"id\":\"service-contract\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contract\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IT Service Settings\",\"col\":3}}]",
+    "shortcuts": [
+      {
+        "type": "DocType",
+        "label": "Customer Equipment",
+        "link_to": "Customer Equipment"
+      },
+      {
+        "type": "DocType",
+        "label": "Customer Site",
+        "link_to": "Customer Site"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Contract",
+        "link_to": "Service Contract"
+      },
+      {
+        "type": "DocType",
+        "label": "IT Service Settings",
+        "link_to": "IT Service Settings"
+      }
+    ]
+  },
+  {
+    "doctype": "Workspace",
+    "name": "Service Operations",
+    "label": "Service Operations",
+    "title": "Service Operations",
+    "module": "Service Operations",
+    "public": 1,
+    "is_standard": 1,
+    "icon": "assign",
+    "content": "[{\"id\": \"ops-cards\", \"type\": \"header\", \"data\": {\"text\": \"Service Operations\"}}, {\"id\": \"new-ticket\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Service Ticket\", \"col\": 3}}, {\"id\": \"tickets\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Tickets\", \"col\": 3}}, {\"id\": \"jobs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Jobs\", \"col\": 3}}, {\"id\": \"my-jobs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"My Service Jobs\", \"col\": 3}}, {\"id\": \"part-requests\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Part Requests\", \"col\": 3}}, {\"id\": \"expenses\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Expenses\", \"col\": 3}}, {\"id\": \"equipment\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Equipment\", \"col\": 3}}, {\"id\": \"contracts\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Contracts\", \"col\": 3}}, {\"id\": \"reports\", \"type\": \"header\", \"data\": {\"text\": \"Reports\"}}, {\"id\": \"open-tickets\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open Service Tickets\", \"col\": 3}}, {\"id\": \"workload\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technician Workload\", \"col\": 3}}, {\"id\": \"sla\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service SLA Compliance\", \"col\": 3}}, {\"id\": \"pending-billing\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Completed Jobs Pending Billing\", \"col\": 3}}]",
+    "shortcuts": [
+      {
+        "type": "DocType",
+        "label": "New Service Ticket",
+        "link_to": "Service Ticket"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Tickets",
+        "link_to": "Service Ticket"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Jobs",
+        "link_to": "Service Job"
+      },
+      {
+        "type": "DocType",
+        "label": "My Service Jobs",
+        "link_to": "Service Job"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Part Requests",
+        "link_to": "Service Part Request"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Expenses",
+        "link_to": "Service Expense"
+      },
+      {
+        "type": "DocType",
+        "label": "Customer Equipment",
+        "link_to": "Customer Equipment"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Contracts",
+        "link_to": "Service Contract"
+      },
+      {
+        "type": "Report",
+        "label": "Open Service Tickets",
+        "link_to": "Open Service Tickets"
+      },
+      {
+        "type": "Report",
+        "label": "Technician Workload",
+        "link_to": "Technician Workload"
+      },
+      {
+        "type": "Report",
+        "label": "Service SLA Compliance",
+        "link_to": "Service SLA Compliance"
+      },
+      {
+        "type": "Report",
+        "label": "Completed Jobs Pending Billing",
+        "link_to": "Completed Service Jobs Pending Billing"
+      }
+    ]
+  }
+]

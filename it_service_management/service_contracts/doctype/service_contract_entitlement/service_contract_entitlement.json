@@ -1,0 +1,18 @@
+{
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["entitlement_type", "included_quantity", "used_quantity", "remaining_quantity", "reset_frequency"],
+ "fields": [
+  {"fieldname": "entitlement_type", "fieldtype": "Select", "in_list_view": 1, "label": "Entitlement Type", "options": "Remote Support Hours\nOnsite Visits\nPreventive Maintenance Visits\nEmergency Calls", "reqd": 1},
+  {"fieldname": "included_quantity", "fieldtype": "Float", "in_list_view": 1, "label": "Included Quantity"},
+  {"fieldname": "used_quantity", "fieldtype": "Float", "in_list_view": 1, "label": "Used Quantity"},
+  {"fieldname": "remaining_quantity", "fieldtype": "Float", "in_list_view": 1, "label": "Remaining Quantity", "read_only": 1},
+  {"fieldname": "reset_frequency", "fieldtype": "Select", "label": "Reset Frequency", "options": "Never\nMonthly\nQuarterly\nHalf-Yearly\nYearly"}
+ ],
+ "istable": 1,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Service Contracts",
+ "name": "Service Contract Entitlement"
+}

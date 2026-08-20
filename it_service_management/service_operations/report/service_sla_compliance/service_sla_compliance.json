@@ -1,0 +1,9 @@
+{
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "module": "Service Operations",
+ "name": "Service SLA Compliance",
+ "ref_doctype": "Service Ticket",
+ "report_name": "Service SLA Compliance",
+ "report_type": "Script Report"
+}

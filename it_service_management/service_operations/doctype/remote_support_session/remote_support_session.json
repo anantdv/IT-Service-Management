@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "service_ticket",
+  "service_job",
+  "customer",
+  "customer_site",
+  "customer_equipment",
+  "technician",
+  "support_method",
+  "start_datetime",
+  "end_datetime",
+  "duration_minutes",
+  "diagnosis",
+  "action_taken",
+  "resolution",
+  "resolved",
+  "followup_required",
+  "onsite_required",
+  "covered",
+  "billable",
+  "billing_rate",
+  "billable_amount"
+ ],
+ "fields": [
+  {
+   "default": "RSS-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "RSS-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_ticket",
+   "fieldtype": "Link",
+   "label": "Service Ticket",
+   "options": "Service Ticket",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_job",
+   "fieldtype": "Link",
+   "label": "Service Job",
+   "options": "Service Job"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_site",
+   "fieldtype": "Link",
+   "label": "Customer Site",
+   "options": "Customer Site"
+  },
+  {
+   "fieldname": "customer_equipment",
+   "fieldtype": "Link",
+   "label": "Customer Equipment",
+   "options": "Customer Equipment"
+  },
+  {
+   "fieldname": "technician",
+   "fieldtype": "Link",
+   "label": "Technician",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "support_method",
+   "fieldtype": "Select",
+   "label": "Support Method",
+   "options": "Phone\nEmail\nRemote Desktop\nVideo Call\nMessaging\nOther"
+  },
+  {
+   "fieldname": "start_datetime",
+   "fieldtype": "Datetime",
+   "label": "Start Datetime"
+  },
+  {
+   "fieldname": "end_datetime",
+   "fieldtype": "Datetime",
+   "label": "End Datetime"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Float",
+   "label": "Duration Minutes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "diagnosis",
+   "fieldtype": "Text Editor",
+   "label": "Diagnosis"
+  },
+  {
+   "fieldname": "action_taken",
+   "fieldtype": "Text Editor",
+   "label": "Action Taken"
+  },
+  {
+   "fieldname": "resolution",
+   "fieldtype": "Text Editor",
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "resolved",
+   "fieldtype": "Check",
+   "label": "Resolved"
+  },
+  {
+   "fieldname": "followup_required",
+   "fieldtype": "Check",
+   "label": "Followup Required"
+  },
+  {
+   "fieldname": "onsite_required",
+   "fieldtype": "Check",
+   "label": "Onsite Required"
+  },
+  {
+   "fieldname": "covered",
+   "fieldtype": "Check",
+   "label": "Covered"
+  },
+  {
+   "fieldname": "billable",
+   "fieldtype": "Check",
+   "label": "Billable"
+  },
+  {
+   "fieldname": "billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate"
+  },
+  {
+   "fieldname": "billable_amount",
+   "fieldtype": "Currency",
+   "label": "Billable Amount"
+  }
+ ],
+ "istable": 0,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Service Operations",
+ "name": "Remote Support Session",
+ "permissions": [
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Billing User",
+   "read": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "autoname": "naming_series:"
+}

@@ -1,0 +1,9 @@
+{
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "module": "Field Service",
+ "name": "Completed Service Jobs Pending Billing",
+ "ref_doctype": "Service Job",
+ "report_name": "Completed Service Jobs Pending Billing",
+ "report_type": "Script Report"
+}

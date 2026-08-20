@@ -1,0 +1,263 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "defaults_section",
+  "default_service_warehouse",
+  "default_service_consumption_warehouse",
+  "default_service_income_account",
+  "default_service_cost_center",
+  "default_service_item",
+  "default_installation_item",
+  "default_travel_item",
+  "default_accommodation_item",
+  "default_food_item",
+  "default_labour_item",
+  "default_remote_support_item",
+  "default_sla_section",
+  "default_response_minutes_critical",
+  "default_resolution_minutes_critical",
+  "default_response_minutes_high",
+  "default_resolution_minutes_high",
+  "default_response_minutes_medium",
+  "default_resolution_minutes_medium",
+  "default_response_minutes_low",
+  "default_resolution_minutes_low",
+  "automation_section",
+  "automatically_create_customer_equipment",
+  "automatically_create_preventive_jobs",
+  "automatically_create_draft_invoice",
+  "allow_coverage_override",
+  "require_customer_signature",
+  "capture_gps",
+  "notification_section",
+  "contract_expiry_notification_days",
+  "rental_expiry_notification_days",
+  "meter_section",
+  "enable_meter_billing",
+  "default_meter_billing_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "default_service_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Service Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_service_consumption_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Service Consumption Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_service_income_account",
+   "fieldtype": "Link",
+   "label": "Default Service Income Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "default_service_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Service Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "default_service_item",
+   "fieldtype": "Link",
+   "label": "Default Service Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_installation_item",
+   "fieldtype": "Link",
+   "label": "Default Installation Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_travel_item",
+   "fieldtype": "Link",
+   "label": "Default Travel Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_accommodation_item",
+   "fieldtype": "Link",
+   "label": "Default Accommodation Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_food_item",
+   "fieldtype": "Link",
+   "label": "Default Food Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_labour_item",
+   "fieldtype": "Link",
+   "label": "Default Labour Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_remote_support_item",
+   "fieldtype": "Link",
+   "label": "Default Remote Support Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_sla_section",
+   "fieldtype": "Section Break",
+   "label": "Default SLA"
+  },
+  {
+   "fieldname": "default_response_minutes_critical",
+   "fieldtype": "Int",
+   "label": "Default Response Minutes Critical",
+   "default": "60"
+  },
+  {
+   "fieldname": "default_resolution_minutes_critical",
+   "fieldtype": "Int",
+   "label": "Default Resolution Minutes Critical",
+   "default": "240"
+  },
+  {
+   "fieldname": "default_response_minutes_high",
+   "fieldtype": "Int",
+   "label": "Default Response Minutes High",
+   "default": "120"
+  },
+  {
+   "fieldname": "default_resolution_minutes_high",
+   "fieldtype": "Int",
+   "label": "Default Resolution Minutes High",
+   "default": "480"
+  },
+  {
+   "fieldname": "default_response_minutes_medium",
+   "fieldtype": "Int",
+   "label": "Default Response Minutes Medium",
+   "default": "240"
+  },
+  {
+   "fieldname": "default_resolution_minutes_medium",
+   "fieldtype": "Int",
+   "label": "Default Resolution Minutes Medium",
+   "default": "1440"
+  },
+  {
+   "fieldname": "default_response_minutes_low",
+   "fieldtype": "Int",
+   "label": "Default Response Minutes Low",
+   "default": "480"
+  },
+  {
+   "fieldname": "default_resolution_minutes_low",
+   "fieldtype": "Int",
+   "label": "Default Resolution Minutes Low",
+   "default": "2880"
+  },
+  {
+   "fieldname": "automation_section",
+   "fieldtype": "Section Break",
+   "label": "Automation"
+  },
+  {
+   "default": "1",
+   "fieldname": "automatically_create_customer_equipment",
+   "fieldtype": "Check",
+   "label": "Automatically Create Customer Equipment"
+  },
+  {
+   "default": "1",
+   "fieldname": "automatically_create_preventive_jobs",
+   "fieldtype": "Check",
+   "label": "Automatically Create Preventive Jobs"
+  },
+  {
+   "default": "0",
+   "fieldname": "automatically_create_draft_invoice",
+   "fieldtype": "Check",
+   "label": "Automatically Create Draft Invoice"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_coverage_override",
+   "fieldtype": "Check",
+   "label": "Allow Coverage Override"
+  },
+  {
+   "default": "0",
+   "fieldname": "require_customer_signature",
+   "fieldtype": "Check",
+   "label": "Require Customer Signature"
+  },
+  {
+   "default": "1",
+   "fieldname": "capture_gps",
+   "fieldtype": "Check",
+   "label": "Capture GPS"
+  },
+  {
+   "fieldname": "notification_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "90,60,30,15,7",
+   "fieldname": "contract_expiry_notification_days",
+   "fieldtype": "Data",
+   "label": "Contract Expiry Notification Days"
+  },
+  {
+   "default": "90,60,30,15,7",
+   "fieldname": "rental_expiry_notification_days",
+   "fieldtype": "Data",
+   "label": "Rental Expiry Notification Days"
+  },
+  {
+   "fieldname": "meter_section",
+   "fieldtype": "Section Break",
+   "label": "Meter Billing"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_meter_billing",
+   "fieldtype": "Check",
+   "label": "Enable Meter Billing"
+  },
+  {
+   "default": "1",
+   "fieldname": "default_meter_billing_day",
+   "fieldtype": "Int",
+   "label": "Default Meter Billing Day"
+  }
+ ],
+ "issingle": 1,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "IT Service Management",
+ "name": "IT Service Settings",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

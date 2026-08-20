@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sequence",
+  "checklist_item",
+  "mandatory",
+  "requires_comment",
+  "requires_photo",
+  "completed",
+  "comment",
+  "attachment"
+ ],
+ "fields": [
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "checklist_item",
+   "fieldtype": "Data",
+   "label": "Checklist Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mandatory",
+   "fieldtype": "Check",
+   "label": "Mandatory"
+  },
+  {
+   "fieldname": "requires_comment",
+   "fieldtype": "Check",
+   "label": "Requires Comment"
+  },
+  {
+   "fieldname": "requires_photo",
+   "fieldtype": "Check",
+   "label": "Requires Photo"
+  },
+  {
+   "fieldname": "completed",
+   "fieldtype": "Check",
+   "label": "Completed"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Comment"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Field Service",
+ "name": "Service Job Checklist",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

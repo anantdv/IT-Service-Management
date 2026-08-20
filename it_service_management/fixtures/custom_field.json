@@ -1,0 +1,79 @@
+[
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "service_warehouse",
+    "label": "Service Warehouse",
+    "fieldtype": "Link",
+    "options": "Warehouse",
+    "insert_after": "department",
+    "description": "Optional warehouse carried by this technician for service stock.",
+    "module": "IT Service Management",
+    "name": "Employee-service_warehouse"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "is_service_technician",
+    "label": "Is Service Technician",
+    "fieldtype": "Check",
+    "insert_after": "department",
+    "module": "IT Service Management",
+    "name": "Employee-is_service_technician",
+    "default": "0"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "service_team",
+    "label": "Service Team",
+    "fieldtype": "Link",
+    "insert_after": "service_warehouse",
+    "module": "IT Service Management",
+    "name": "Employee-service_team",
+    "options": "Service Team"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "technician_level",
+    "label": "Technician Level",
+    "fieldtype": "Select",
+    "insert_after": "service_warehouse",
+    "module": "IT Service Management",
+    "name": "Employee-technician_level",
+    "options": "\nJunior\nEngineer\nSenior Engineer\nSpecialist"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "service_zone",
+    "label": "Service Zone",
+    "fieldtype": "Link",
+    "insert_after": "service_warehouse",
+    "module": "IT Service Management",
+    "name": "Employee-service_zone",
+    "options": "Service Zone"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "hourly_internal_cost",
+    "label": "Hourly Internal Cost",
+    "fieldtype": "Currency",
+    "insert_after": "service_warehouse",
+    "module": "IT Service Management",
+    "name": "Employee-hourly_internal_cost"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Employee",
+    "fieldname": "available_for_assignment",
+    "label": "Available for Assignment",
+    "fieldtype": "Check",
+    "insert_after": "service_warehouse",
+    "module": "IT Service Management",
+    "name": "Employee-available_for_assignment",
+    "default": "1"
+  }
+]

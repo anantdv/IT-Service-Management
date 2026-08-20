@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-20 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "service_charge",
+  "company",
+  "customer",
+  "customer_group",
+  "service_zone",
+  "ticket_type",
+  "job_type",
+  "technician_level",
+  "effective_from",
+  "effective_to",
+  "priority",
+  "calculation_method",
+  "rate",
+  "markup_percentage",
+  "active"
+ ],
+ "fields": [
+  {
+   "default": "SCR-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "SCR-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_charge",
+   "fieldtype": "Link",
+   "label": "Service Charge",
+   "options": "Service Charge",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "fieldname": "service_zone",
+   "fieldtype": "Link",
+   "label": "Service Zone",
+   "options": "Service Zone"
+  },
+  {
+   "fieldname": "ticket_type",
+   "fieldtype": "Select",
+   "label": "Ticket Type",
+   "options": "\nBreakdown\nRemote Support\nOnsite Support\nInstallation\nPreventive Maintenance\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther"
+  },
+  {
+   "fieldname": "job_type",
+   "fieldtype": "Select",
+   "label": "Job Type",
+   "options": "\nRemote Support\nOnsite Support\nBreakdown\nInstallation\nPreventive Maintenance\nWarranty\nAMC\nRental Support\nInspection\nConfiguration\nOther"
+  },
+  {
+   "fieldname": "technician_level",
+   "fieldtype": "Select",
+   "label": "Technician Level",
+   "options": "\nJunior\nEngineer\nSenior Engineer\nSpecialist"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From"
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority",
+   "default": "0"
+  },
+  {
+   "fieldname": "calculation_method",
+   "fieldtype": "Select",
+   "label": "Calculation Method",
+   "options": "Fixed\nPer Hour\nPer KM\nPer Day\nActual Cost\nCost Plus Percentage",
+   "default": "Fixed"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "markup_percentage",
+   "fieldtype": "Percent",
+   "label": "Markup Percentage"
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  }
+ ],
+ "istable": 0,
+ "modified": "2026-08-20 00:00:00.000000",
+ "module": "Service Billing",
+ "name": "Service Charge Rule",
+ "permissions": [
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1
+  },
+  {
+   "role": "Service Billing User",
+   "read": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "autoname": "naming_series:"
+}
