@@ -7,6 +7,19 @@ app_license = "MIT"
 
 required_apps = ["frappe", "erpnext"]
 
+after_install = "it_service_management.install.after_install"
+after_migrate = "it_service_management.install.after_migrate"
+
+add_to_apps_screen = [
+	{
+		"name": "it_service_management",
+		"logo": "/assets/it_service_management/images/it-service-management.svg",
+		"title": "IT Service Management",
+		"route": "/app/it-service-management",
+		"has_permission": "it_service_management.install.has_app_permission",
+	}
+]
+
 fixtures = [
 	{"dt": "Role", "filters": [["role_name", "in", [
 		"Service Manager",

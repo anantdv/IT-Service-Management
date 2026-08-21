@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="IT Service Management">
+  <rect width="128" height="128" rx="28" fill="#0f8b8d"/>
+  <path d="M33 77h62v10H33z" fill="#fff" opacity=".94"/>
+  <path d="M58 39h12v43H58z" fill="#fff" opacity=".94"/>
+  <circle cx="64" cy="35" r="15" fill="#fff"/>
+  <circle cx="36" cy="91" r="12" fill="#fff"/>
+  <circle cx="92" cy="91" r="12" fill="#fff"/>
+  <path d="M64 26a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-28 58a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm56 0a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" fill="#0f8b8d"/>
+  <path d="M82 29l7-7 7 7-7 7zm-50 8l7-7 7 7-7 7zm50 0l7-7 7 7-7 7z" fill="#f6c85f"/>
+</svg>
