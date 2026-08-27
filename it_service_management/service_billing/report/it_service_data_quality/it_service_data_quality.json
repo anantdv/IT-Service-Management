@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"IT Service Data Quality","report_name":"IT Service Data Quality","ref_doctype":"Customer Equipment","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"Rental Manager"},{"role":"IT Service Analyst"},{"role":"Service Auditor"}]}

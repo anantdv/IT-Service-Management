@@ -17,6 +17,7 @@ COVERAGE_FIELDS = (
 	"callout_covered",
 	"accommodation_covered",
 	"food_covered",
+	"airfare_covered",
 	"installation_covered",
 	"remote_support_covered",
 )
@@ -48,6 +49,7 @@ class ServiceJob(Document):
 			validate_active_technician(self.assigned_technician)
 			self._default_part_warehouse()
 		self._validate_coverage_override()
+		self._validate_charging_inputs()
 		self._calculate_child_rows()
 		self._calculate_durations()
 
@@ -104,10 +106,21 @@ class ServiceJob(Document):
 			require_manager("Only Service Manager can override coverage.")
 			self.add_comment("Comment", f"Coverage overridden by {frappe.session.user}: {changed}. Reason: {self.coverage_override_reason}")
 
+	def _validate_charging_inputs(self):
+		for fieldname in ("chargeable_trips", "chargeable_distance_km", "chargeable_travel_days", "chargeable_nights", "chargeable_technician_count"):
+			if flt(self.get(fieldname)) < 0:
+				frappe.throw(f"{self.meta.get_label(fieldname)} cannot be negative.")
+
 	def _calculate_child_rows(self):
+		employees = {row.employee for row in self.labour if row.employee and not row.internal_hourly_cost}
+		employee_costs = {
+			row.name: row.hourly_internal_cost
+			for row in frappe.get_all("Employee", filters={"name": ["in", list(employees)]}, fields=["name", "hourly_internal_cost"])
+		} if employees else {}
 		for row in self.labour:
 			if row.start_datetime and row.end_datetime:
 				row.duration_hours = (get_datetime(row.end_datetime) - get_datetime(row.start_datetime)).total_seconds() / 3600
+			row.internal_hourly_cost = row.internal_hourly_cost or employee_costs.get(row.employee) or 0
 			row.internal_cost = flt(row.duration_hours) * flt(row.internal_hourly_cost)
 			row.billable_amount = 0 if row.covered else flt(row.duration_hours) * flt(row.billing_rate)
 		for row in self.parts:

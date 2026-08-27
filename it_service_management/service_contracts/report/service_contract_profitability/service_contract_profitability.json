@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Service Contract Profitability","report_name":"Service Contract Profitability","ref_doctype":"Service Contract","report_type":"Script Report","module":"Service Contracts","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"Service Contract Manager"},{"role":"Accounts Manager"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"}]}

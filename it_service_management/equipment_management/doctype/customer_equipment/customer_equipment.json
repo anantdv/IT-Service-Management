@@ -1,74 +1,448 @@
 {
- "actions": [],
- "allow_rename": 1,
- "autoname": "naming_series:",
- "creation": "2026-08-20 00:00:00.000000",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": ["naming_series", "equipment_id", "customer", "customer_site", "item_code", "item_name", "serial_no", "asset", "manufacturer", "brand", "model", "product_category", "ownership_section", "ownership_type", "commercial_section", "sales_invoice", "delivery_note", "rental_contract", "installation_job", "installation_section", "installation_date", "installed_by", "installation_status", "warranty_section", "warranty_start_date", "warranty_end_date", "warranty_status", "warranty_policy", "contract_section", "service_contract", "service_plan", "coverage_status", "location_section", "physical_location", "department", "floor", "room", "latitude", "longitude", "service_section", "equipment_status", "meter_based", "latest_bw_meter", "latest_colour_meter", "latest_meter_date", "last_service_date", "next_service_date", "preferred_technician"],
- "fields": [
-  {"default": "EQP-.YYYY.-.#####", "fieldname": "naming_series", "fieldtype": "Select", "label": "Naming Series", "options": "EQP-.YYYY.-.#####", "reqd": 1},
-  {"fieldname": "equipment_id", "fieldtype": "Data", "in_list_view": 1, "label": "Equipment ID", "unique": 1},
-  {"fieldname": "customer", "fieldtype": "Link", "in_list_view": 1, "label": "Customer", "options": "Customer", "reqd": 1},
-  {"fieldname": "customer_site", "fieldtype": "Link", "in_list_view": 1, "label": "Customer Site", "options": "Customer Site"},
-  {"fieldname": "item_code", "fieldtype": "Link", "in_list_view": 1, "label": "Item Code", "options": "Item", "reqd": 1},
-  {"fetch_from": "item_code.item_name", "fieldname": "item_name", "fieldtype": "Data", "label": "Item Name", "read_only": 1},
-  {"fieldname": "serial_no", "fieldtype": "Link", "in_list_view": 1, "label": "Serial No", "options": "Serial No"},
-  {"fieldname": "asset", "fieldtype": "Link", "label": "Asset", "options": "Asset"},
-  {"fieldname": "manufacturer", "fieldtype": "Data", "label": "Manufacturer"},
-  {"fieldname": "brand", "fieldtype": "Data", "label": "Brand"},
-  {"fieldname": "model", "fieldtype": "Data", "label": "Model"},
-  {"fieldname": "product_category", "fieldtype": "Link", "label": "Product Category", "options": "Item Group"},
-  {"fieldname": "ownership_section", "fieldtype": "Section Break", "label": "Ownership"},
-  {"fieldname": "ownership_type", "fieldtype": "Select", "in_list_view": 1, "label": "Ownership Type", "options": "Customer Owned\nCompany Rental Asset\nDemo Unit\nLoan Unit\nTemporary Replacement", "reqd": 1},
-  {"fieldname": "commercial_section", "fieldtype": "Section Break", "label": "Commercial Source"},
-  {"fieldname": "sales_invoice", "fieldtype": "Link", "label": "Sales Invoice", "options": "Sales Invoice"},
-  {"fieldname": "delivery_note", "fieldtype": "Link", "label": "Delivery Note", "options": "Delivery Note"},
-  {"fieldname": "rental_contract", "fieldtype": "Link", "label": "Rental Contract", "options": "Rental Contract"},
-  {"fieldname": "installation_job", "fieldtype": "Link", "label": "Installation Job", "options": "Installation Job"},
-  {"fieldname": "installation_section", "fieldtype": "Section Break", "label": "Installation"},
-  {"fieldname": "installation_date", "fieldtype": "Date", "label": "Installation Date"},
-  {"fieldname": "installed_by", "fieldtype": "Link", "label": "Installed By", "options": "Employee"},
-  {"fieldname": "installation_status", "fieldtype": "Select", "label": "Installation Status", "options": "\nPending\nScheduled\nInstalled\nFailed\nNot Required"},
-  {"fieldname": "warranty_section", "fieldtype": "Section Break", "label": "Warranty"},
-  {"fieldname": "warranty_start_date", "fieldtype": "Date", "label": "Warranty Start Date"},
-  {"fieldname": "warranty_end_date", "fieldtype": "Date", "label": "Warranty End Date"},
-  {"fieldname": "warranty_status", "fieldtype": "Select", "label": "Warranty Status", "options": "\nUnder Warranty\nExpired\nNo Warranty"},
-  {"fieldname": "warranty_policy", "fieldtype": "Link", "label": "Warranty Policy", "options": "Warranty Policy"},
-  {"fieldname": "contract_section", "fieldtype": "Section Break", "label": "Contract"},
-  {"fieldname": "service_contract", "fieldtype": "Link", "label": "Service Contract", "options": "Service Contract"},
-  {"fieldname": "service_plan", "fieldtype": "Link", "label": "Service Plan", "options": "Service Plan"},
-  {"fieldname": "coverage_status", "fieldtype": "Select", "label": "Coverage Status", "options": "\nCovered\nPartial\nNot Covered"},
-  {"fieldname": "location_section", "fieldtype": "Section Break", "label": "Location"},
-  {"fieldname": "physical_location", "fieldtype": "Small Text", "label": "Physical Location"},
-  {"fieldname": "department", "fieldtype": "Data", "label": "Department"},
-  {"fieldname": "floor", "fieldtype": "Data", "label": "Floor"},
-  {"fieldname": "room", "fieldtype": "Data", "label": "Room"},
-  {"fieldname": "latitude", "fieldtype": "Float", "label": "Latitude"},
-  {"fieldname": "longitude", "fieldtype": "Float", "label": "Longitude"},
-  {"fieldname": "service_section", "fieldtype": "Section Break", "label": "Service"},
-  {"default": "Operational", "fieldname": "equipment_status", "fieldtype": "Select", "in_list_view": 1, "label": "Equipment Status", "options": "Operational\nUnder Service\nAwaiting Parts\nFaulty\nReplaced\nReturned\nRetired", "reqd": 1},
-  {"fieldname": "meter_based", "fieldtype": "Check", "label": "Meter Based"},
-  {"fieldname": "latest_bw_meter", "fieldtype": "Int", "label": "Latest BW Meter"},
-  {"fieldname": "latest_colour_meter", "fieldtype": "Int", "label": "Latest Colour Meter"},
-  {"fieldname": "latest_meter_date", "fieldtype": "Date", "label": "Latest Meter Date"},
-  {"fieldname": "last_service_date", "fieldtype": "Date", "label": "Last Service Date"},
-  {"fieldname": "next_service_date", "fieldtype": "Date", "label": "Next Service Date"},
-  {"fieldname": "preferred_technician", "fieldtype": "Link", "label": "Preferred Technician", "options": "Employee"}
- ],
- "links": [{"link_doctype": "Service Contract", "link_fieldname": "customer"}],
- "modified": "2026-08-20 00:00:00.000000",
- "module": "Equipment Management",
- "name": "Customer Equipment",
- "permissions": [
-  {"role": "Service Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "Service Dispatcher", "read": 1, "write": 1, "create": 1},
-  {"role": "Service Technician", "read": 1, "write": 1},
-  {"role": "Service Auditor", "read": 1},
-  {"role": "Service Contract Manager", "read": 1, "write": 1}
- ],
- "search_fields": "customer,item_code,serial_no,equipment_id",
- "sort_field": "modified",
- "sort_order": "DESC",
- "track_changes": 1
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "naming_series:",
+  "creation": "2026-08-20 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "equipment_id",
+    "customer",
+    "customer_site",
+    "item_code",
+    "item_name",
+    "serial_no",
+    "asset",
+    "manufacturer",
+    "brand",
+    "model",
+    "product_category",
+    "ownership_section",
+    "ownership_type",
+    "commercial_section",
+    "sales_invoice",
+    "delivery_note",
+    "rental_contract",
+    "rental_deployment",
+    "rental_deployment_date",
+    "rental_return_date",
+    "installation_job",
+    "loan_start",
+    "loan_end",
+    "loan_reason",
+    "loan_service_job",
+    "installation_section",
+    "installation_date",
+    "installed_by",
+    "installation_status",
+    "warranty_section",
+    "warranty_start_date",
+    "warranty_end_date",
+    "warranty_status",
+    "warranty_policy",
+    "contract_section",
+    "service_contract",
+    "service_plan",
+    "coverage_status",
+    "location_section",
+    "physical_location",
+    "department",
+    "floor",
+    "room",
+    "latitude",
+    "longitude",
+    "service_section",
+    "equipment_status",
+    "meter_based",
+    "latest_bw_meter",
+    "latest_colour_meter",
+    "latest_meter_date",
+    "last_service_date",
+    "next_service_date",
+    "preferred_technician"
+  ],
+  "fields": [
+    {
+      "default": "EQP-.YYYY.-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "EQP-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "equipment_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Equipment ID",
+      "unique": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Customer Site",
+      "options": "Customer Site"
+    },
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Item Code",
+      "options": "Item",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "item_code.item_name",
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "label": "Item Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Serial No",
+      "options": "Serial No"
+    },
+    {
+      "fieldname": "asset",
+      "fieldtype": "Link",
+      "label": "Asset",
+      "options": "Asset"
+    },
+    {
+      "fieldname": "manufacturer",
+      "fieldtype": "Data",
+      "label": "Manufacturer"
+    },
+    {
+      "fieldname": "brand",
+      "fieldtype": "Data",
+      "label": "Brand"
+    },
+    {
+      "fieldname": "model",
+      "fieldtype": "Data",
+      "label": "Model"
+    },
+    {
+      "fieldname": "product_category",
+      "fieldtype": "Link",
+      "label": "Product Category",
+      "options": "Item Group"
+    },
+    {
+      "fieldname": "ownership_section",
+      "fieldtype": "Section Break",
+      "label": "Ownership"
+    },
+    {
+      "fieldname": "ownership_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Ownership Type",
+      "options": "Customer Owned\nCompany Rental Asset\nDemo Unit\nLoan Unit\nTemporary Replacement",
+      "reqd": 1
+    },
+    {
+      "fieldname": "commercial_section",
+      "fieldtype": "Section Break",
+      "label": "Commercial Source"
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "label": "Sales Invoice",
+      "options": "Sales Invoice"
+    },
+    {
+      "fieldname": "delivery_note",
+      "fieldtype": "Link",
+      "label": "Delivery Note",
+      "options": "Delivery Note"
+    },
+    {
+      "fieldname": "rental_contract",
+      "fieldtype": "Link",
+      "label": "Rental Contract",
+      "options": "Rental Contract"
+    },
+    {
+      "fieldname": "rental_deployment",
+      "fieldtype": "Link",
+      "label": "Rental Deployment",
+      "options": "Rental Deployment"
+    },
+    {
+      "fieldname": "rental_deployment_date",
+      "fieldtype": "Date",
+      "label": "Rental Deployment Date"
+    },
+    {
+      "fieldname": "rental_return_date",
+      "fieldtype": "Date",
+      "label": "Rental Return Date"
+    },
+    {
+      "fieldname": "installation_job",
+      "fieldtype": "Link",
+      "label": "Installation Job",
+      "options": "Installation Job"
+    },
+    {
+      "fieldname": "loan_start",
+      "fieldtype": "Date",
+      "label": "Loan Start"
+    },
+    {
+      "fieldname": "loan_end",
+      "fieldtype": "Date",
+      "label": "Loan End"
+    },
+    {
+      "fieldname": "loan_reason",
+      "fieldtype": "Small Text",
+      "label": "Loan Reason"
+    },
+    {
+      "fieldname": "loan_service_job",
+      "fieldtype": "Link",
+      "label": "Loan Service Job",
+      "options": "Service Job"
+    },
+    {
+      "fieldname": "installation_section",
+      "fieldtype": "Section Break",
+      "label": "Installation"
+    },
+    {
+      "fieldname": "installation_date",
+      "fieldtype": "Date",
+      "label": "Installation Date"
+    },
+    {
+      "fieldname": "installed_by",
+      "fieldtype": "Link",
+      "label": "Installed By",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "installation_status",
+      "fieldtype": "Select",
+      "label": "Installation Status",
+      "options": "\nPending\nScheduled\nInstalled\nFailed\nNot Required"
+    },
+    {
+      "fieldname": "warranty_section",
+      "fieldtype": "Section Break",
+      "label": "Warranty"
+    },
+    {
+      "fieldname": "warranty_start_date",
+      "fieldtype": "Date",
+      "label": "Warranty Start Date"
+    },
+    {
+      "fieldname": "warranty_end_date",
+      "fieldtype": "Date",
+      "label": "Warranty End Date"
+    },
+    {
+      "fieldname": "warranty_status",
+      "fieldtype": "Select",
+      "label": "Warranty Status",
+      "options": "\nUnder Warranty\nExpired\nNo Warranty"
+    },
+    {
+      "fieldname": "warranty_policy",
+      "fieldtype": "Link",
+      "label": "Warranty Policy",
+      "options": "Warranty Policy"
+    },
+    {
+      "fieldname": "contract_section",
+      "fieldtype": "Section Break",
+      "label": "Contract"
+    },
+    {
+      "fieldname": "service_contract",
+      "fieldtype": "Link",
+      "label": "Service Contract",
+      "options": "Service Contract"
+    },
+    {
+      "fieldname": "service_plan",
+      "fieldtype": "Link",
+      "label": "Service Plan",
+      "options": "Service Plan"
+    },
+    {
+      "fieldname": "coverage_status",
+      "fieldtype": "Select",
+      "label": "Coverage Status",
+      "options": "\nCovered\nPartial\nNot Covered"
+    },
+    {
+      "fieldname": "location_section",
+      "fieldtype": "Section Break",
+      "label": "Location"
+    },
+    {
+      "fieldname": "physical_location",
+      "fieldtype": "Small Text",
+      "label": "Physical Location"
+    },
+    {
+      "fieldname": "department",
+      "fieldtype": "Data",
+      "label": "Department"
+    },
+    {
+      "fieldname": "floor",
+      "fieldtype": "Data",
+      "label": "Floor"
+    },
+    {
+      "fieldname": "room",
+      "fieldtype": "Data",
+      "label": "Room"
+    },
+    {
+      "fieldname": "latitude",
+      "fieldtype": "Float",
+      "label": "Latitude"
+    },
+    {
+      "fieldname": "longitude",
+      "fieldtype": "Float",
+      "label": "Longitude"
+    },
+    {
+      "fieldname": "service_section",
+      "fieldtype": "Section Break",
+      "label": "Service"
+    },
+    {
+      "default": "Operational",
+      "fieldname": "equipment_status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Equipment Status",
+      "options": "Available\nReserved\nDeployed\nOperational\nUnder Service\nAwaiting Parts\nUnder Repair\nFaulty\nTemporary Replacement\nReplaced\nReturned\nLost\nDamaged\nRetired",
+      "reqd": 1
+    },
+    {
+      "fieldname": "meter_based",
+      "fieldtype": "Check",
+      "label": "Meter Based"
+    },
+    {
+      "fieldname": "latest_bw_meter",
+      "fieldtype": "Int",
+      "label": "Latest BW Meter"
+    },
+    {
+      "fieldname": "latest_colour_meter",
+      "fieldtype": "Int",
+      "label": "Latest Colour Meter"
+    },
+    {
+      "fieldname": "latest_meter_date",
+      "fieldtype": "Date",
+      "label": "Latest Meter Date"
+    },
+    {
+      "fieldname": "last_service_date",
+      "fieldtype": "Date",
+      "label": "Last Service Date"
+    },
+    {
+      "fieldname": "next_service_date",
+      "fieldtype": "Date",
+      "label": "Next Service Date"
+    },
+    {
+      "fieldname": "preferred_technician",
+      "fieldtype": "Link",
+      "label": "Preferred Technician",
+      "options": "Employee"
+    }
+  ],
+  "links": [
+    {
+      "link_doctype": "Service Contract",
+      "link_fieldname": "customer"
+    }
+  ],
+  "modified": "2026-08-20 00:00:00.000000",
+  "module": "Equipment Management",
+  "name": "Customer Equipment",
+  "permissions": [
+    {
+      "role": "Service Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Service Dispatcher",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Technician",
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "Service Contract Manager",
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "Rental Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Rental User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Rental Billing User",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ],
+  "search_fields": "customer,item_code,serial_no,equipment_id",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1
 }

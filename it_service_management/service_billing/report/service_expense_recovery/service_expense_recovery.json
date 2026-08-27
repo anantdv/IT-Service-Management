@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Service Expense Recovery","report_name":"Service Expense Recovery","ref_doctype":"Service Expense","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"Service Billing User"},{"role":"Accounts Manager"},{"role":"IT Service Analyst"}]}

@@ -75,5 +75,80 @@
     "module": "IT Service Management",
     "name": "Employee-available_for_assignment",
     "default": "1"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_rental_contract",
+    "label": "Rental Contract",
+    "fieldtype": "Link",
+    "options": "Rental Contract",
+    "insert_after": "customer",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_rental_contract"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_rental_billing_run",
+    "label": "Rental Billing Run",
+    "fieldtype": "Link",
+    "options": "Rental Billing Run",
+    "insert_after": "custom_rental_contract",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_rental_billing_run"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_service_billing_batch",
+    "label": "Service Billing Batch",
+    "fieldtype": "Link",
+    "options": "Service Billing Batch",
+    "insert_after": "custom_rental_billing_run",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_service_billing_batch"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_service_job",
+    "label": "Service Job",
+    "fieldtype": "Link",
+    "options": "Service Job",
+    "insert_after": "custom_service_billing_batch",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_service_job"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_customer_equipment",
+    "label": "Customer Equipment",
+    "fieldtype": "Link",
+    "options": "Customer Equipment",
+    "insert_after": "custom_service_job",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_customer_equipment"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_billing_period_from",
+    "label": "Billing Period From",
+    "fieldtype": "Date",
+    "insert_after": "custom_customer_equipment",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_billing_period_from"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_billing_period_to",
+    "label": "Billing Period To",
+    "fieldtype": "Date",
+    "insert_after": "custom_billing_period_from",
+    "module": "IT Service Management",
+    "name": "Sales Invoice-custom_billing_period_to"
   }
 ]

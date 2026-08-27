@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Service Coverage Analysis","report_name":"Service Coverage Analysis","ref_doctype":"Service Job","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"Service Billing User"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"}]}

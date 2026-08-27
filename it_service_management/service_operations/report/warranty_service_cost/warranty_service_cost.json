@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Warranty Service Cost","report_name":"Warranty Service Cost","ref_doctype":"Service Job","report_type":"Script Report","module":"Service Operations","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"},{"role":"Service Auditor"}]}

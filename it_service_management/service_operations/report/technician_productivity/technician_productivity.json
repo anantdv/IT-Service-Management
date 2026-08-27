@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Technician Productivity","report_name":"Technician Productivity","ref_doctype":"Service Job","report_type":"Script Report","module":"Service Operations","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"}]}

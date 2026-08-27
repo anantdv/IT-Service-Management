@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Rental Meter Usage","report_name":"Rental Meter Usage","ref_doctype":"Equipment Meter Reading","report_type":"Script Report","module":"Rental Management","is_standard":"Yes","roles":[{"role":"Rental Manager"},{"role":"Rental User"},{"role":"Rental Billing User"},{"role":"Service Manager"}]}

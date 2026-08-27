@@ -1,0 +1,244 @@
+{
+  "doctype": "DocType",
+  "name": "Service Billing Batch",
+  "module": "Service Billing",
+  "autoname": "naming_series:",
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "search_fields": "company,customer,status",
+  "field_order": [
+    "naming_series",
+    "company",
+    "billing_date",
+    "service_date_from",
+    "service_date_to",
+    "customer",
+    "customer_group",
+    "service_zone",
+    "service_contract",
+    "service_team",
+    "technician",
+    "status",
+    "group_by_customer",
+    "posting_date",
+    "approved_by",
+    "approved_on",
+    "totals_section",
+    "total_jobs",
+    "total_internal_cost",
+    "total_charge",
+    "total_covered",
+    "total_billable",
+    "invoices_created",
+    "errors_count",
+    "started_at",
+    "completed_at",
+    "details"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "SBB-.YYYY.-.#####",
+      "default": "SBB-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_date",
+      "fieldtype": "Date",
+      "label": "Billing Date",
+      "default": "Today",
+      "reqd": 1
+    },
+    {
+      "fieldname": "service_date_from",
+      "fieldtype": "Date",
+      "label": "Service Date From",
+      "reqd": 1
+    },
+    {
+      "fieldname": "service_date_to",
+      "fieldtype": "Date",
+      "label": "Service Date To",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "customer_group",
+      "fieldtype": "Link",
+      "label": "Customer Group",
+      "options": "Customer Group"
+    },
+    {
+      "fieldname": "service_zone",
+      "fieldtype": "Link",
+      "label": "Service Zone",
+      "options": "Service Zone"
+    },
+    {
+      "fieldname": "service_contract",
+      "fieldtype": "Link",
+      "label": "Service Contract",
+      "options": "Service Contract"
+    },
+    {
+      "fieldname": "service_team",
+      "fieldtype": "Link",
+      "label": "Service Team",
+      "options": "Service Team"
+    },
+    {
+      "fieldname": "technician",
+      "fieldtype": "Link",
+      "label": "Technician",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nPrepared\nUnder Review\nApproved for Billing\nProcessing\nCompleted\nCompleted With Errors\nCancelled",
+      "default": "Draft",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "group_by_customer",
+      "fieldtype": "Check",
+      "label": "Group by Customer",
+      "default": "1"
+    },
+    {
+      "fieldname": "posting_date",
+      "fieldtype": "Date",
+      "label": "Posting Date",
+      "default": "Today",
+      "reqd": 1
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approved_on",
+      "fieldtype": "Datetime",
+      "label": "Approved On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "totals_section",
+      "fieldtype": "Section Break",
+      "label": "Totals"
+    },
+    {
+      "fieldname": "total_jobs",
+      "fieldtype": "Int",
+      "label": "Total Jobs",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_internal_cost",
+      "fieldtype": "Currency",
+      "label": "Total Internal Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_charge",
+      "fieldtype": "Currency",
+      "label": "Total Charge",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_covered",
+      "fieldtype": "Currency",
+      "label": "Total Covered",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_billable",
+      "fieldtype": "Currency",
+      "label": "Total Billable",
+      "read_only": 1
+    },
+    {
+      "fieldname": "invoices_created",
+      "fieldtype": "Int",
+      "label": "Invoices Created",
+      "read_only": 1
+    },
+    {
+      "fieldname": "errors_count",
+      "fieldtype": "Int",
+      "label": "Errors Count",
+      "read_only": 1
+    },
+    {
+      "fieldname": "started_at",
+      "fieldtype": "Datetime",
+      "label": "Started At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "completed_at",
+      "fieldtype": "Datetime",
+      "label": "Completed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Table",
+      "label": "Service Jobs",
+      "options": "Service Billing Batch Detail"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Service Billing User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Service Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Accounts Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    }
+  ]
+}

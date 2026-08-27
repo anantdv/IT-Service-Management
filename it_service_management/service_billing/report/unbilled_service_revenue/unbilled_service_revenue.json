@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Unbilled Service Revenue","report_name":"Unbilled Service Revenue","ref_doctype":"Service Job","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Service Billing User"},{"role":"Service Manager"},{"role":"Accounts Manager"},{"role":"IT Service Analyst"}]}

@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Recurring Billing Control","report_name":"Recurring Billing Control","ref_doctype":"Service Billing Batch","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Accounts Manager"},{"role":"Service Billing User"},{"role":"Rental Billing User"},{"role":"IT Service Analyst"}]}

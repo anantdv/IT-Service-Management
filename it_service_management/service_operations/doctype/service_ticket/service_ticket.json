@@ -1,488 +1,502 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2026-08-20 00:00:00.000000",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "naming_series",
-  "customer_section",
-  "customer",
-  "customer_name",
-  "customer_site",
-  "contact_person",
-  "contact_email",
-  "contact_mobile",
-  "equipment_section",
-  "customer_equipment",
-  "item_code",
-  "item_name",
-  "serial_no",
-  "asset",
-  "ticket_section",
-  "ticket_type",
-  "priority",
-  "status",
-  "subject",
-  "description",
-  "customer_complaint",
-  "reported_by",
-  "reported_datetime",
-  "source",
-  "coverage_section",
-  "coverage_source",
-  "coverage_document",
-  "coverage_status",
-  "warranty_active",
-  "service_contract",
-  "rental_contract",
-  "labour_covered",
-  "parts_covered",
-  "travel_covered",
-  "callout_covered",
-  "accommodation_covered",
-  "food_covered",
-  "installation_covered",
-  "remote_support_covered",
-  "sla_section",
-  "response_due",
-  "resolution_due",
-  "first_response_datetime",
-  "resolution_datetime",
-  "response_sla_status",
-  "resolution_sla_status",
-  "response_sla_percentage",
-  "resolution_sla_percentage",
-  "response_75_notified",
-  "response_90_notified",
-  "response_breach_notified",
-  "resolution_75_notified",
-  "resolution_90_notified",
-  "resolution_breach_notified",
-  "assignment_section",
-  "assigned_technician",
-  "resolution_section",
-  "resolution",
-  "resolved_datetime",
-  "closed_datetime",
-  "closed_by"
- ],
- "fields": [
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "ST-.YYYY.-.#####",
-   "default": "ST-.YYYY.-.#####",
-   "reqd": 1
-  },
-  {
-   "fieldname": "customer_section",
-   "fieldtype": "Section Break",
-   "label": "Customer"
-  },
-  {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer",
-   "reqd": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "customer_name",
-   "fieldtype": "Data",
-   "label": "Customer Name",
-   "fetch_from": "customer.customer_name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "customer_site",
-   "fieldtype": "Link",
-   "label": "Customer Site",
-   "options": "Customer Site",
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "contact_person",
-   "fieldtype": "Link",
-   "label": "Contact Person",
-   "options": "Contact"
-  },
-  {
-   "fieldname": "contact_email",
-   "fieldtype": "Data",
-   "label": "Contact Email",
-   "options": "Email"
-  },
-  {
-   "fieldname": "contact_mobile",
-   "fieldtype": "Data",
-   "label": "Contact Mobile"
-  },
-  {
-   "fieldname": "equipment_section",
-   "fieldtype": "Section Break",
-   "label": "Equipment"
-  },
-  {
-   "fieldname": "customer_equipment",
-   "fieldtype": "Link",
-   "label": "Customer Equipment",
-   "options": "Customer Equipment",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "item_code",
-   "fieldtype": "Link",
-   "label": "Item Code",
-   "options": "Item"
-  },
-  {
-   "fieldname": "item_name",
-   "fieldtype": "Data",
-   "label": "Item Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "serial_no",
-   "fieldtype": "Link",
-   "label": "Serial No",
-   "options": "Serial No"
-  },
-  {
-   "fieldname": "asset",
-   "fieldtype": "Link",
-   "label": "Asset",
-   "options": "Asset"
-  },
-  {
-   "fieldname": "ticket_section",
-   "fieldtype": "Section Break",
-   "label": "Ticket"
-  },
-  {
-   "fieldname": "ticket_type",
-   "fieldtype": "Select",
-   "label": "Ticket Type",
-   "options": "Breakdown\nRemote Support\nOnsite Support\nInstallation\nPreventive Maintenance\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther",
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "priority",
-   "fieldtype": "Select",
-   "label": "Priority",
-   "options": "Critical\nHigh\nMedium\nLow",
-   "default": "Medium",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Open\nAssigned\nRemote Support\nRemote Resolved\nOnsite Required\nScheduled\nAwaiting Customer\nAwaiting Parts\nWork In Progress\nResolved\nClosed\nCancelled",
-   "default": "Open",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "subject",
-   "fieldtype": "Data",
-   "label": "Subject",
-   "reqd": 1,
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Text Editor",
-   "label": "Description"
-  },
-  {
-   "fieldname": "customer_complaint",
-   "fieldtype": "Small Text",
-   "label": "Customer Complaint"
-  },
-  {
-   "fieldname": "reported_by",
-   "fieldtype": "Data",
-   "label": "Reported By"
-  },
-  {
-   "fieldname": "reported_datetime",
-   "fieldtype": "Datetime",
-   "label": "Reported Datetime",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "source",
-   "fieldtype": "Select",
-   "label": "Source",
-   "options": "Phone\nEmail\nWalk-In\nERPNext\nCustomer Portal\nInternal\nMonitoring System\nOther",
-   "default": "Phone"
-  },
-  {
-   "fieldname": "coverage_section",
-   "fieldtype": "Section Break",
-   "label": "Coverage Snapshot"
-  },
-  {
-   "fieldname": "coverage_source",
-   "fieldtype": "Data",
-   "label": "Coverage Source",
-   "read_only": 1
-  },
-  {
-   "fieldname": "coverage_document",
-   "fieldtype": "Data",
-   "label": "Coverage Document",
-   "read_only": 1
-  },
-  {
-   "fieldname": "coverage_status",
-   "fieldtype": "Select",
-   "label": "Coverage Status",
-   "options": "\nCovered\nPartial\nNot Covered",
-   "read_only": 1
-  },
-  {
-   "fieldname": "warranty_active",
-   "fieldtype": "Check",
-   "label": "Warranty Active",
-   "read_only": 1
-  },
-  {
-   "fieldname": "service_contract",
-   "fieldtype": "Link",
-   "label": "Service Contract",
-   "options": "Service Contract",
-   "read_only": 1
-  },
-  {
-   "fieldname": "rental_contract",
-   "fieldtype": "Data",
-   "label": "Rental Contract",
-   "read_only": 1
-  },
-  {
-   "fieldname": "labour_covered",
-   "fieldtype": "Check",
-   "label": "Labour Covered"
-  },
-  {
-   "fieldname": "parts_covered",
-   "fieldtype": "Check",
-   "label": "Parts Covered"
-  },
-  {
-   "fieldname": "travel_covered",
-   "fieldtype": "Check",
-   "label": "Travel Covered"
-  },
-  {
-   "fieldname": "callout_covered",
-   "fieldtype": "Check",
-   "label": "Callout Covered"
-  },
-  {
-   "fieldname": "accommodation_covered",
-   "fieldtype": "Check",
-   "label": "Accommodation Covered"
-  },
-  {
-   "fieldname": "food_covered",
-   "fieldtype": "Check",
-   "label": "Food Covered"
-  },
-  {
-   "fieldname": "installation_covered",
-   "fieldtype": "Check",
-   "label": "Installation Covered"
-  },
-  {
-   "fieldname": "remote_support_covered",
-   "fieldtype": "Check",
-   "label": "Remote Support Covered"
-  },
-  {
-   "fieldname": "sla_section",
-   "fieldtype": "Section Break",
-   "label": "SLA"
-  },
-  {
-   "fieldname": "response_due",
-   "fieldtype": "Datetime",
-   "label": "Response Due",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_due",
-   "fieldtype": "Datetime",
-   "label": "Resolution Due",
-   "read_only": 1,
-   "search_index": 1,
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "first_response_datetime",
-   "fieldtype": "Datetime",
-   "label": "First Response Datetime"
-  },
-  {
-   "fieldname": "resolution_datetime",
-   "fieldtype": "Datetime",
-   "label": "Resolution Datetime"
-  },
-  {
-   "fieldname": "response_sla_status",
-   "fieldtype": "Select",
-   "label": "Response Sla Status",
-   "options": "Not Started\nWithin SLA\nAt Risk\nBreached\nMet",
-   "default": "Not Started",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_sla_status",
-   "fieldtype": "Select",
-   "label": "Resolution Sla Status",
-   "options": "Not Started\nWithin SLA\nAt Risk\nBreached\nMet",
-   "default": "Not Started",
-   "read_only": 1
-  },
-  {
-   "fieldname": "response_sla_percentage",
-   "fieldtype": "Percent",
-   "label": "Response Sla Percentage",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_sla_percentage",
-   "fieldtype": "Percent",
-   "label": "Resolution Sla Percentage",
-   "read_only": 1
-  },
-  {
-   "fieldname": "response_75_notified",
-   "fieldtype": "Check",
-   "label": "Response 75 Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "response_90_notified",
-   "fieldtype": "Check",
-   "label": "Response 90 Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "response_breach_notified",
-   "fieldtype": "Check",
-   "label": "Response Breach Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_75_notified",
-   "fieldtype": "Check",
-   "label": "Resolution 75 Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_90_notified",
-   "fieldtype": "Check",
-   "label": "Resolution 90 Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "resolution_breach_notified",
-   "fieldtype": "Check",
-   "label": "Resolution Breach Notified",
-   "read_only": 1
-  },
-  {
-   "fieldname": "assignment_section",
-   "fieldtype": "Section Break",
-   "label": "Assignment"
-  },
-  {
-   "fieldname": "assigned_technician",
-   "fieldtype": "Link",
-   "label": "Assigned Technician",
-   "options": "Employee",
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "resolution_section",
-   "fieldtype": "Section Break",
-   "label": "Resolution"
-  },
-  {
-   "fieldname": "resolution",
-   "fieldtype": "Text Editor",
-   "label": "Resolution"
-  },
-  {
-   "fieldname": "resolved_datetime",
-   "fieldtype": "Datetime",
-   "label": "Resolved Datetime"
-  },
-  {
-   "fieldname": "closed_datetime",
-   "fieldtype": "Datetime",
-   "label": "Closed Datetime"
-  },
-  {
-   "fieldname": "closed_by",
-   "fieldtype": "Link",
-   "label": "Closed By",
-   "options": "User"
-  }
- ],
- "istable": 0,
- "modified": "2026-08-20 00:00:00.000000",
- "module": "Service Operations",
- "name": "Service Ticket",
- "permissions": [
-  {
-   "role": "Service Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "submit": 1,
-   "cancel": 1
-  },
-  {
-   "role": "Service Dispatcher",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Technician",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Billing User",
-   "read": 1
-  },
-  {
-   "role": "Service Auditor",
-   "read": 1
-  }
- ],
- "sort_field": "modified",
- "sort_order": "DESC",
- "track_changes": 1,
- "autoname": "naming_series:",
- "search_fields": "customer,subject,serial_no"
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-08-20 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "customer_section",
+    "customer",
+    "customer_name",
+    "customer_site",
+    "contact_person",
+    "contact_email",
+    "contact_mobile",
+    "equipment_section",
+    "customer_equipment",
+    "item_code",
+    "item_name",
+    "serial_no",
+    "asset",
+    "ticket_section",
+    "ticket_type",
+    "priority",
+    "status",
+    "subject",
+    "description",
+    "customer_complaint",
+    "reported_by",
+    "reported_datetime",
+    "source",
+    "coverage_section",
+    "coverage_source",
+    "coverage_document",
+    "coverage_status",
+    "warranty_active",
+    "service_contract",
+    "rental_contract",
+    "labour_covered",
+    "parts_covered",
+    "travel_covered",
+    "callout_covered",
+    "accommodation_covered",
+    "food_covered",
+    "airfare_covered",
+    "installation_covered",
+    "remote_support_covered",
+    "sla_section",
+    "response_due",
+    "resolution_due",
+    "first_response_datetime",
+    "resolution_datetime",
+    "response_sla_status",
+    "resolution_sla_status",
+    "response_sla_percentage",
+    "resolution_sla_percentage",
+    "response_75_notified",
+    "response_90_notified",
+    "response_breach_notified",
+    "resolution_75_notified",
+    "resolution_90_notified",
+    "resolution_breach_notified",
+    "assignment_section",
+    "assigned_technician",
+    "resolution_section",
+    "resolution",
+    "resolved_datetime",
+    "closed_datetime",
+    "closed_by"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "ST-.YYYY.-.#####",
+      "default": "ST-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer_section",
+      "fieldtype": "Section Break",
+      "label": "Customer"
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "customer_name",
+      "fieldtype": "Data",
+      "label": "Customer Name",
+      "fetch_from": "customer.customer_name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "contact_person",
+      "fieldtype": "Link",
+      "label": "Contact Person",
+      "options": "Contact"
+    },
+    {
+      "fieldname": "contact_email",
+      "fieldtype": "Data",
+      "label": "Contact Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "contact_mobile",
+      "fieldtype": "Data",
+      "label": "Contact Mobile"
+    },
+    {
+      "fieldname": "equipment_section",
+      "fieldtype": "Section Break",
+      "label": "Equipment"
+    },
+    {
+      "fieldname": "customer_equipment",
+      "fieldtype": "Link",
+      "label": "Customer Equipment",
+      "options": "Customer Equipment",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "label": "Item Code",
+      "options": "Item"
+    },
+    {
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "label": "Item Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Link",
+      "label": "Serial No",
+      "options": "Serial No"
+    },
+    {
+      "fieldname": "asset",
+      "fieldtype": "Link",
+      "label": "Asset",
+      "options": "Asset"
+    },
+    {
+      "fieldname": "ticket_section",
+      "fieldtype": "Section Break",
+      "label": "Ticket"
+    },
+    {
+      "fieldname": "ticket_type",
+      "fieldtype": "Select",
+      "label": "Ticket Type",
+      "options": "Breakdown\nRemote Support\nOnsite Support\nInstallation\nPreventive Maintenance\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Critical\nHigh\nMedium\nLow",
+      "default": "Medium",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Open\nAssigned\nRemote Support\nRemote Resolved\nOnsite Required\nScheduled\nAwaiting Customer\nAwaiting Parts\nWork In Progress\nResolved\nClosed\nCancelled",
+      "default": "Open",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "subject",
+      "fieldtype": "Data",
+      "label": "Subject",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "customer_complaint",
+      "fieldtype": "Small Text",
+      "label": "Customer Complaint"
+    },
+    {
+      "fieldname": "reported_by",
+      "fieldtype": "Data",
+      "label": "Reported By"
+    },
+    {
+      "fieldname": "reported_datetime",
+      "fieldtype": "Datetime",
+      "label": "Reported Datetime",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "source",
+      "fieldtype": "Select",
+      "label": "Source",
+      "options": "Phone\nEmail\nWalk-In\nERPNext\nCustomer Portal\nInternal\nMonitoring System\nOther",
+      "default": "Phone"
+    },
+    {
+      "fieldname": "coverage_section",
+      "fieldtype": "Section Break",
+      "label": "Coverage Snapshot"
+    },
+    {
+      "fieldname": "coverage_source",
+      "fieldtype": "Data",
+      "label": "Coverage Source",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_document",
+      "fieldtype": "Data",
+      "label": "Coverage Document",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_status",
+      "fieldtype": "Select",
+      "label": "Coverage Status",
+      "options": "\nCovered\nPartial\nNot Covered",
+      "read_only": 1
+    },
+    {
+      "fieldname": "warranty_active",
+      "fieldtype": "Check",
+      "label": "Warranty Active",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_contract",
+      "fieldtype": "Link",
+      "label": "Service Contract",
+      "options": "Service Contract",
+      "read_only": 1
+    },
+    {
+      "fieldname": "rental_contract",
+      "fieldtype": "Data",
+      "label": "Rental Contract",
+      "read_only": 1
+    },
+    {
+      "fieldname": "labour_covered",
+      "fieldtype": "Check",
+      "label": "Labour Covered"
+    },
+    {
+      "fieldname": "parts_covered",
+      "fieldtype": "Check",
+      "label": "Parts Covered"
+    },
+    {
+      "fieldname": "travel_covered",
+      "fieldtype": "Check",
+      "label": "Travel Covered"
+    },
+    {
+      "fieldname": "callout_covered",
+      "fieldtype": "Check",
+      "label": "Callout Covered"
+    },
+    {
+      "fieldname": "accommodation_covered",
+      "fieldtype": "Check",
+      "label": "Accommodation Covered"
+    },
+    {
+      "fieldname": "food_covered",
+      "fieldtype": "Check",
+      "label": "Food Covered"
+    },
+    {
+      "fieldname": "airfare_covered",
+      "fieldtype": "Check",
+      "label": "Airfare Covered"
+    },
+    {
+      "fieldname": "installation_covered",
+      "fieldtype": "Check",
+      "label": "Installation Covered"
+    },
+    {
+      "fieldname": "remote_support_covered",
+      "fieldtype": "Check",
+      "label": "Remote Support Covered"
+    },
+    {
+      "fieldname": "sla_section",
+      "fieldtype": "Section Break",
+      "label": "SLA"
+    },
+    {
+      "fieldname": "response_due",
+      "fieldtype": "Datetime",
+      "label": "Response Due",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_due",
+      "fieldtype": "Datetime",
+      "label": "Resolution Due",
+      "read_only": 1,
+      "search_index": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "first_response_datetime",
+      "fieldtype": "Datetime",
+      "label": "First Response Datetime"
+    },
+    {
+      "fieldname": "resolution_datetime",
+      "fieldtype": "Datetime",
+      "label": "Resolution Datetime"
+    },
+    {
+      "fieldname": "response_sla_status",
+      "fieldtype": "Select",
+      "label": "Response Sla Status",
+      "options": "Not Started\nWithin SLA\nAt Risk\nBreached\nMet",
+      "default": "Not Started",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_sla_status",
+      "fieldtype": "Select",
+      "label": "Resolution Sla Status",
+      "options": "Not Started\nWithin SLA\nAt Risk\nBreached\nMet",
+      "default": "Not Started",
+      "read_only": 1
+    },
+    {
+      "fieldname": "response_sla_percentage",
+      "fieldtype": "Percent",
+      "label": "Response Sla Percentage",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_sla_percentage",
+      "fieldtype": "Percent",
+      "label": "Resolution Sla Percentage",
+      "read_only": 1
+    },
+    {
+      "fieldname": "response_75_notified",
+      "fieldtype": "Check",
+      "label": "Response 75 Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "response_90_notified",
+      "fieldtype": "Check",
+      "label": "Response 90 Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "response_breach_notified",
+      "fieldtype": "Check",
+      "label": "Response Breach Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_75_notified",
+      "fieldtype": "Check",
+      "label": "Resolution 75 Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_90_notified",
+      "fieldtype": "Check",
+      "label": "Resolution 90 Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "resolution_breach_notified",
+      "fieldtype": "Check",
+      "label": "Resolution Breach Notified",
+      "read_only": 1
+    },
+    {
+      "fieldname": "assignment_section",
+      "fieldtype": "Section Break",
+      "label": "Assignment"
+    },
+    {
+      "fieldname": "assigned_technician",
+      "fieldtype": "Link",
+      "label": "Assigned Technician",
+      "options": "Employee",
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "resolution_section",
+      "fieldtype": "Section Break",
+      "label": "Resolution"
+    },
+    {
+      "fieldname": "resolution",
+      "fieldtype": "Text Editor",
+      "label": "Resolution"
+    },
+    {
+      "fieldname": "resolved_datetime",
+      "fieldtype": "Datetime",
+      "label": "Resolved Datetime"
+    },
+    {
+      "fieldname": "closed_datetime",
+      "fieldtype": "Datetime",
+      "label": "Closed Datetime"
+    },
+    {
+      "fieldname": "closed_by",
+      "fieldtype": "Link",
+      "label": "Closed By",
+      "options": "User"
+    }
+  ],
+  "istable": 0,
+  "modified": "2026-08-20 00:00:00.000000",
+  "module": "Service Operations",
+  "name": "Service Ticket",
+  "permissions": [
+    {
+      "role": "Service Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 1,
+      "cancel": 1
+    },
+    {
+      "role": "Service Dispatcher",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Technician",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Billing User",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1,
+  "autoname": "naming_series:",
+  "search_fields": "customer,subject,serial_no"
 }

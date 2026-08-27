@@ -8,7 +8,8 @@
     "public": 1,
     "is_standard": 1,
     "icon": "tool",
-    "content": "[{\"id\":\"contracts\",\"type\":\"header\",\"data\":{\"text\":\"Contracts and Equipment\"}},{\"id\":\"customer-equipment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Equipment\",\"col\":3}},{\"id\":\"customer-site\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Site\",\"col\":3}},{\"id\":\"service-contract\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contract\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IT Service Settings\",\"col\":3}}]",
+    "type": "Workspace",
+    "content": "[{\"id\":\"operations\",\"type\":\"header\",\"data\":{\"text\":\"Operations\"}},{\"id\":\"service-command\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Command Center\",\"col\":3}},{\"id\":\"tickets\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Tickets\",\"col\":3}},{\"id\":\"jobs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Jobs\",\"col\":3}},{\"id\":\"contracts\",\"type\":\"header\",\"data\":{\"text\":\"Contracts and Renewals\"}},{\"id\":\"service-contract\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contracts\",\"col\":3}},{\"id\":\"renewals\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Renewal Pipeline\",\"col\":3}},{\"id\":\"rental\",\"type\":\"header\",\"data\":{\"text\":\"Rental\"}},{\"id\":\"rental-command\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Command Center\",\"col\":3}},{\"id\":\"rental-contracts\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Contracts\",\"col\":3}},{\"id\":\"billing\",\"type\":\"header\",\"data\":{\"text\":\"Billing and Management\"}},{\"id\":\"service-batches\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Billing Batches\",\"col\":3}},{\"id\":\"rental-runs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Billing Runs\",\"col\":3}},{\"id\":\"executive\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Executive Dashboard\",\"col\":3}},{\"id\":\"equipment\",\"type\":\"header\",\"data\":{\"text\":\"Equipment and Setup\"}},{\"id\":\"customer-equipment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Equipment\",\"col\":3}},{\"id\":\"customer-site\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Sites\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IT Service Settings\",\"col\":3}}]",
     "shortcuts": [
       {
         "type": "DocType",
@@ -29,9 +30,63 @@
         "type": "DocType",
         "label": "IT Service Settings",
         "link_to": "IT Service Settings"
+      },
+      {
+        "type": "URL",
+        "label": "Service Command Center",
+        "url": "/app/service-command-center"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Tickets",
+        "link_to": "Service Ticket"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Jobs",
+        "link_to": "Service Job"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Contracts",
+        "link_to": "Service Contract"
+      },
+      {
+        "type": "DocType",
+        "label": "Renewal Pipeline",
+        "link_to": "Contract Renewal Opportunity"
+      },
+      {
+        "type": "URL",
+        "label": "Rental Command Center",
+        "url": "/app/rental-command-center"
+      },
+      {
+        "type": "DocType",
+        "label": "Rental Contracts",
+        "link_to": "Rental Contract"
+      },
+      {
+        "type": "DocType",
+        "label": "Service Billing Batches",
+        "link_to": "Service Billing Batch"
+      },
+      {
+        "type": "DocType",
+        "label": "Rental Billing Runs",
+        "link_to": "Rental Billing Run"
+      },
+      {
+        "type": "URL",
+        "label": "Executive Dashboard",
+        "url": "/app/it-services-executive"
+      },
+      {
+        "type": "DocType",
+        "label": "Customer Sites",
+        "link_to": "Customer Site"
       }
-    ],
-    "type": "Workspace"
+    ]
   },
   {
     "doctype": "Workspace",
@@ -42,6 +97,7 @@
     "public": 1,
     "is_standard": 1,
     "icon": "assign",
+    "type": "Workspace",
     "content": "[{\"id\": \"ops-cards\", \"type\": \"header\", \"data\": {\"text\": \"Service Operations\"}}, {\"id\": \"new-ticket\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Service Ticket\", \"col\": 3}}, {\"id\": \"tickets\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Tickets\", \"col\": 3}}, {\"id\": \"jobs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Jobs\", \"col\": 3}}, {\"id\": \"my-jobs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"My Service Jobs\", \"col\": 3}}, {\"id\": \"part-requests\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Part Requests\", \"col\": 3}}, {\"id\": \"expenses\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Expenses\", \"col\": 3}}, {\"id\": \"equipment\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Equipment\", \"col\": 3}}, {\"id\": \"contracts\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service Contracts\", \"col\": 3}}, {\"id\": \"reports\", \"type\": \"header\", \"data\": {\"text\": \"Reports\"}}, {\"id\": \"open-tickets\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open Service Tickets\", \"col\": 3}}, {\"id\": \"workload\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technician Workload\", \"col\": 3}}, {\"id\": \"sla\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Service SLA Compliance\", \"col\": 3}}, {\"id\": \"pending-billing\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Completed Jobs Pending Billing\", \"col\": 3}}]",
     "shortcuts": [
       {
@@ -104,7 +160,46 @@
         "label": "Completed Jobs Pending Billing",
         "link_to": "Completed Service Jobs Pending Billing"
       }
-    ],
-    "type": "Workspace"
+    ]
+  },
+  {
+    "doctype": "Workspace",
+    "name": "Rental Management",
+    "label": "Rental Management",
+    "title": "Rental Management",
+    "module": "Rental Management",
+    "public": 1,
+    "is_standard": 1,
+    "icon": "assets",
+    "type": "Workspace",
+    "content": "[{\"id\":\"rental-ops\",\"type\":\"header\",\"data\":{\"text\":\"Rental Operations\"}},{\"id\":\"contracts\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Contracts\",\"col\":3}},{\"id\":\"deployments\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Deployments\",\"col\":3}},{\"id\":\"returns\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Returns\",\"col\":3}},{\"id\":\"meters\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meter Readings\",\"col\":3}},{\"id\":\"billing\",\"type\":\"header\",\"data\":{\"text\":\"Billing\"}},{\"id\":\"runs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Billing Runs\",\"col\":3}},{\"id\":\"charges\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ad-Hoc Charges\",\"col\":3}},{\"id\":\"reports\",\"type\":\"header\",\"data\":{\"text\":\"Reports\"}},{\"id\":\"fleet\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Fleet Status\",\"col\":3}},{\"id\":\"revenue\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Revenue\",\"col\":3}}]",
+    "shortcuts": [
+      {"type":"DocType","label":"New Rental Contract","link_to":"Rental Contract"},{"type":"DocType","label":"Rental Contracts","link_to":"Rental Contract"},{"type":"DocType","label":"Rental Deployments","link_to":"Rental Deployment"},{"type":"DocType","label":"Rental Returns","link_to":"Rental Return"},{"type":"DocType","label":"Equipment Replacements","link_to":"Rental Equipment Replacement"},{"type":"DocType","label":"Meter Readings","link_to":"Equipment Meter Reading"},{"type":"DocType","label":"Rental Billing Runs","link_to":"Rental Billing Run"},{"type":"DocType","label":"Ad-Hoc Charges","link_to":"Rental Ad-Hoc Charge"},{"type":"DocType","label":"Customer Equipment","link_to":"Customer Equipment"},{"type":"DocType","label":"Assets","link_to":"Asset"},
+      {"type":"Report","label":"Active Rental Contracts","link_to":"Active Rental Contracts"},{"type":"Report","label":"Rental Fleet Status","link_to":"Rental Fleet Status"},{"type":"Report","label":"Pending Meter Readings","link_to":"Pending Meter Readings"},{"type":"Report","label":"Rental Meter Usage","link_to":"Rental Meter Usage"},{"type":"Report","label":"Rental Revenue","link_to":"Rental Revenue"},{"type":"Report","label":"Rental Contract Profitability","link_to":"Rental Contract Profitability"},{"type":"Report","label":"Rental Equipment Profitability","link_to":"Rental Equipment Profitability"}
+    ]
+  },
+  {
+    "doctype":"Workspace","name":"Service Command Center","label":"Service Command Center","title":"Service Command Center","module":"IT Service Management","public":1,"is_standard":1,"icon":"support","type":"Workspace",
+    "content":"[{\"id\":\"service-kpis\",\"type\":\"header\",\"data\":{\"text\":\"Service KPIs\"}},{\"id\":\"open\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Open Tickets\",\"col\":3}},{\"id\":\"critical\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Critical Tickets\",\"col\":3}},{\"id\":\"pending\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Jobs Pending Billing\",\"col\":3}},{\"id\":\"unbilled\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Unbilled Service\",\"col\":3}},{\"id\":\"status-chart\",\"type\":\"chart\",\"data\":{\"chart_name\":\"ITSM Ticket Status\",\"col\":6}},{\"id\":\"priority-chart\",\"type\":\"chart\",\"data\":{\"chart_name\":\"ITSM Tickets by Priority\",\"col\":6}},{\"id\":\"operations\",\"type\":\"header\",\"data\":{\"text\":\"Operations and Controls\"}},{\"id\":\"tickets\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Tickets\",\"col\":3}},{\"id\":\"jobs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Jobs\",\"col\":3}},{\"id\":\"batch\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Billing Batches\",\"col\":3}},{\"id\":\"period\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Period End\",\"col\":3}}]",
+    "shortcuts":[{"type":"DocType","label":"Service Tickets","link_to":"Service Ticket"},{"type":"DocType","label":"Service Jobs","link_to":"Service Job"},{"type":"DocType","label":"Service Billing Batches","link_to":"Service Billing Batch"},{"type":"Report","label":"Unbilled Service Revenue","link_to":"Unbilled Service Revenue"},{"type":"Report","label":"SLA Performance Analysis","link_to":"SLA Performance Analysis"},{"type":"Report","label":"Technician Productivity","link_to":"Technician Productivity"},{"type":"Report","label":"Service Job Profitability","link_to":"Service Job Profitability"},{"type":"Report","label":"Service Period End","link_to":"Service Period End Control"}],
+    "number_cards":[{"label":"Open Tickets","number_card_name":"ITSM Open Tickets"},{"label":"Critical Tickets","number_card_name":"ITSM Critical Tickets"},{"label":"Jobs Pending Billing","number_card_name":"ITSM Jobs Pending Billing"},{"label":"Unbilled Service Amount","number_card_name":"ITSM Unbilled Service"}],
+    "charts":[{"label":"Ticket Status","chart_name":"ITSM Ticket Status"},{"label":"Tickets by Priority","chart_name":"ITSM Tickets by Priority"},{"label":"Technician Workload","chart_name":"ITSM Jobs by Technician"}],
+    "roles":[{"role":"Service Manager"},{"role":"Service Dispatcher"},{"role":"Service Billing User"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"}]
+  },
+  {
+    "doctype":"Workspace","name":"Rental Command Center","label":"Rental Command Center","title":"Rental Command Center","module":"IT Service Management","public":1,"is_standard":1,"icon":"assets","type":"Workspace",
+    "content":"[{\"id\":\"rental-kpis\",\"type\":\"header\",\"data\":{\"text\":\"Rental KPIs\"}},{\"id\":\"active\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Active Rental Contracts\",\"col\":3}},{\"id\":\"mrr\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Monthly Recurring Rental\",\"col\":3}},{\"id\":\"deployed\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Deployed Equipment\",\"col\":3}},{\"id\":\"repair\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Equipment Under Repair\",\"col\":3}},{\"id\":\"fleet-chart\",\"type\":\"chart\",\"data\":{\"chart_name\":\"ITSM Rental Fleet Status\",\"col\":12}},{\"id\":\"rental-controls\",\"type\":\"header\",\"data\":{\"text\":\"Rental Billing Controls\"}},{\"id\":\"contracts\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Contracts\",\"col\":3}},{\"id\":\"meters\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meter Readings\",\"col\":3}},{\"id\":\"runs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Billing Runs\",\"col\":3}},{\"id\":\"period\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Period End\",\"col\":3}}]",
+    "shortcuts":[{"type":"DocType","label":"Rental Contracts","link_to":"Rental Contract"},{"type":"DocType","label":"Meter Readings","link_to":"Equipment Meter Reading"},{"type":"DocType","label":"Billing Runs","link_to":"Rental Billing Run"},{"type":"Report","label":"Unbilled Rental Revenue","link_to":"Unbilled Rental Revenue"},{"type":"Report","label":"Meter Billing Control","link_to":"Meter Billing Control"},{"type":"Report","label":"Rental Contract Profitability","link_to":"Rental Contract Profitability"},{"type":"Report","label":"Rental Equipment Profitability","link_to":"Rental Equipment Profitability"},{"type":"Report","label":"Rental Period End","link_to":"Rental Period End Control"}],
+    "number_cards":[{"label":"Active Rental Contracts","number_card_name":"ITSM Active Rental Contracts"},{"label":"Monthly Recurring Rental","number_card_name":"ITSM Monthly Recurring Rental"},{"label":"Deployed Equipment","number_card_name":"ITSM Deployed Equipment"},{"label":"Equipment Under Repair","number_card_name":"ITSM Equipment Under Repair"},{"label":"Billing Runs Pending","number_card_name":"ITSM Billing Runs Pending"}],
+    "charts":[{"label":"Rental Fleet Status","chart_name":"ITSM Rental Fleet Status"}],
+    "roles":[{"role":"Rental Manager"},{"role":"Rental User"},{"role":"Rental Billing User"},{"role":"IT Service Analyst"},{"role":"IT Service Executive"}]
+  },
+  {
+    "doctype":"Workspace","name":"IT Services Executive","label":"IT Services Executive","title":"IT Services Executive","module":"IT Service Management","public":1,"is_standard":1,"icon":"dashboard","type":"Workspace",
+    "content":"[{\"id\":\"executive-kpis\",\"type\":\"header\",\"data\":{\"text\":\"Executive KPIs\"}},{\"id\":\"service-contracts\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Active Service Contracts\",\"col\":3}},{\"id\":\"rental-contracts\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Active Rental Contracts\",\"col\":3}},{\"id\":\"unbilled\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Unbilled Service\",\"col\":3}},{\"id\":\"renewals\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ITSM Renewal Pipeline\",\"col\":3}},{\"id\":\"renewal-chart\",\"type\":\"chart\",\"data\":{\"chart_name\":\"ITSM Renewal Stages\",\"col\":12}},{\"id\":\"management\",\"type\":\"header\",\"data\":{\"text\":\"Management Reports\"}},{\"id\":\"customer-profit\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Profitability\",\"col\":3}},{\"id\":\"leakage\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Revenue Leakage\",\"col\":3}},{\"id\":\"renewal-forecast\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Renewal Forecast\",\"col\":3}},{\"id\":\"reconciliation\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Billing Reconciliation\",\"col\":3}}]",
+    "shortcuts":[{"type":"Report","label":"Customer Profitability","link_to":"Operational Customer Profitability"},{"type":"Report","label":"Revenue Leakage","link_to":"Service and Rental Revenue Leakage"},{"type":"Report","label":"Renewal Forecast","link_to":"Contract Renewal Forecast"},{"type":"Report","label":"Billing Reconciliation","link_to":"Subscription Billing Reconciliation"},{"type":"Report","label":"Service Contract Profitability","link_to":"Service Contract Profitability"},{"type":"Report","label":"Rental Contract Profitability","link_to":"Rental Contract Profitability"},{"type":"Report","label":"SLA Performance","link_to":"SLA Performance Analysis"}],
+    "number_cards":[{"label":"Active Service Contracts","number_card_name":"ITSM Active Service Contracts"},{"label":"Active Rental Contracts","number_card_name":"ITSM Active Rental Contracts"},{"label":"Unbilled Service Amount","number_card_name":"ITSM Unbilled Service"},{"label":"Renewal Pipeline Value","number_card_name":"ITSM Renewal Pipeline"},{"label":"Rental Fleet Deployed","number_card_name":"ITSM Rental Fleet Deployed"}],
+    "charts":[{"label":"Contract Renewal Forecast","chart_name":"ITSM Renewal Stages"},{"label":"Ticket Status","chart_name":"ITSM Ticket Status"},{"label":"Rental Fleet Status","chart_name":"ITSM Rental Fleet Status"}],
+    "roles":[{"role":"IT Service Executive"},{"role":"IT Service Analyst"},{"role":"System Manager"}]
   }
 ]

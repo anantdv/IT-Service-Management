@@ -1,1 +1,4 @@
-# Patches are intentionally empty for Phase 1.
+it_service_management.patches.v0_0.add_rental_indexes
+it_service_management.patches.v0_0.add_phase4_indexes
+it_service_management.patches.v0_0.migrate_service_zone_charging_basis
+it_service_management.patches.v0_0.migrate_service_expense_redesign

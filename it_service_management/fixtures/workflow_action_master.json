@@ -1,0 +1,12 @@
+[
+ {"doctype":"Workflow Action Master","workflow_action_name":"Request Approval"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Approve"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Activate"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Suspend"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Resume"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Request Termination"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Terminate"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Complete"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Reject"},
+ {"doctype":"Workflow Action Master","workflow_action_name":"Cancel"}
+]

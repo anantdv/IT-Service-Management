@@ -1,0 +1,230 @@
+{
+  "doctype": "DocType",
+  "name": "Rental Billing Run",
+  "module": "Rental Management",
+  "autoname": "naming_series:",
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "search_fields": "company,rental_contract,status",
+  "field_order": [
+    "naming_series",
+    "company",
+    "billing_period_from",
+    "billing_period_to",
+    "posting_date",
+    "billing_mode",
+    "customer",
+    "rental_contract",
+    "status",
+    "approved_by",
+    "approved_on",
+    "progress_section",
+    "started_at",
+    "completed_at",
+    "contracts_processed",
+    "contracts_with_errors",
+    "invoices_created",
+    "totals_section",
+    "total_base_rental",
+    "total_meter_charges",
+    "total_ad_hoc_charges",
+    "total_service_charges",
+    "total_billed",
+    "details",
+    "components"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "RBR-.YYYY.-.#####",
+      "default": "RBR-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_period_from",
+      "fieldtype": "Date",
+      "label": "Billing Period From",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_period_to",
+      "fieldtype": "Date",
+      "label": "Billing Period To",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "posting_date",
+      "fieldtype": "Date",
+      "label": "Posting Date",
+      "default": "Today",
+      "reqd": 1
+    },
+    {
+      "fieldname": "billing_mode",
+      "fieldtype": "Select",
+      "label": "Billing Mode",
+      "options": "Consolidated Billing\nSubscription Plus Supplemental",
+      "default": "Consolidated Billing",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer"
+    },
+    {
+      "fieldname": "rental_contract",
+      "fieldtype": "Link",
+      "label": "Rental Contract",
+      "options": "Rental Contract"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nPrepared\nUnder Review\nApproved for Billing\nProcessing\nCompleted\nCompleted With Errors\nCancelled",
+      "default": "Draft",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approved_on",
+      "fieldtype": "Datetime",
+      "label": "Approved On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "progress_section",
+      "fieldtype": "Section Break",
+      "label": "Progress"
+    },
+    {
+      "fieldname": "started_at",
+      "fieldtype": "Datetime",
+      "label": "Started At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "completed_at",
+      "fieldtype": "Datetime",
+      "label": "Completed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "contracts_processed",
+      "fieldtype": "Int",
+      "label": "Contracts Processed",
+      "read_only": 1
+    },
+    {
+      "fieldname": "contracts_with_errors",
+      "fieldtype": "Int",
+      "label": "Contracts With Errors",
+      "read_only": 1
+    },
+    {
+      "fieldname": "invoices_created",
+      "fieldtype": "Int",
+      "label": "Invoices Created",
+      "read_only": 1
+    },
+    {
+      "fieldname": "totals_section",
+      "fieldtype": "Section Break",
+      "label": "Totals"
+    },
+    {
+      "fieldname": "total_base_rental",
+      "fieldtype": "Currency",
+      "label": "Total Base Rental",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_meter_charges",
+      "fieldtype": "Currency",
+      "label": "Total Meter Charges",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_ad_hoc_charges",
+      "fieldtype": "Currency",
+      "label": "Total Ad-Hoc Charges",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_service_charges",
+      "fieldtype": "Currency",
+      "label": "Total Service Charges",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_billed",
+      "fieldtype": "Currency",
+      "label": "Total Billed",
+      "read_only": 1
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Table",
+      "label": "Contracts",
+      "options": "Rental Billing Run Detail"
+    },
+    {
+      "fieldname": "components",
+      "fieldtype": "Table",
+      "label": "Billing Preview",
+      "options": "Rental Billing Component"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Rental Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Rental Billing User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Rental User",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ]
+}

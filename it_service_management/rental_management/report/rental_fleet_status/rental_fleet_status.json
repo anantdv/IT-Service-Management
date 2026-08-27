@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Rental Fleet Status","report_name":"Rental Fleet Status","ref_doctype":"Rental Contract Equipment","report_type":"Script Report","module":"Rental Management","is_standard":"Yes","roles":[{"role":"Rental Manager"},{"role":"Rental User"},{"role":"Service Manager"}]}

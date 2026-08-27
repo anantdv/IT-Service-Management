@@ -1,0 +1,180 @@
+{
+  "doctype": "DocType",
+  "name": "Service Billing Batch Detail",
+  "module": "Service Billing",
+  "istable": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "service_job",
+    "service_ticket",
+    "customer",
+    "customer_site",
+    "customer_equipment",
+    "currency",
+    "tax_category",
+    "cost_center",
+    "completion_date",
+    "coverage_source",
+    "labour",
+    "parts",
+    "travel",
+    "food",
+    "accommodation",
+    "other",
+    "internal_cost",
+    "total_charge",
+    "covered_amount",
+    "billable_amount",
+    "billing_status",
+    "selected",
+    "invoice",
+    "result_status",
+    "error_message"
+  ],
+  "fields": [
+    {
+      "fieldname": "service_job",
+      "fieldtype": "Link",
+      "label": "Service Job",
+      "options": "Service Job",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "service_ticket",
+      "fieldtype": "Link",
+      "label": "Service Ticket",
+      "options": "Service Ticket"
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site"
+    },
+    {
+      "fieldname": "customer_equipment",
+      "fieldtype": "Link",
+      "label": "Customer Equipment",
+      "options": "Customer Equipment"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "tax_category",
+      "fieldtype": "Link",
+      "label": "Tax Category",
+      "options": "Tax Category"
+    },
+    {
+      "fieldname": "cost_center",
+      "fieldtype": "Link",
+      "label": "Cost Center",
+      "options": "Cost Center"
+    },
+    {
+      "fieldname": "completion_date",
+      "fieldtype": "Datetime",
+      "label": "Completion Date"
+    },
+    {
+      "fieldname": "coverage_source",
+      "fieldtype": "Data",
+      "label": "Coverage Source"
+    },
+    {
+      "fieldname": "labour",
+      "fieldtype": "Currency",
+      "label": "Labour"
+    },
+    {
+      "fieldname": "parts",
+      "fieldtype": "Currency",
+      "label": "Parts"
+    },
+    {
+      "fieldname": "travel",
+      "fieldtype": "Currency",
+      "label": "Travel"
+    },
+    {
+      "fieldname": "food",
+      "fieldtype": "Currency",
+      "label": "Food"
+    },
+    {
+      "fieldname": "accommodation",
+      "fieldtype": "Currency",
+      "label": "Accommodation"
+    },
+    {
+      "fieldname": "other",
+      "fieldtype": "Currency",
+      "label": "Other"
+    },
+    {
+      "fieldname": "internal_cost",
+      "fieldtype": "Currency",
+      "label": "Internal Cost"
+    },
+    {
+      "fieldname": "total_charge",
+      "fieldtype": "Currency",
+      "label": "Total Charge"
+    },
+    {
+      "fieldname": "covered_amount",
+      "fieldtype": "Currency",
+      "label": "Covered Amount"
+    },
+    {
+      "fieldname": "billable_amount",
+      "fieldtype": "Currency",
+      "label": "Billable Amount",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_status",
+      "fieldtype": "Data",
+      "label": "Billing Status"
+    },
+    {
+      "fieldname": "selected",
+      "fieldtype": "Check",
+      "label": "Selected",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "invoice",
+      "fieldtype": "Link",
+      "label": "Invoice",
+      "options": "Sales Invoice",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "result_status",
+      "fieldtype": "Select",
+      "label": "Result Status",
+      "options": "Prepared\nInvoice Created\nError\nSkipped",
+      "default": "Prepared"
+    },
+    {
+      "fieldname": "error_message",
+      "fieldtype": "Small Text",
+      "label": "Error Message"
+    }
+  ],
+  "permissions": []
+}

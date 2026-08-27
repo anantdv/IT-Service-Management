@@ -5,18 +5,40 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "basic_information_section",
   "zone_name",
+  "active",
+  "visit_travel_charges_section",
   "default_callout_charge",
+  "callout_charge_basis",
   "default_travel_charge",
-  "default_installation_charge",
+  "travel_charge_basis",
   "per_km_charge",
-  "food_allowance",
-  "accommodation_charge",
-  "airfare_actual",
+  "visit_travel_charges_column",
+  "default_installation_charge",
+  "installation_charge_basis",
   "default_travel_time",
-  "active"
+  "field_allowances_section",
+  "food_billing_method",
+  "food_allowance",
+  "food_charge_basis",
+  "field_allowances_column",
+  "accommodation_billing_method",
+  "accommodation_allowance",
+  "accommodation_charge_basis",
+  "air_travel_section",
+  "airfare_billing_method",
+  "airfare_fixed_charge",
+  "legacy_fields_section",
+  "accommodation_charge",
+  "airfare_actual"
  ],
  "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
   {
    "fieldname": "zone_name",
    "fieldtype": "Data",
@@ -26,9 +48,28 @@
    "unique": 1
   },
   {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "visit_travel_charges_section",
+   "fieldtype": "Section Break",
+   "label": "Visit & Travel Charges"
+  },
+  {
    "fieldname": "default_callout_charge",
    "fieldtype": "Currency",
    "label": "Default Callout Charge"
+  },
+  {
+   "default": "Per Visit",
+   "fieldname": "callout_charge_basis",
+   "fieldtype": "Select",
+   "label": "Callout Charge Basis",
+   "options": "Per Visit\nPer Job"
   },
   {
    "fieldname": "default_travel_charge",
@@ -36,9 +77,11 @@
    "label": "Default Travel Charge"
   },
   {
-   "fieldname": "default_installation_charge",
-   "fieldtype": "Currency",
-   "label": "Default Installation Charge"
+   "default": "Per Trip",
+   "fieldname": "travel_charge_basis",
+   "fieldtype": "Select",
+   "label": "Travel Charge Basis",
+   "options": "Per Trip\nPer Job\nPer Technician"
   },
   {
    "fieldname": "per_km_charge",
@@ -46,19 +89,20 @@
    "label": "Per KM Charge"
   },
   {
-   "fieldname": "food_allowance",
-   "fieldtype": "Currency",
-   "label": "Food Allowance"
+   "fieldname": "visit_travel_charges_column",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "accommodation_charge",
+   "fieldname": "default_installation_charge",
    "fieldtype": "Currency",
-   "label": "Accommodation Charge"
+   "label": "Default Installation Charge"
   },
   {
-   "fieldname": "airfare_actual",
-   "fieldtype": "Check",
-   "label": "Airfare Actual"
+   "default": "Per Installation",
+   "fieldname": "installation_charge_basis",
+   "fieldtype": "Select",
+   "label": "Installation Charge Basis",
+   "options": "Per Installation\nPer Equipment\nPer Job"
   },
   {
    "fieldname": "default_travel_time",
@@ -66,11 +110,92 @@
    "label": "Default Travel Time"
   },
   {
-   "default": "1",
-   "fieldname": "active",
+   "fieldname": "field_allowances_section",
+   "fieldtype": "Section Break",
+   "label": "Field Allowances"
+  },
+  {
+   "default": "Fixed Allowance",
+   "fieldname": "food_billing_method",
+   "fieldtype": "Select",
+   "label": "Food Billing Method",
+   "options": "Fixed Allowance\nActual Cost\nNot Chargeable"
+  },
+  {
+   "depends_on": "eval:doc.food_billing_method == 'Fixed Allowance'",
+   "fieldname": "food_allowance",
+   "fieldtype": "Currency",
+   "label": "Food Allowance"
+  },
+  {
+   "default": "Per Technician / Day",
+   "depends_on": "eval:doc.food_billing_method == 'Fixed Allowance'",
+   "fieldname": "food_charge_basis",
+   "fieldtype": "Select",
+   "label": "Food Charge Basis",
+   "options": "Per Technician / Day\nPer Day\nPer Job"
+  },
+  {
+   "fieldname": "field_allowances_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Fixed Allowance",
+   "fieldname": "accommodation_billing_method",
+   "fieldtype": "Select",
+   "label": "Accommodation Billing Method",
+   "options": "Fixed Allowance\nActual Cost\nNot Chargeable"
+  },
+  {
+   "depends_on": "eval:doc.accommodation_billing_method == 'Fixed Allowance'",
+   "fieldname": "accommodation_allowance",
+   "fieldtype": "Currency",
+   "label": "Accommodation Allowance"
+  },
+  {
+   "default": "Per Technician / Night",
+   "depends_on": "eval:doc.accommodation_billing_method == 'Fixed Allowance'",
+   "fieldname": "accommodation_charge_basis",
+   "fieldtype": "Select",
+   "label": "Accommodation Charge Basis",
+   "options": "Per Technician / Night\nPer Night\nPer Job"
+  },
+  {
+   "fieldname": "air_travel_section",
+   "fieldtype": "Section Break",
+   "label": "Air Travel"
+  },
+  {
+   "default": "Actual Cost",
+   "fieldname": "airfare_billing_method",
+   "fieldtype": "Select",
+   "label": "Airfare Billing Method",
+   "options": "Actual Cost\nFixed Charge\nNot Chargeable"
+  },
+  {
+   "depends_on": "eval:doc.airfare_billing_method == 'Fixed Charge'",
+   "fieldname": "airfare_fixed_charge",
+   "fieldtype": "Currency",
+   "label": "Airfare Fixed Charge"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "legacy_fields_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Legacy Fields"
+  },
+  {
+   "fieldname": "accommodation_charge",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Accommodation Charge"
+  },
+  {
+   "fieldname": "airfare_actual",
    "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Active"
+   "hidden": 1,
+   "label": "Airfare Actual"
   }
  ],
  "modified": "2026-08-20 00:00:00.000000",

@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Service Period End Control","report_name":"Service Period End Control","ref_doctype":"Service Billing Batch","report_type":"Script Report","module":"Service Billing","is_standard":"Yes","roles":[{"role":"Service Manager"},{"role":"Service Billing User"},{"role":"Accounts Manager"},{"role":"IT Service Analyst"}]}

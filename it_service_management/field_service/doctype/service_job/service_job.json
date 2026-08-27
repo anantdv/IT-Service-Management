@@ -1,680 +1,780 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2026-08-20 00:00:00.000000",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "naming_series",
-  "overview_tab",
-  "service_ticket",
-  "customer",
-  "customer_site",
-  "customer_equipment",
-  "item_code",
-  "serial_no",
-  "asset",
-  "job_type",
-  "priority",
-  "status",
-  "scheduled_date",
-  "scheduled_start_datetime",
-  "scheduled_end_datetime",
-  "service_team",
-  "assigned_technician",
-  "backup_technician",
-  "service_zone",
-  "travel_rule",
-  "callout_rule",
-  "installation_rule",
-  "potential_travel_charge",
-  "potential_callout_charge",
-  "potential_installation_charge",
-  "coverage_section",
-  "coverage_source",
-  "coverage_document",
-  "coverage_status",
-  "warranty_active",
-  "service_contract",
-  "rental_contract",
-  "labour_covered",
-  "parts_covered",
-  "travel_covered",
-  "callout_covered",
-  "accommodation_covered",
-  "food_covered",
-  "installation_covered",
-  "remote_support_covered",
-  "coverage_override_reason",
-  "timestamps_tab",
-  "assigned_datetime",
-  "travel_start_datetime",
-  "arrival_datetime",
-  "work_start_datetime",
-  "work_end_datetime",
-  "completion_datetime",
-  "travel_duration_minutes",
-  "onsite_duration_minutes",
-  "total_job_duration_minutes",
-  "gps_section",
-  "travel_start_latitude",
-  "travel_start_longitude",
-  "arrival_latitude",
-  "arrival_longitude",
-  "completion_latitude",
-  "completion_longitude",
-  "gps_capture_status",
-  "work_tab",
-  "customer_complaint",
-  "initial_observation",
-  "diagnosis",
-  "root_cause",
-  "work_performed",
-  "recommendation",
-  "technician_notes",
-  "internal_notes",
-  "parts_tab",
-  "parts",
-  "labour_tab",
-  "labour",
-  "charges_tab",
-  "charges",
-  "checklist_tab",
-  "checklist",
-  "photos_tab",
-  "attachments",
-  "completion_tab",
-  "customer_signatory_name",
-  "customer_signature",
-  "customer_signed_datetime",
-  "signature_override_reason",
-  "customer_rating",
-  "customer_feedback",
-  "billing_section",
-  "billing_status",
-  "total_internal_cost",
-  "total_charge_before_coverage",
-  "total_covered_amount",
-  "total_billable_amount",
-  "estimated_gross_margin",
-  "estimated_margin_percentage"
- ],
- "fields": [
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "SJ-.YYYY.-.#####",
-   "default": "SJ-.YYYY.-.#####",
-   "reqd": 1
-  },
-  {
-   "fieldname": "overview_tab",
-   "fieldtype": "Tab Break",
-   "label": "Overview"
-  },
-  {
-   "fieldname": "service_ticket",
-   "fieldtype": "Link",
-   "label": "Service Ticket",
-   "options": "Service Ticket",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer",
-   "reqd": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "customer_site",
-   "fieldtype": "Link",
-   "label": "Customer Site",
-   "options": "Customer Site"
-  },
-  {
-   "fieldname": "customer_equipment",
-   "fieldtype": "Link",
-   "label": "Customer Equipment",
-   "options": "Customer Equipment",
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "item_code",
-   "fieldtype": "Link",
-   "label": "Item Code",
-   "options": "Item"
-  },
-  {
-   "fieldname": "serial_no",
-   "fieldtype": "Link",
-   "label": "Serial No",
-   "options": "Serial No"
-  },
-  {
-   "fieldname": "asset",
-   "fieldtype": "Link",
-   "label": "Asset",
-   "options": "Asset"
-  },
-  {
-   "fieldname": "job_type",
-   "fieldtype": "Select",
-   "label": "Job Type",
-   "options": "Remote Support\nOnsite Support\nBreakdown\nInstallation\nPreventive Maintenance\nWarranty\nAMC\nRental Support\nInspection\nConfiguration\nOther",
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "priority",
-   "fieldtype": "Select",
-   "label": "Priority",
-   "options": "Critical\nHigh\nMedium\nLow",
-   "default": "Medium",
-   "in_list_view": 1
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Draft\nScheduled\nAssigned\nIn Transit\nArrived\nWork In Progress\nAwaiting Parts\nAwaiting Customer\nAwaiting Approval\nCompleted\nCancelled",
-   "default": "Draft",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "scheduled_date",
-   "fieldtype": "Date",
-   "label": "Scheduled Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "scheduled_start_datetime",
-   "fieldtype": "Datetime",
-   "label": "Scheduled Start Datetime"
-  },
-  {
-   "fieldname": "scheduled_end_datetime",
-   "fieldtype": "Datetime",
-   "label": "Scheduled End Datetime"
-  },
-  {
-   "fieldname": "service_team",
-   "fieldtype": "Link",
-   "label": "Service Team",
-   "options": "Service Team"
-  },
-  {
-   "fieldname": "assigned_technician",
-   "fieldtype": "Link",
-   "label": "Assigned Technician",
-   "options": "Employee",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "backup_technician",
-   "fieldtype": "Link",
-   "label": "Backup Technician",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "service_zone",
-   "fieldtype": "Link",
-   "label": "Service Zone",
-   "options": "Service Zone"
-  },
-  {
-   "fieldname": "travel_rule",
-   "fieldtype": "Link",
-   "label": "Travel Rule",
-   "options": "Service Charge Rule"
-  },
-  {
-   "fieldname": "callout_rule",
-   "fieldtype": "Link",
-   "label": "Callout Rule",
-   "options": "Service Charge Rule"
-  },
-  {
-   "fieldname": "installation_rule",
-   "fieldtype": "Link",
-   "label": "Installation Rule",
-   "options": "Service Charge Rule"
-  },
-  {
-   "fieldname": "potential_travel_charge",
-   "fieldtype": "Currency",
-   "label": "Potential Travel Charge"
-  },
-  {
-   "fieldname": "potential_callout_charge",
-   "fieldtype": "Currency",
-   "label": "Potential Callout Charge"
-  },
-  {
-   "fieldname": "potential_installation_charge",
-   "fieldtype": "Currency",
-   "label": "Potential Installation Charge"
-  },
-  {
-   "fieldname": "coverage_section",
-   "fieldtype": "Section Break",
-   "label": "Coverage Snapshot"
-  },
-  {
-   "fieldname": "coverage_source",
-   "fieldtype": "Data",
-   "label": "Coverage Source",
-   "read_only": 1
-  },
-  {
-   "fieldname": "coverage_document",
-   "fieldtype": "Data",
-   "label": "Coverage Document",
-   "read_only": 1
-  },
-  {
-   "fieldname": "coverage_status",
-   "fieldtype": "Select",
-   "label": "Coverage Status",
-   "options": "\nCovered\nPartial\nNot Covered",
-   "read_only": 1
-  },
-  {
-   "fieldname": "warranty_active",
-   "fieldtype": "Check",
-   "label": "Warranty Active",
-   "read_only": 1
-  },
-  {
-   "fieldname": "service_contract",
-   "fieldtype": "Link",
-   "label": "Service Contract",
-   "options": "Service Contract",
-   "read_only": 1
-  },
-  {
-   "fieldname": "rental_contract",
-   "fieldtype": "Data",
-   "label": "Rental Contract",
-   "read_only": 1
-  },
-  {
-   "fieldname": "labour_covered",
-   "fieldtype": "Check",
-   "label": "Labour Covered"
-  },
-  {
-   "fieldname": "parts_covered",
-   "fieldtype": "Check",
-   "label": "Parts Covered"
-  },
-  {
-   "fieldname": "travel_covered",
-   "fieldtype": "Check",
-   "label": "Travel Covered"
-  },
-  {
-   "fieldname": "callout_covered",
-   "fieldtype": "Check",
-   "label": "Callout Covered"
-  },
-  {
-   "fieldname": "accommodation_covered",
-   "fieldtype": "Check",
-   "label": "Accommodation Covered"
-  },
-  {
-   "fieldname": "food_covered",
-   "fieldtype": "Check",
-   "label": "Food Covered"
-  },
-  {
-   "fieldname": "installation_covered",
-   "fieldtype": "Check",
-   "label": "Installation Covered"
-  },
-  {
-   "fieldname": "remote_support_covered",
-   "fieldtype": "Check",
-   "label": "Remote Support Covered"
-  },
-  {
-   "fieldname": "coverage_override_reason",
-   "fieldtype": "Small Text",
-   "label": "Coverage Override Reason"
-  },
-  {
-   "fieldname": "timestamps_tab",
-   "fieldtype": "Tab Break",
-   "label": "Timestamps"
-  },
-  {
-   "fieldname": "assigned_datetime",
-   "fieldtype": "Datetime",
-   "label": "Assigned Datetime"
-  },
-  {
-   "fieldname": "travel_start_datetime",
-   "fieldtype": "Datetime",
-   "label": "Travel Start Datetime"
-  },
-  {
-   "fieldname": "arrival_datetime",
-   "fieldtype": "Datetime",
-   "label": "Arrival Datetime"
-  },
-  {
-   "fieldname": "work_start_datetime",
-   "fieldtype": "Datetime",
-   "label": "Work Start Datetime"
-  },
-  {
-   "fieldname": "work_end_datetime",
-   "fieldtype": "Datetime",
-   "label": "Work End Datetime"
-  },
-  {
-   "fieldname": "completion_datetime",
-   "fieldtype": "Datetime",
-   "label": "Completion Datetime",
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "travel_duration_minutes",
-   "fieldtype": "Float",
-   "label": "Travel Duration Minutes",
-   "read_only": 1
-  },
-  {
-   "fieldname": "onsite_duration_minutes",
-   "fieldtype": "Float",
-   "label": "Onsite Duration Minutes",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_job_duration_minutes",
-   "fieldtype": "Float",
-   "label": "Total Job Duration Minutes",
-   "read_only": 1
-  },
-  {
-   "fieldname": "gps_section",
-   "fieldtype": "Section Break",
-   "label": "GPS"
-  },
-  {
-   "fieldname": "travel_start_latitude",
-   "fieldtype": "Float",
-   "label": "Travel Start Latitude"
-  },
-  {
-   "fieldname": "travel_start_longitude",
-   "fieldtype": "Float",
-   "label": "Travel Start Longitude"
-  },
-  {
-   "fieldname": "arrival_latitude",
-   "fieldtype": "Float",
-   "label": "Arrival Latitude"
-  },
-  {
-   "fieldname": "arrival_longitude",
-   "fieldtype": "Float",
-   "label": "Arrival Longitude"
-  },
-  {
-   "fieldname": "completion_latitude",
-   "fieldtype": "Float",
-   "label": "Completion Latitude"
-  },
-  {
-   "fieldname": "completion_longitude",
-   "fieldtype": "Float",
-   "label": "Completion Longitude"
-  },
-  {
-   "fieldname": "gps_capture_status",
-   "fieldtype": "Small Text",
-   "label": "Gps Capture Status"
-  },
-  {
-   "fieldname": "work_tab",
-   "fieldtype": "Tab Break",
-   "label": "Work"
-  },
-  {
-   "fieldname": "customer_complaint",
-   "fieldtype": "Small Text",
-   "label": "Customer Complaint"
-  },
-  {
-   "fieldname": "initial_observation",
-   "fieldtype": "Small Text",
-   "label": "Initial Observation"
-  },
-  {
-   "fieldname": "diagnosis",
-   "fieldtype": "Text Editor",
-   "label": "Diagnosis"
-  },
-  {
-   "fieldname": "root_cause",
-   "fieldtype": "Small Text",
-   "label": "Root Cause"
-  },
-  {
-   "fieldname": "work_performed",
-   "fieldtype": "Text Editor",
-   "label": "Work Performed"
-  },
-  {
-   "fieldname": "recommendation",
-   "fieldtype": "Text Editor",
-   "label": "Recommendation"
-  },
-  {
-   "fieldname": "technician_notes",
-   "fieldtype": "Small Text",
-   "label": "Technician Notes"
-  },
-  {
-   "fieldname": "internal_notes",
-   "fieldtype": "Small Text",
-   "label": "Internal Notes"
-  },
-  {
-   "fieldname": "parts_tab",
-   "fieldtype": "Tab Break",
-   "label": "Parts"
-  },
-  {
-   "fieldname": "parts",
-   "fieldtype": "Table",
-   "label": "Parts",
-   "options": "Service Job Part"
-  },
-  {
-   "fieldname": "labour_tab",
-   "fieldtype": "Tab Break",
-   "label": "Labour"
-  },
-  {
-   "fieldname": "labour",
-   "fieldtype": "Table",
-   "label": "Labour",
-   "options": "Service Job Labour"
-  },
-  {
-   "fieldname": "charges_tab",
-   "fieldtype": "Tab Break",
-   "label": "Charges"
-  },
-  {
-   "fieldname": "charges",
-   "fieldtype": "Table",
-   "label": "Charges",
-   "options": "Service Job Charge"
-  },
-  {
-   "fieldname": "checklist_tab",
-   "fieldtype": "Tab Break",
-   "label": "Checklist"
-  },
-  {
-   "fieldname": "checklist",
-   "fieldtype": "Table",
-   "label": "Checklist",
-   "options": "Service Job Checklist"
-  },
-  {
-   "fieldname": "photos_tab",
-   "fieldtype": "Tab Break",
-   "label": "Photos"
-  },
-  {
-   "fieldname": "attachments",
-   "fieldtype": "Table",
-   "label": "Attachments",
-   "options": "Service Job Attachment"
-  },
-  {
-   "fieldname": "completion_tab",
-   "fieldtype": "Tab Break",
-   "label": "Completion"
-  },
-  {
-   "fieldname": "customer_signatory_name",
-   "fieldtype": "Data",
-   "label": "Customer Signatory Name"
-  },
-  {
-   "fieldname": "customer_signature",
-   "fieldtype": "Signature",
-   "label": "Customer Signature"
-  },
-  {
-   "fieldname": "customer_signed_datetime",
-   "fieldtype": "Datetime",
-   "label": "Customer Signed Datetime"
-  },
-  {
-   "fieldname": "signature_override_reason",
-   "fieldtype": "Small Text",
-   "label": "Signature Override Reason"
-  },
-  {
-   "fieldname": "customer_rating",
-   "fieldtype": "Select",
-   "label": "Customer Rating",
-   "options": "\n1\n2\n3\n4\n5"
-  },
-  {
-   "fieldname": "customer_feedback",
-   "fieldtype": "Small Text",
-   "label": "Customer Feedback"
-  },
-  {
-   "fieldname": "billing_section",
-   "fieldtype": "Section Break",
-   "label": "Billing Preparation"
-  },
-  {
-   "fieldname": "billing_status",
-   "fieldtype": "Select",
-   "label": "Billing Status",
-   "options": "Not Applicable\nNot Calculated\nReady for Billing\nPending Review\nDraft Invoice Created\nInvoiced",
-   "default": "Not Calculated",
-   "in_standard_filter": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "total_internal_cost",
-   "fieldtype": "Currency",
-   "label": "Total Internal Cost",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_charge_before_coverage",
-   "fieldtype": "Currency",
-   "label": "Total Charge Before Coverage",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_covered_amount",
-   "fieldtype": "Currency",
-   "label": "Total Covered Amount",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_billable_amount",
-   "fieldtype": "Currency",
-   "label": "Total Billable Amount",
-   "read_only": 1
-  },
-  {
-   "fieldname": "estimated_gross_margin",
-   "fieldtype": "Currency",
-   "label": "Estimated Gross Margin",
-   "read_only": 1
-  },
-  {
-   "fieldname": "estimated_margin_percentage",
-   "fieldtype": "Percent",
-   "label": "Estimated Margin Percentage",
-   "read_only": 1
-  }
- ],
- "istable": 0,
- "modified": "2026-08-20 00:00:00.000000",
- "module": "Field Service",
- "name": "Service Job",
- "permissions": [
-  {
-   "role": "Service Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "submit": 1,
-   "cancel": 1
-  },
-  {
-   "role": "Service Dispatcher",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Technician",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Billing User",
-   "read": 1
-  },
-  {
-   "role": "Service Auditor",
-   "read": 1
-  }
- ],
- "sort_field": "modified",
- "sort_order": "DESC",
- "track_changes": 1,
- "autoname": "naming_series:",
- "search_fields": "customer,service_ticket,serial_no"
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-08-20 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "overview_tab",
+    "service_ticket",
+    "customer",
+    "customer_site",
+    "customer_equipment",
+    "item_code",
+    "serial_no",
+    "asset",
+    "job_type",
+    "priority",
+    "status",
+    "scheduled_date",
+    "scheduled_start_datetime",
+    "scheduled_end_datetime",
+    "service_team",
+    "assigned_technician",
+    "backup_technician",
+    "service_zone",
+    "travel_rule",
+    "callout_rule",
+    "installation_rule",
+    "potential_travel_charge",
+    "potential_callout_charge",
+    "potential_installation_charge",
+    "service_charging_inputs_section",
+    "chargeable_trips",
+    "chargeable_distance_km",
+    "chargeable_travel_days",
+    "chargeable_nights",
+    "chargeable_technician_count",
+    "coverage_section",
+    "coverage_source",
+    "coverage_document",
+    "coverage_status",
+    "warranty_active",
+    "service_contract",
+    "rental_contract",
+    "labour_covered",
+    "parts_covered",
+    "travel_covered",
+    "callout_covered",
+    "accommodation_covered",
+    "food_covered",
+    "airfare_covered",
+    "installation_covered",
+    "remote_support_covered",
+    "coverage_override_reason",
+    "timestamps_tab",
+    "assigned_datetime",
+    "travel_start_datetime",
+    "arrival_datetime",
+    "work_start_datetime",
+    "work_end_datetime",
+    "completion_datetime",
+    "travel_duration_minutes",
+    "onsite_duration_minutes",
+    "total_job_duration_minutes",
+    "gps_section",
+    "travel_start_latitude",
+    "travel_start_longitude",
+    "arrival_latitude",
+    "arrival_longitude",
+    "completion_latitude",
+    "completion_longitude",
+    "gps_capture_status",
+    "work_tab",
+    "customer_complaint",
+    "initial_observation",
+    "diagnosis",
+    "root_cause",
+    "work_performed",
+    "recommendation",
+    "technician_notes",
+    "internal_notes",
+    "parts_tab",
+    "parts",
+    "labour_tab",
+    "labour",
+    "charges_tab",
+    "charges",
+    "checklist_tab",
+    "checklist",
+    "photos_tab",
+    "attachments",
+    "completion_tab",
+    "customer_signatory_name",
+    "customer_signature",
+    "customer_signed_datetime",
+    "signature_override_reason",
+    "customer_rating",
+    "customer_feedback",
+    "billing_section",
+    "billing_status",
+    "labour_cost",
+    "parts_cost",
+    "expense_cost",
+    "other_cost",
+    "total_internal_cost",
+    "total_charge_before_coverage",
+    "total_covered_amount",
+    "total_billable_amount",
+    "estimated_gross_margin",
+    "estimated_margin_percentage",
+    "service_billing_batch",
+    "sales_invoice"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "SJ-.YYYY.-.#####",
+      "default": "SJ-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "overview_tab",
+      "fieldtype": "Tab Break",
+      "label": "Overview"
+    },
+    {
+      "fieldname": "service_ticket",
+      "fieldtype": "Link",
+      "label": "Service Ticket",
+      "options": "Service Ticket",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site"
+    },
+    {
+      "fieldname": "customer_equipment",
+      "fieldtype": "Link",
+      "label": "Customer Equipment",
+      "options": "Customer Equipment",
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "label": "Item Code",
+      "options": "Item"
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Link",
+      "label": "Serial No",
+      "options": "Serial No"
+    },
+    {
+      "fieldname": "asset",
+      "fieldtype": "Link",
+      "label": "Asset",
+      "options": "Asset"
+    },
+    {
+      "fieldname": "job_type",
+      "fieldtype": "Select",
+      "label": "Job Type",
+      "options": "Remote Support\nOnsite Support\nBreakdown\nInstallation\nPreventive Maintenance\nWarranty\nAMC\nRental Support\nInspection\nConfiguration\nOther",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Critical\nHigh\nMedium\nLow",
+      "default": "Medium",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nScheduled\nAssigned\nIn Transit\nArrived\nWork In Progress\nAwaiting Parts\nAwaiting Customer\nAwaiting Approval\nCompleted\nCancelled",
+      "default": "Draft",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "scheduled_date",
+      "fieldtype": "Date",
+      "label": "Scheduled Date",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "scheduled_start_datetime",
+      "fieldtype": "Datetime",
+      "label": "Scheduled Start Datetime"
+    },
+    {
+      "fieldname": "scheduled_end_datetime",
+      "fieldtype": "Datetime",
+      "label": "Scheduled End Datetime"
+    },
+    {
+      "fieldname": "service_team",
+      "fieldtype": "Link",
+      "label": "Service Team",
+      "options": "Service Team"
+    },
+    {
+      "fieldname": "assigned_technician",
+      "fieldtype": "Link",
+      "label": "Assigned Technician",
+      "options": "Employee",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "backup_technician",
+      "fieldtype": "Link",
+      "label": "Backup Technician",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "service_zone",
+      "fieldtype": "Link",
+      "label": "Service Zone",
+      "options": "Service Zone"
+    },
+    {
+      "fieldname": "travel_rule",
+      "fieldtype": "Link",
+      "label": "Travel Rule",
+      "options": "Service Charge Rule"
+    },
+    {
+      "fieldname": "callout_rule",
+      "fieldtype": "Link",
+      "label": "Callout Rule",
+      "options": "Service Charge Rule"
+    },
+    {
+      "fieldname": "installation_rule",
+      "fieldtype": "Link",
+      "label": "Installation Rule",
+      "options": "Service Charge Rule"
+    },
+    {
+      "fieldname": "potential_travel_charge",
+      "fieldtype": "Currency",
+      "label": "Potential Travel Charge"
+    },
+    {
+      "fieldname": "potential_callout_charge",
+      "fieldtype": "Currency",
+      "label": "Potential Callout Charge"
+    },
+    {
+      "fieldname": "potential_installation_charge",
+      "fieldtype": "Currency",
+      "label": "Potential Installation Charge"
+    },
+    {
+      "fieldname": "service_charging_inputs_section",
+      "fieldtype": "Section Break",
+      "label": "Service Charging Inputs"
+    },
+    {
+      "default": "1",
+      "fieldname": "chargeable_trips",
+      "fieldtype": "Int",
+      "label": "Chargeable Trips"
+    },
+    {
+      "default": "0",
+      "fieldname": "chargeable_distance_km",
+      "fieldtype": "Float",
+      "label": "Chargeable Distance KM"
+    },
+    {
+      "default": "1",
+      "fieldname": "chargeable_travel_days",
+      "fieldtype": "Int",
+      "label": "Chargeable Travel Days"
+    },
+    {
+      "default": "0",
+      "fieldname": "chargeable_nights",
+      "fieldtype": "Int",
+      "label": "Chargeable Nights"
+    },
+    {
+      "default": "0",
+      "description": "Leave 0 to derive from Service Job Labour, assigned technician, and backup technician.",
+      "fieldname": "chargeable_technician_count",
+      "fieldtype": "Int",
+      "label": "Chargeable Technician Count"
+    },
+    {
+      "fieldname": "coverage_section",
+      "fieldtype": "Section Break",
+      "label": "Coverage Snapshot"
+    },
+    {
+      "fieldname": "coverage_source",
+      "fieldtype": "Data",
+      "label": "Coverage Source",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_document",
+      "fieldtype": "Data",
+      "label": "Coverage Document",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_status",
+      "fieldtype": "Select",
+      "label": "Coverage Status",
+      "options": "\nCovered\nPartial\nNot Covered",
+      "read_only": 1
+    },
+    {
+      "fieldname": "warranty_active",
+      "fieldtype": "Check",
+      "label": "Warranty Active",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_contract",
+      "fieldtype": "Link",
+      "label": "Service Contract",
+      "options": "Service Contract",
+      "read_only": 1
+    },
+    {
+      "fieldname": "rental_contract",
+      "fieldtype": "Data",
+      "label": "Rental Contract",
+      "read_only": 1
+    },
+    {
+      "fieldname": "labour_covered",
+      "fieldtype": "Check",
+      "label": "Labour Covered"
+    },
+    {
+      "fieldname": "parts_covered",
+      "fieldtype": "Check",
+      "label": "Parts Covered"
+    },
+    {
+      "fieldname": "travel_covered",
+      "fieldtype": "Check",
+      "label": "Travel Covered"
+    },
+    {
+      "fieldname": "callout_covered",
+      "fieldtype": "Check",
+      "label": "Callout Covered"
+    },
+    {
+      "fieldname": "accommodation_covered",
+      "fieldtype": "Check",
+      "label": "Accommodation Covered"
+    },
+    {
+      "fieldname": "food_covered",
+      "fieldtype": "Check",
+      "label": "Food Covered"
+    },
+    {
+      "fieldname": "airfare_covered",
+      "fieldtype": "Check",
+      "label": "Airfare Covered"
+    },
+    {
+      "fieldname": "installation_covered",
+      "fieldtype": "Check",
+      "label": "Installation Covered"
+    },
+    {
+      "fieldname": "remote_support_covered",
+      "fieldtype": "Check",
+      "label": "Remote Support Covered"
+    },
+    {
+      "fieldname": "coverage_override_reason",
+      "fieldtype": "Small Text",
+      "label": "Coverage Override Reason"
+    },
+    {
+      "fieldname": "timestamps_tab",
+      "fieldtype": "Tab Break",
+      "label": "Timestamps"
+    },
+    {
+      "fieldname": "assigned_datetime",
+      "fieldtype": "Datetime",
+      "label": "Assigned Datetime"
+    },
+    {
+      "fieldname": "travel_start_datetime",
+      "fieldtype": "Datetime",
+      "label": "Travel Start Datetime"
+    },
+    {
+      "fieldname": "arrival_datetime",
+      "fieldtype": "Datetime",
+      "label": "Arrival Datetime"
+    },
+    {
+      "fieldname": "work_start_datetime",
+      "fieldtype": "Datetime",
+      "label": "Work Start Datetime"
+    },
+    {
+      "fieldname": "work_end_datetime",
+      "fieldtype": "Datetime",
+      "label": "Work End Datetime"
+    },
+    {
+      "fieldname": "completion_datetime",
+      "fieldtype": "Datetime",
+      "label": "Completion Datetime",
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "travel_duration_minutes",
+      "fieldtype": "Float",
+      "label": "Travel Duration Minutes",
+      "read_only": 1
+    },
+    {
+      "fieldname": "onsite_duration_minutes",
+      "fieldtype": "Float",
+      "label": "Onsite Duration Minutes",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_job_duration_minutes",
+      "fieldtype": "Float",
+      "label": "Total Job Duration Minutes",
+      "read_only": 1
+    },
+    {
+      "fieldname": "gps_section",
+      "fieldtype": "Section Break",
+      "label": "GPS"
+    },
+    {
+      "fieldname": "travel_start_latitude",
+      "fieldtype": "Float",
+      "label": "Travel Start Latitude"
+    },
+    {
+      "fieldname": "travel_start_longitude",
+      "fieldtype": "Float",
+      "label": "Travel Start Longitude"
+    },
+    {
+      "fieldname": "arrival_latitude",
+      "fieldtype": "Float",
+      "label": "Arrival Latitude"
+    },
+    {
+      "fieldname": "arrival_longitude",
+      "fieldtype": "Float",
+      "label": "Arrival Longitude"
+    },
+    {
+      "fieldname": "completion_latitude",
+      "fieldtype": "Float",
+      "label": "Completion Latitude"
+    },
+    {
+      "fieldname": "completion_longitude",
+      "fieldtype": "Float",
+      "label": "Completion Longitude"
+    },
+    {
+      "fieldname": "gps_capture_status",
+      "fieldtype": "Small Text",
+      "label": "Gps Capture Status"
+    },
+    {
+      "fieldname": "work_tab",
+      "fieldtype": "Tab Break",
+      "label": "Work"
+    },
+    {
+      "fieldname": "customer_complaint",
+      "fieldtype": "Small Text",
+      "label": "Customer Complaint"
+    },
+    {
+      "fieldname": "initial_observation",
+      "fieldtype": "Small Text",
+      "label": "Initial Observation"
+    },
+    {
+      "fieldname": "diagnosis",
+      "fieldtype": "Text Editor",
+      "label": "Diagnosis"
+    },
+    {
+      "fieldname": "root_cause",
+      "fieldtype": "Small Text",
+      "label": "Root Cause"
+    },
+    {
+      "fieldname": "work_performed",
+      "fieldtype": "Text Editor",
+      "label": "Work Performed"
+    },
+    {
+      "fieldname": "recommendation",
+      "fieldtype": "Text Editor",
+      "label": "Recommendation"
+    },
+    {
+      "fieldname": "technician_notes",
+      "fieldtype": "Small Text",
+      "label": "Technician Notes"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Small Text",
+      "label": "Internal Notes"
+    },
+    {
+      "fieldname": "parts_tab",
+      "fieldtype": "Tab Break",
+      "label": "Parts"
+    },
+    {
+      "fieldname": "parts",
+      "fieldtype": "Table",
+      "label": "Parts",
+      "options": "Service Job Part"
+    },
+    {
+      "fieldname": "labour_tab",
+      "fieldtype": "Tab Break",
+      "label": "Labour"
+    },
+    {
+      "fieldname": "labour",
+      "fieldtype": "Table",
+      "label": "Labour",
+      "options": "Service Job Labour"
+    },
+    {
+      "fieldname": "charges_tab",
+      "fieldtype": "Tab Break",
+      "label": "Charges"
+    },
+    {
+      "fieldname": "charges",
+      "fieldtype": "Table",
+      "label": "Charges",
+      "options": "Service Job Charge"
+    },
+    {
+      "fieldname": "checklist_tab",
+      "fieldtype": "Tab Break",
+      "label": "Checklist"
+    },
+    {
+      "fieldname": "checklist",
+      "fieldtype": "Table",
+      "label": "Checklist",
+      "options": "Service Job Checklist"
+    },
+    {
+      "fieldname": "photos_tab",
+      "fieldtype": "Tab Break",
+      "label": "Photos"
+    },
+    {
+      "fieldname": "attachments",
+      "fieldtype": "Table",
+      "label": "Attachments",
+      "options": "Service Job Attachment"
+    },
+    {
+      "fieldname": "completion_tab",
+      "fieldtype": "Tab Break",
+      "label": "Completion"
+    },
+    {
+      "fieldname": "customer_signatory_name",
+      "fieldtype": "Data",
+      "label": "Customer Signatory Name"
+    },
+    {
+      "fieldname": "customer_signature",
+      "fieldtype": "Signature",
+      "label": "Customer Signature"
+    },
+    {
+      "fieldname": "customer_signed_datetime",
+      "fieldtype": "Datetime",
+      "label": "Customer Signed Datetime"
+    },
+    {
+      "fieldname": "signature_override_reason",
+      "fieldtype": "Small Text",
+      "label": "Signature Override Reason"
+    },
+    {
+      "fieldname": "customer_rating",
+      "fieldtype": "Select",
+      "label": "Customer Rating",
+      "options": "\n1\n2\n3\n4\n5"
+    },
+    {
+      "fieldname": "customer_feedback",
+      "fieldtype": "Small Text",
+      "label": "Customer Feedback"
+    },
+    {
+      "fieldname": "billing_section",
+      "fieldtype": "Section Break",
+      "label": "Billing Preparation"
+    },
+    {
+      "fieldname": "billing_status",
+      "fieldtype": "Select",
+      "label": "Billing Status",
+      "options": "Not Applicable\nNot Calculated\nReady for Billing\nPending Review\nDraft Invoice Created\nInvoiced",
+      "default": "Not Calculated",
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "total_internal_cost",
+      "fieldtype": "Currency",
+      "label": "Total Internal Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "labour_cost",
+      "fieldtype": "Currency",
+      "label": "Labour Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "parts_cost",
+      "fieldtype": "Currency",
+      "label": "Parts Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "expense_cost",
+      "fieldtype": "Currency",
+      "label": "Expense Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "other_cost",
+      "fieldtype": "Currency",
+      "label": "Other Cost",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_charge_before_coverage",
+      "fieldtype": "Currency",
+      "label": "Total Charge Before Coverage",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_covered_amount",
+      "fieldtype": "Currency",
+      "label": "Total Covered Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_billable_amount",
+      "fieldtype": "Currency",
+      "label": "Total Billable Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "estimated_gross_margin",
+      "fieldtype": "Currency",
+      "label": "Estimated Gross Margin",
+      "read_only": 1
+    },
+    {
+      "fieldname": "estimated_margin_percentage",
+      "fieldtype": "Percent",
+      "label": "Estimated Margin Percentage",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_billing_batch",
+      "fieldtype": "Link",
+      "label": "Service Billing Batch",
+      "options": "Service Billing Batch",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "label": "Sales Invoice",
+      "options": "Sales Invoice",
+      "read_only": 1
+    }
+  ],
+  "istable": 0,
+  "modified": "2026-08-20 00:00:00.000000",
+  "module": "Field Service",
+  "name": "Service Job",
+  "permissions": [
+    {
+      "role": "Service Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 1,
+      "cancel": 1
+    },
+    {
+      "role": "Service Dispatcher",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Technician",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Billing User",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1,
+  "autoname": "naming_series:",
+  "search_fields": "customer,service_ticket,serial_no"
 }

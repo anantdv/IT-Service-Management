@@ -32,6 +32,7 @@ COVERAGE_FIELDS = (
 	"callout_covered",
 	"accommodation_covered",
 	"food_covered",
+	"airfare_covered",
 	"installation_covered",
 	"remote_support_covered",
 )

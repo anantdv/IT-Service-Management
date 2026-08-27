@@ -18,6 +18,8 @@
   "billable_amount",
   "source_type",
   "source_document",
+  "rental_billing_reference",
+  "rental_billed",
   "manually_added",
   "remarks"
  ],
@@ -91,6 +93,8 @@
    "fieldtype": "Data",
    "label": "Source Document"
   },
+  {"fieldname": "rental_billing_reference", "fieldtype": "Link", "label": "Rental Billing Reference", "options": "Rental Billing Reference", "read_only": 1},
+  {"default": "0", "fieldname": "rental_billed", "fieldtype": "Check", "label": "Rental Billed", "read_only": 1},
   {
    "fieldname": "manually_added",
    "fieldtype": "Check",

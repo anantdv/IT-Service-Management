@@ -1,0 +1,198 @@
+{
+  "doctype": "DocType",
+  "name": "Equipment Meter Reading",
+  "module": "Rental Management",
+  "autoname": "naming_series:",
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "search_fields": "customer_equipment,rental_contract,serial_no,reading_date",
+  "field_order": [
+    "naming_series",
+    "customer",
+    "customer_site",
+    "customer_equipment",
+    "rental_contract",
+    "asset",
+    "serial_no",
+    "reading_date",
+    "billing_period_from",
+    "billing_period_to",
+    "submission_source",
+    "submitted_by",
+    "technician",
+    "verified",
+    "verified_by",
+    "verification_datetime",
+    "photo_attachment",
+    "remarks",
+    "details",
+    "total_meter_charge"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "EMR-.YYYY.-.#####",
+      "default": "EMR-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site"
+    },
+    {
+      "fieldname": "customer_equipment",
+      "fieldtype": "Link",
+      "label": "Customer Equipment",
+      "options": "Customer Equipment",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "rental_contract",
+      "fieldtype": "Link",
+      "label": "Rental Contract",
+      "options": "Rental Contract",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "asset",
+      "fieldtype": "Link",
+      "label": "Asset",
+      "options": "Asset"
+    },
+    {
+      "fieldname": "serial_no",
+      "fieldtype": "Link",
+      "label": "Serial No",
+      "options": "Serial No"
+    },
+    {
+      "fieldname": "reading_date",
+      "fieldtype": "Date",
+      "label": "Reading Date",
+      "default": "Today",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_period_from",
+      "fieldtype": "Date",
+      "label": "Billing Period From",
+      "reqd": 1
+    },
+    {
+      "fieldname": "billing_period_to",
+      "fieldtype": "Date",
+      "label": "Billing Period To",
+      "reqd": 1
+    },
+    {
+      "fieldname": "submission_source",
+      "fieldtype": "Select",
+      "label": "Submission Source",
+      "options": "Technician\nCustomer\nService Desk\nAutomated\nImport",
+      "default": "Service Desk",
+      "reqd": 1
+    },
+    {
+      "fieldname": "submitted_by",
+      "fieldtype": "Link",
+      "label": "Submitted By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "technician",
+      "fieldtype": "Link",
+      "label": "Technician",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "verified",
+      "fieldtype": "Check",
+      "label": "Verified"
+    },
+    {
+      "fieldname": "verified_by",
+      "fieldtype": "Link",
+      "label": "Verified By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "verification_datetime",
+      "fieldtype": "Datetime",
+      "label": "Verification Datetime",
+      "read_only": 1
+    },
+    {
+      "fieldname": "photo_attachment",
+      "fieldtype": "Attach",
+      "label": "Photo Attachment"
+    },
+    {
+      "fieldname": "remarks",
+      "fieldtype": "Small Text",
+      "label": "Remarks"
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Table",
+      "label": "Meter Details",
+      "options": "Equipment Meter Reading Detail",
+      "reqd": 1
+    },
+    {
+      "fieldname": "total_meter_charge",
+      "fieldtype": "Currency",
+      "label": "Total Meter Charge",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Rental Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Rental User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Rental Billing User",
+      "read": 1
+    },
+    {
+      "role": "Service Technician",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ]
+}

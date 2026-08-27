@@ -1,0 +1,593 @@
+{
+  "doctype": "DocType",
+  "name": "Rental Contract",
+  "module": "Rental Management",
+  "autoname": "naming_series:",
+  "title_field": "customer",
+  "track_changes": 1,
+  "engine": "InnoDB",
+  "search_fields": "customer,customer_site,status,customer_contract_reference",
+  "field_order": [
+    "naming_series",
+    "company",
+    "customer",
+    "customer_site",
+    "rental_plan",
+    "contract_date",
+    "start_date",
+    "end_date",
+    "contract_term_months",
+    "currency",
+    "price_list",
+    "status_section",
+    "status",
+    "approved_by",
+    "approved_on",
+    "billing_section",
+    "billing_frequency",
+    "billing_day",
+    "billing_start_rule",
+    "billing_start_date",
+    "billing_end_date",
+    "base_rental_amount",
+    "minimum_monthly_charge",
+    "security_deposit",
+    "installation_charge",
+    "tax_category",
+    "taxes_and_charges",
+    "cost_center",
+    "project",
+    "meter_section",
+    "meter_billing_enabled",
+    "included_bw_pages",
+    "included_colour_pages",
+    "excess_bw_rate",
+    "excess_colour_rate",
+    "contract_section",
+    "customer_po",
+    "customer_contract_reference",
+    "signed_contract_attachment",
+    "renewal_notice_days",
+    "auto_renew",
+    "renewal_term_months",
+    "previous_rental_contract",
+    "renewal_opportunity",
+    "renewal_number",
+    "termination_request_date",
+    "requested_end_date",
+    "termination_reason",
+    "early_termination_charge",
+    "approved_end_date",
+    "termination_approved_by",
+    "subscription_section",
+    "rental_billing_mode",
+    "use_erpnext_subscription",
+    "subscription_plan",
+    "subscription",
+    "subscription_status",
+    "service_section",
+    "service_plan",
+    "preventive_maintenance_reference_type",
+    "preventive_maintenance_plan",
+    "assigned_service_team",
+    "coverage_section",
+    "coverage_overrides_plan",
+    "labour_covered",
+    "parts_covered",
+    "consumables_covered",
+    "travel_covered",
+    "food_covered",
+    "accommodation_covered",
+    "installation_covered",
+    "emergency_support_covered",
+    "financial_section",
+    "total_contract_value",
+    "monthly_recurring_revenue",
+    "amount_billed_to_date",
+    "outstanding_amount",
+    "last_invoice_date",
+    "next_billing_date",
+    "equipment"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "RC-.YYYY.-.#####",
+      "default": "RC-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "rental_plan",
+      "fieldtype": "Link",
+      "label": "Rental Plan",
+      "options": "Rental Plan",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contract_date",
+      "fieldtype": "Date",
+      "label": "Contract Date",
+      "default": "Today"
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Date",
+      "label": "Start Date",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Date",
+      "label": "End Date",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "contract_term_months",
+      "fieldtype": "Int",
+      "label": "Contract Term Months"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "price_list",
+      "fieldtype": "Link",
+      "label": "Price List",
+      "options": "Price List"
+    },
+    {
+      "fieldname": "status_section",
+      "fieldtype": "Section Break",
+      "label": "Status"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nPending Approval\nApproved\nActive\nSuspended\nExpiring\nExpired\nTermination Requested\nTerminated\nCompleted\nCancelled",
+      "default": "Draft",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approved_on",
+      "fieldtype": "Datetime",
+      "label": "Approved On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "billing_section",
+      "fieldtype": "Section Break",
+      "label": "Billing"
+    },
+    {
+      "fieldname": "billing_frequency",
+      "fieldtype": "Select",
+      "label": "Billing Frequency",
+      "options": "Monthly\nQuarterly\nHalf-Yearly\nYearly",
+      "default": "Monthly",
+      "reqd": 1
+    },
+    {
+      "fieldname": "billing_day",
+      "fieldtype": "Int",
+      "label": "Billing Day",
+      "default": "1"
+    },
+    {
+      "fieldname": "billing_start_rule",
+      "fieldtype": "Select",
+      "label": "Billing Start Rule",
+      "options": "Contract Start Date\nDeployment Date\nInstallation Completion\nExplicit Date",
+      "default": "Deployment Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "billing_start_date",
+      "fieldtype": "Date",
+      "label": "Billing Start Date"
+    },
+    {
+      "fieldname": "billing_end_date",
+      "fieldtype": "Date",
+      "label": "Billing End Date"
+    },
+    {
+      "fieldname": "base_rental_amount",
+      "fieldtype": "Currency",
+      "label": "Base Rental Amount"
+    },
+    {
+      "fieldname": "minimum_monthly_charge",
+      "fieldtype": "Currency",
+      "label": "Minimum Monthly Charge"
+    },
+    {
+      "fieldname": "security_deposit",
+      "fieldtype": "Currency",
+      "label": "Security Deposit"
+    },
+    {
+      "fieldname": "installation_charge",
+      "fieldtype": "Currency",
+      "label": "Installation Charge"
+    },
+    {
+      "fieldname": "tax_category",
+      "fieldtype": "Link",
+      "label": "Tax Category",
+      "options": "Tax Category"
+    },
+    {
+      "fieldname": "taxes_and_charges",
+      "fieldtype": "Link",
+      "label": "Taxes and Charges",
+      "options": "Sales Taxes and Charges Template"
+    },
+    {
+      "fieldname": "cost_center",
+      "fieldtype": "Link",
+      "label": "Cost Center",
+      "options": "Cost Center"
+    },
+    {
+      "fieldname": "project",
+      "fieldtype": "Link",
+      "label": "Project",
+      "options": "Project"
+    },
+    {
+      "fieldname": "meter_section",
+      "fieldtype": "Section Break",
+      "label": "Meter Billing"
+    },
+    {
+      "fieldname": "meter_billing_enabled",
+      "fieldtype": "Check",
+      "label": "Meter Billing Enabled"
+    },
+    {
+      "fieldname": "included_bw_pages",
+      "fieldtype": "Int",
+      "label": "Included B&W Pages"
+    },
+    {
+      "fieldname": "included_colour_pages",
+      "fieldtype": "Int",
+      "label": "Included Colour Pages"
+    },
+    {
+      "fieldname": "excess_bw_rate",
+      "fieldtype": "Currency",
+      "label": "Excess B&W Rate",
+      "precision": "6"
+    },
+    {
+      "fieldname": "excess_colour_rate",
+      "fieldtype": "Currency",
+      "label": "Excess Colour Rate",
+      "precision": "6"
+    },
+    {
+      "fieldname": "contract_section",
+      "fieldtype": "Section Break",
+      "label": "Contract"
+    },
+    {
+      "fieldname": "customer_po",
+      "fieldtype": "Data",
+      "label": "Customer PO"
+    },
+    {
+      "fieldname": "customer_contract_reference",
+      "fieldtype": "Data",
+      "label": "Customer Contract Reference"
+    },
+    {
+      "fieldname": "signed_contract_attachment",
+      "fieldtype": "Attach",
+      "label": "Signed Contract Attachment"
+    },
+    {
+      "fieldname": "renewal_notice_days",
+      "fieldtype": "Int",
+      "label": "Renewal Notice Days",
+      "default": "30"
+    },
+    {
+      "fieldname": "auto_renew",
+      "fieldtype": "Check",
+      "label": "Auto Renew"
+    },
+    {
+      "fieldname": "renewal_term_months",
+      "fieldtype": "Int",
+      "label": "Renewal Term Months"
+    },
+    {
+      "fieldname": "previous_rental_contract",
+      "fieldtype": "Link",
+      "label": "Previous Rental Contract",
+      "options": "Rental Contract"
+    },
+    {
+      "fieldname": "renewal_opportunity",
+      "fieldtype": "Link",
+      "label": "Renewal Opportunity",
+      "options": "Contract Renewal Opportunity",
+      "read_only": 1
+    },
+    {
+      "fieldname": "renewal_number",
+      "fieldtype": "Int",
+      "label": "Renewal Number",
+      "read_only": 1
+    },
+    {
+      "fieldname": "termination_request_date",
+      "fieldtype": "Date",
+      "label": "Termination Request Date"
+    },
+    {
+      "fieldname": "requested_end_date",
+      "fieldtype": "Date",
+      "label": "Requested End Date"
+    },
+    {
+      "fieldname": "termination_reason",
+      "fieldtype": "Small Text",
+      "label": "Termination Reason"
+    },
+    {
+      "fieldname": "early_termination_charge",
+      "fieldtype": "Currency",
+      "label": "Early Termination Charge"
+    },
+    {
+      "fieldname": "approved_end_date",
+      "fieldtype": "Date",
+      "label": "Approved End Date"
+    },
+    {
+      "fieldname": "termination_approved_by",
+      "fieldtype": "Link",
+      "label": "Termination Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "subscription_section",
+      "fieldtype": "Section Break",
+      "label": "Subscription Integration"
+    },
+    {
+      "fieldname": "rental_billing_mode",
+      "fieldtype": "Select",
+      "label": "Rental Billing Mode",
+      "options": "Consolidated Billing\nSubscription Plus Supplemental",
+      "default": "Consolidated Billing",
+      "reqd": 1
+    },
+    {
+      "fieldname": "use_erpnext_subscription",
+      "fieldtype": "Check",
+      "label": "Use ERPNext Subscription"
+    },
+    {
+      "fieldname": "subscription_plan",
+      "fieldtype": "Link",
+      "label": "Subscription Plan",
+      "options": "Subscription Plan"
+    },
+    {
+      "fieldname": "subscription",
+      "fieldtype": "Link",
+      "label": "Subscription",
+      "options": "Subscription"
+    },
+    {
+      "fieldname": "subscription_status",
+      "fieldtype": "Data",
+      "label": "Subscription Status",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_section",
+      "fieldtype": "Section Break",
+      "label": "Service"
+    },
+    {
+      "fieldname": "service_plan",
+      "fieldtype": "Link",
+      "label": "Service Plan",
+      "options": "Service Plan"
+    },
+    {
+      "fieldname": "preventive_maintenance_plan",
+      "fieldtype": "Link",
+      "label": "Preventive Maintenance Plan",
+      "options": "Preventive Maintenance Plan"
+    },
+    {
+      "fieldname": "preventive_maintenance_reference_type",
+      "fieldtype": "Data",
+      "label": "Preventive Maintenance Reference Type",
+      "hidden": 1
+    },
+    {
+      "fieldname": "assigned_service_team",
+      "fieldtype": "Link",
+      "label": "Assigned Service Team",
+      "options": "Service Team"
+    },
+    {
+      "fieldname": "coverage_section",
+      "fieldtype": "Section Break",
+      "label": "Rental Service Coverage"
+    },
+    {
+      "fieldname": "coverage_overrides_plan",
+      "fieldtype": "Check",
+      "label": "Coverage Overrides Rental Plan"
+    },
+    {
+      "fieldname": "labour_covered",
+      "fieldtype": "Check",
+      "label": "Labour Covered"
+    },
+    {
+      "fieldname": "parts_covered",
+      "fieldtype": "Check",
+      "label": "Parts Covered"
+    },
+    {
+      "fieldname": "consumables_covered",
+      "fieldtype": "Check",
+      "label": "Consumables Covered"
+    },
+    {
+      "fieldname": "travel_covered",
+      "fieldtype": "Check",
+      "label": "Travel Covered"
+    },
+    {
+      "fieldname": "food_covered",
+      "fieldtype": "Check",
+      "label": "Food Covered"
+    },
+    {
+      "fieldname": "accommodation_covered",
+      "fieldtype": "Check",
+      "label": "Accommodation Covered"
+    },
+    {
+      "fieldname": "installation_covered",
+      "fieldtype": "Check",
+      "label": "Installation Covered"
+    },
+    {
+      "fieldname": "emergency_support_covered",
+      "fieldtype": "Check",
+      "label": "Emergency Support Covered"
+    },
+    {
+      "fieldname": "financial_section",
+      "fieldtype": "Section Break",
+      "label": "Financial Tracking"
+    },
+    {
+      "fieldname": "total_contract_value",
+      "fieldtype": "Currency",
+      "label": "Total Contract Value",
+      "read_only": 1
+    },
+    {
+      "fieldname": "monthly_recurring_revenue",
+      "fieldtype": "Currency",
+      "label": "Monthly Recurring Revenue",
+      "read_only": 1
+    },
+    {
+      "fieldname": "amount_billed_to_date",
+      "fieldtype": "Currency",
+      "label": "Amount Billed to Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "outstanding_amount",
+      "fieldtype": "Currency",
+      "label": "Outstanding Amount",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_invoice_date",
+      "fieldtype": "Date",
+      "label": "Last Invoice Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "next_billing_date",
+      "fieldtype": "Date",
+      "label": "Next Billing Date",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "equipment",
+      "fieldtype": "Table",
+      "label": "Rental Equipment",
+      "options": "Rental Contract Equipment"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Rental Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Rental User",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Rental Billing User",
+      "read": 1
+    },
+    {
+      "role": "Service Manager",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    },
+    {
+      "role": "IT Service Executive",
+      "read": 1
+    }
+  ]
+}

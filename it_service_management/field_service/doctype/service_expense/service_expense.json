@@ -1,212 +1,480 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2026-08-20 00:00:00.000000",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "naming_series",
-  "service_job",
-  "service_ticket",
-  "employee",
-  "expense_date",
-  "expense_type",
-  "description",
-  "quantity",
-  "rate",
-  "amount",
-  "currency",
-  "receipt",
-  "paid_by",
-  "reimbursable_to_employee",
-  "billable_to_customer",
-  "covered_by_contract",
-  "approved_amount",
-  "customer_billable_amount",
-  "approval_status",
-  "expense_claim",
-  "sales_invoice",
-  "remarks"
- ],
- "fields": [
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "SEXP-.YYYY.-.#####",
-   "default": "SEXP-.YYYY.-.#####",
-   "reqd": 1
-  },
-  {
-   "fieldname": "service_job",
-   "fieldtype": "Link",
-   "label": "Service Job",
-   "options": "Service Job",
-   "reqd": 1,
-   "in_list_view": 1,
-   "search_index": 1,
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "service_ticket",
-   "fieldtype": "Link",
-   "label": "Service Ticket",
-   "options": "Service Ticket"
-  },
-  {
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "label": "Employee",
-   "options": "Employee",
-   "reqd": 1,
-   "search_index": 1,
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "expense_date",
-   "fieldtype": "Date",
-   "label": "Expense Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "expense_type",
-   "fieldtype": "Select",
-   "label": "Expense Type",
-   "options": "Transportation\nMileage\nAirfare\nTaxi\nAccommodation\nFood\nFreight\nParking\nCommunication\nOther",
-   "reqd": 1
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
-  },
-  {
-   "fieldname": "quantity",
-   "fieldtype": "Float",
-   "label": "Quantity",
-   "default": "1"
-  },
-  {
-   "fieldname": "rate",
-   "fieldtype": "Currency",
-   "label": "Rate"
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "label": "Amount",
-   "read_only": 1
-  },
-  {
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency"
-  },
-  {
-   "fieldname": "receipt",
-   "fieldtype": "Attach",
-   "label": "Receipt"
-  },
-  {
-   "fieldname": "paid_by",
-   "fieldtype": "Select",
-   "label": "Paid By",
-   "options": "Employee\nCompany\nCustomer",
-   "default": "Employee"
-  },
-  {
-   "fieldname": "reimbursable_to_employee",
-   "fieldtype": "Check",
-   "label": "Reimbursable To Employee"
-  },
-  {
-   "fieldname": "billable_to_customer",
-   "fieldtype": "Check",
-   "label": "Billable To Customer"
-  },
-  {
-   "fieldname": "covered_by_contract",
-   "fieldtype": "Check",
-   "label": "Covered By Contract"
-  },
-  {
-   "fieldname": "approved_amount",
-   "fieldtype": "Currency",
-   "label": "Approved Amount"
-  },
-  {
-   "fieldname": "customer_billable_amount",
-   "fieldtype": "Currency",
-   "label": "Customer Billable Amount"
-  },
-  {
-   "fieldname": "approval_status",
-   "fieldtype": "Select",
-   "label": "Approval Status",
-   "options": "Draft\nSubmitted\nManager Approval\nFinance Approval\nApproved\nRejected",
-   "default": "Draft",
-   "in_list_view": 1,
-   "search_index": 1,
-   "in_standard_filter": 1
-  },
-  {
-   "fieldname": "expense_claim",
-   "fieldtype": "Link",
-   "label": "Expense Claim",
-   "options": "Expense Claim",
-   "read_only": 1
-  },
-  {
-   "fieldname": "sales_invoice",
-   "fieldtype": "Link",
-   "label": "Sales Invoice",
-   "options": "Sales Invoice",
-   "read_only": 1
-  },
-  {
-   "fieldname": "remarks",
-   "fieldtype": "Small Text",
-   "label": "Remarks"
-  }
- ],
- "istable": 0,
- "modified": "2026-08-20 00:00:00.000000",
- "module": "Field Service",
- "name": "Service Expense",
- "permissions": [
-  {
-   "role": "Service Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "submit": 1,
-   "cancel": 1
-  },
-  {
-   "role": "Service Dispatcher",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Technician",
-   "read": 1,
-   "write": 1,
-   "create": 1
-  },
-  {
-   "role": "Service Billing User",
-   "read": 1
-  },
-  {
-   "role": "Service Auditor",
-   "read": 1
-  }
- ],
- "sort_field": "modified",
- "sort_order": "DESC",
- "track_changes": 1,
- "autoname": "naming_series:"
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2026-08-20 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "expense_information_section",
+    "service_job",
+    "service_ticket",
+    "customer",
+    "customer_site",
+    "service_job_column",
+    "employee",
+    "company",
+    "service_zone",
+    "currency",
+    "expense_detail_section",
+    "expense_date",
+    "expense_type",
+    "uom",
+    "quantity",
+    "actual_rate_column",
+    "rate",
+    "actual_expense_amount",
+    "amount",
+    "receipt",
+    "description",
+    "payment_reimbursement_section",
+    "paid_by",
+    "reimbursable_to_employee",
+    "employee_claimed_amount",
+    "payment_column",
+    "approved_reimbursement_amount",
+    "approved_amount",
+    "expense_claim",
+    "contract_customer_billing_section",
+    "coverage_source",
+    "coverage_document",
+    "covered_by_contract",
+    "coverage_override_reason",
+    "customer_billing_column",
+    "billable_to_customer",
+    "customer_billing_method",
+    "billing_rule_source",
+    "billing_rule_reference",
+    "customer_billing_quantity",
+    "customer_billing_rate",
+    "customer_billable_amount",
+    "billing_status",
+    "approval_references_section",
+    "approval_status",
+    "submitted_by",
+    "manager_approved_by",
+    "manager_approved_on",
+    "approval_column",
+    "finance_approved_by",
+    "finance_approved_on",
+    "manager_remarks",
+    "finance_remarks",
+    "accounting_column",
+    "sales_invoice",
+    "remarks"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Naming Series",
+      "options": "SEXP-.YYYY.-.#####",
+      "default": "SEXP-.YYYY.-.#####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "expense_information_section",
+      "fieldtype": "Section Break",
+      "label": "Expense Information"
+    },
+    {
+      "fieldname": "service_job",
+      "fieldtype": "Link",
+      "label": "Service Job",
+      "options": "Service Job",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "service_ticket",
+      "fieldtype": "Link",
+      "label": "Service Ticket",
+      "options": "Service Ticket",
+      "read_only": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "customer_site",
+      "fieldtype": "Link",
+      "label": "Customer Site",
+      "options": "Customer Site",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_job_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "label": "Employee",
+      "options": "Employee",
+      "reqd": 0,
+      "search_index": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "read_only": 1
+    },
+    {
+      "fieldname": "service_zone",
+      "fieldtype": "Link",
+      "label": "Service Zone",
+      "options": "Service Zone",
+      "read_only": 1
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "expense_detail_section",
+      "fieldtype": "Section Break",
+      "label": "Expense Details"
+    },
+    {
+      "fieldname": "expense_date",
+      "fieldtype": "Date",
+      "label": "Expense Date",
+      "reqd": 1,
+      "default": "Today"
+    },
+    {
+      "fieldname": "expense_type",
+      "fieldtype": "Select",
+      "label": "Expense Type",
+      "options": "Transportation\nMileage\nAirfare\nTaxi\nAccommodation\nFood\nFreight\nParking\nCommunication\nOther",
+      "reqd": 1
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "label": "UOM",
+      "options": "UOM"
+    },
+    {
+      "fieldname": "quantity",
+      "fieldtype": "Float",
+      "label": "Quantity",
+      "default": "1",
+      "reqd": 1
+    },
+    {
+      "fieldname": "actual_rate_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "rate",
+      "fieldtype": "Currency",
+      "label": "Actual Rate"
+    },
+    {
+      "fieldname": "actual_expense_amount",
+      "fieldtype": "Currency",
+      "label": "Actual Expense Amount",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Legacy Actual Amount",
+      "read_only": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "receipt",
+      "fieldtype": "Attach",
+      "label": "Receipt"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "payment_reimbursement_section",
+      "fieldtype": "Section Break",
+      "label": "Payment & Reimbursement"
+    },
+    {
+      "fieldname": "paid_by",
+      "fieldtype": "Select",
+      "label": "Paid By",
+      "options": "Employee\nCompany\nCompany Credit Card\nCustomer Direct\nOther",
+      "default": "Employee"
+    },
+    {
+      "fieldname": "reimbursable_to_employee",
+      "fieldtype": "Check",
+      "label": "Reimbursable To Employee",
+      "default": "1"
+    },
+    {
+      "fieldname": "employee_claimed_amount",
+      "fieldtype": "Currency",
+      "label": "Employee Claimed Amount",
+      "depends_on": "eval:doc.reimbursable_to_employee"
+    },
+    {
+      "fieldname": "payment_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "approved_reimbursement_amount",
+      "fieldtype": "Currency",
+      "label": "Approved Reimbursement Amount",
+      "depends_on": "eval:doc.reimbursable_to_employee"
+    },
+    {
+      "fieldname": "approved_amount",
+      "fieldtype": "Currency",
+      "label": "Legacy Approved Amount",
+      "hidden": 1
+    },
+    {
+      "fieldname": "expense_claim",
+      "fieldtype": "Link",
+      "label": "Expense Claim",
+      "options": "Expense Claim",
+      "read_only": 1
+    },
+    {
+      "fieldname": "contract_customer_billing_section",
+      "fieldtype": "Section Break",
+      "label": "Contract & Customer Billing"
+    },
+    {
+      "fieldname": "coverage_source",
+      "fieldtype": "Data",
+      "label": "Coverage Source",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_document",
+      "fieldtype": "Data",
+      "label": "Coverage Document",
+      "read_only": 1
+    },
+    {
+      "fieldname": "covered_by_contract",
+      "fieldtype": "Check",
+      "label": "Covered By Contract",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coverage_override_reason",
+      "fieldtype": "Small Text",
+      "label": "Coverage Override Reason"
+    },
+    {
+      "fieldname": "customer_billing_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "billable_to_customer",
+      "fieldtype": "Check",
+      "label": "Billable To Customer",
+      "read_only": 1
+    },
+    {
+      "fieldname": "customer_billing_method",
+      "fieldtype": "Select",
+      "label": "Customer Billing Method",
+      "options": "Not Evaluated\nNot Billable\nActual Cost\nFixed Allowance\nService Zone Rate\nService Charge Rule\nCost Plus Percentage\nManual Approved Amount",
+      "default": "Not Evaluated",
+      "read_only": 1
+    },
+    {
+      "fieldname": "billing_rule_source",
+      "fieldtype": "Data",
+      "label": "Billing Rule Source",
+      "read_only": 1
+    },
+    {
+      "fieldname": "billing_rule_reference",
+      "fieldtype": "Dynamic Link",
+      "label": "Billing Rule Reference",
+      "options": "billing_rule_source",
+      "read_only": 1
+    },
+    {
+      "fieldname": "customer_billing_quantity",
+      "fieldtype": "Float",
+      "label": "Customer Billing Quantity",
+      "read_only": 1,
+      "depends_on": "eval:doc.customer_billing_method && doc.customer_billing_method != \"Not Billable\""
+    },
+    {
+      "fieldname": "customer_billing_rate",
+      "fieldtype": "Currency",
+      "label": "Customer Billing Rate",
+      "read_only": 1,
+      "depends_on": "eval:doc.customer_billing_method && doc.customer_billing_method != \"Not Billable\""
+    },
+    {
+      "fieldname": "customer_billable_amount",
+      "fieldtype": "Currency",
+      "label": "Customer Billable Amount",
+      "read_only": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "billing_status",
+      "fieldtype": "Select",
+      "label": "Billing Status",
+      "options": "Not Evaluated\nNot Billable\nReady for Billing\nIncluded in Billing Batch\nDraft Invoice Created\nInvoiced\nCancelled",
+      "default": "Not Evaluated",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "approval_references_section",
+      "fieldtype": "Section Break",
+      "label": "Approval & Accounting References"
+    },
+    {
+      "fieldname": "approval_status",
+      "fieldtype": "Select",
+      "label": "Approval Status",
+      "options": "Draft\nSubmitted\nManager Approval\nFinance Approval\nApproved\nRejected",
+      "default": "Draft",
+      "in_list_view": 1,
+      "search_index": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "submitted_by",
+      "fieldtype": "Link",
+      "label": "Submitted By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "manager_approved_by",
+      "fieldtype": "Link",
+      "label": "Manager Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "manager_approved_on",
+      "fieldtype": "Datetime",
+      "label": "Manager Approved On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approval_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "finance_approved_by",
+      "fieldtype": "Link",
+      "label": "Finance Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "finance_approved_on",
+      "fieldtype": "Datetime",
+      "label": "Finance Approved On",
+      "read_only": 1
+    },
+    {
+      "fieldname": "manager_remarks",
+      "fieldtype": "Small Text",
+      "label": "Manager Remarks"
+    },
+    {
+      "fieldname": "finance_remarks",
+      "fieldtype": "Small Text",
+      "label": "Finance Remarks"
+    },
+    {
+      "fieldname": "accounting_column",
+      "fieldtype": "Column Break",
+      "label": ""
+    },
+    {
+      "fieldname": "sales_invoice",
+      "fieldtype": "Link",
+      "label": "Sales Invoice",
+      "options": "Sales Invoice",
+      "read_only": 1
+    },
+    {
+      "fieldname": "remarks",
+      "fieldtype": "Small Text",
+      "label": "Legacy Remarks",
+      "hidden": 1
+    }
+  ],
+  "istable": 0,
+  "modified": "2026-08-20 00:00:00.000000",
+  "module": "Field Service",
+  "name": "Service Expense",
+  "permissions": [
+    {
+      "role": "Service Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 1,
+      "cancel": 1
+    },
+    {
+      "role": "Service Dispatcher",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Technician",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Service Billing User",
+      "read": 1
+    },
+    {
+      "role": "Service Auditor",
+      "read": 1
+    },
+    {
+      "role": "IT Service Analyst",
+      "read": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1,
+  "autoname": "naming_series:"
 }

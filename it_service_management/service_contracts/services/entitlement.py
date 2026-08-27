@@ -10,12 +10,15 @@ from frappe.utils import getdate, nowdate
 COVERAGE_FIELDS = (
 	"labour_covered",
 	"parts_covered",
+	"consumables_covered",
 	"travel_covered",
 	"food_covered",
 	"accommodation_covered",
+	"airfare_covered",
 	"remote_support_covered",
 	"callout_covered",
 	"installation_covered",
+	"emergency_support_covered",
 )
 
 
@@ -56,7 +59,8 @@ class ServiceEntitlementEngine:
 			inner join `tabRental Contract` rc on rc.name = rce.parent
 			where rce.customer_equipment = %s
 			  and rc.customer = %s
-			  and rc.rental_status = 'Active'
+			  and rc.status in ('Active', 'Expiring', 'Termination Requested')
+			  and rce.deployment_status in ('Deployed', 'Temporarily Replaced', 'Under Repair')
 			  and rc.start_date <= %s
 			  and (rc.end_date is null or rc.end_date >= %s)
 			order by rc.start_date desc
@@ -74,7 +78,10 @@ class ServiceEntitlementEngine:
 			return None
 
 		contract = frappe.get_doc("Rental Contract", rows[0].name)
-		return self._coverage_result("Rental Contract", contract.name, contract)
+		source_doc = contract
+		if contract.rental_plan and not contract.coverage_overrides_plan:
+			source_doc = frappe.get_cached_doc("Rental Plan", contract.rental_plan)
+		return self._coverage_result("Rental Contract", contract.name, source_doc)
 
 	def _active_service_contract_coverage(self) -> dict[str, Any] | None:
 		if not self.request.customer_equipment:
@@ -155,6 +162,9 @@ class ServiceEntitlementEngine:
 		if source == "AMC":
 			result["callout_covered"] = result["labour_covered"]
 			result["remote_support_covered"] = result["remote_support_covered"] or result["labour_covered"]
+		elif source == "Rental Contract":
+			result["callout_covered"] = result["emergency_support_covered"]
+			result["remote_support_covered"] = result["labour_covered"]
 
 		return result
 

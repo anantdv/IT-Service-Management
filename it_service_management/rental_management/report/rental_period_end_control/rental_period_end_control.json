@@ -1,0 +1,1 @@
+{"doctype":"Report","name":"Rental Period End Control","report_name":"Rental Period End Control","ref_doctype":"Rental Billing Run","report_type":"Script Report","module":"Rental Management","is_standard":"Yes","roles":[{"role":"Rental Manager"},{"role":"Rental Billing User"},{"role":"Accounts Manager"},{"role":"IT Service Analyst"}]}
