@@ -10,7 +10,8 @@
     "type": "Donut",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -23,7 +24,8 @@
     "type": "Bar",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -36,7 +38,8 @@
     "type": "Bar",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -64,7 +67,8 @@
     "type": "Bar",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -80,7 +84,8 @@
     "type": "Line",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -130,7 +135,8 @@
     "type": "Line",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -146,7 +152,8 @@
     "type": "Line",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
@@ -162,7 +169,8 @@
     "type": "Line",
     "is_public": 1,
     "is_standard": 0,
-    "module": "IT Service Management"
+    "module": "IT Service Management",
+    "filters_json": "[]"
   },
   {
     "doctype": "Dashboard Chart",
