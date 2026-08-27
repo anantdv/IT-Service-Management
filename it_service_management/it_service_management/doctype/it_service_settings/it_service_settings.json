@@ -38,7 +38,14 @@
   "rental_expiry_notification_days",
   "meter_section",
   "enable_meter_billing",
-  "default_meter_billing_day"
+  "default_meter_billing_day",
+  "management_dashboard_section",
+  "management_sla_target_percentage",
+  "dashboard_cache_seconds",
+  "technician_daily_capacity_hours",
+  "critical_ticket_threshold",
+  "contract_expiry_dashboard_days",
+  "dashboard_default_period"
  ],
  "fields": [
   {
@@ -239,6 +246,48 @@
    "fieldname": "default_meter_billing_day",
    "fieldtype": "Int",
    "label": "Default Meter Billing Day"
+  },
+  {
+   "fieldname": "management_dashboard_section",
+   "fieldtype": "Section Break",
+   "label": "Management Dashboard"
+  },
+  {
+   "default": "95",
+   "fieldname": "management_sla_target_percentage",
+   "fieldtype": "Percent",
+   "label": "Management SLA Target Percentage"
+  },
+  {
+   "default": "120",
+   "fieldname": "dashboard_cache_seconds",
+   "fieldtype": "Int",
+   "label": "Dashboard Cache Seconds"
+  },
+  {
+   "default": "8",
+   "fieldname": "technician_daily_capacity_hours",
+   "fieldtype": "Float",
+   "label": "Technician Daily Capacity Hours"
+  },
+  {
+   "default": "1",
+   "fieldname": "critical_ticket_threshold",
+   "fieldtype": "Int",
+   "label": "Critical Ticket Threshold"
+  },
+  {
+   "default": "90",
+   "fieldname": "contract_expiry_dashboard_days",
+   "fieldtype": "Int",
+   "label": "Contract Expiry Dashboard Days"
+  },
+  {
+   "default": "This Month",
+   "fieldname": "dashboard_default_period",
+   "fieldtype": "Select",
+   "label": "Dashboard Default Period",
+   "options": "Today\nThis Week\nThis Month\nThis Quarter\nThis Fiscal Year\nLast 30 Days\nLast 90 Days"
   }
  ],
  "issingle": 1,

@@ -100,6 +100,7 @@ def shortcut(block_id, label, col=3):
 
 def build_main_workspace():
 	shortcuts = [
+		url_shortcut("Management Command Center", "/app/it-service-command-center"),
 		doctype_shortcut("Service Tickets", "Service Ticket"),
 		doctype_shortcut("Service Jobs", "Service Job"),
 		doctype_shortcut("Remote Support Sessions", "Remote Support Session"),
@@ -130,6 +131,8 @@ def build_main_workspace():
 		"icon": "tool",
 		"route": APP_ROUTE,
 		"content": content(
+			header("management", "Management"),
+			shortcut("command-center", "Management Command Center"),
 			header("service-desk", "Service Desk"),
 			shortcut("tickets", "Service Tickets"),
 			shortcut("jobs", "Service Jobs"),
@@ -158,6 +161,7 @@ def build_main_workspace():
 		"shortcuts": shortcuts,
 		"sidebar_items": [
 			sidebar_link("Home", APP_TITLE, "Workspace", "house"),
+			sidebar_link("Management Command Center", "/app/it-service-command-center", "URL", "dashboard"),
 			sidebar_section("Service Desk", "ticket"),
 			sidebar_link("Service Tickets", "Service Ticket", "DocType", "ticket", child=1),
 			sidebar_link("Service Jobs", "Service Job", "DocType", "assign", child=1),
@@ -253,6 +257,10 @@ def doctype_shortcut(label, link_to):
 
 def report_shortcut(label, link_to):
 	return {"type": "Report", "label": label, "link_to": link_to}
+
+
+def url_shortcut(label, url):
+	return {"type": "URL", "label": label, "url": url}
 
 
 def sidebar_section(label, icon):

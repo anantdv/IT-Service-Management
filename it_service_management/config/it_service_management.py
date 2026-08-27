@@ -4,6 +4,17 @@ from frappe import _
 def get_data():
 	return [
 		{
+			"label": _("Management"),
+			"items": [
+				{
+					"type": "page",
+					"name": "it-service-command-center",
+					"label": _("Management Command Center"),
+					"description": _("Executive and operational dashboard for IT service management."),
+				},
+			],
+		},
+		{
 			"label": _("Service Desk"),
 			"items": [
 				{
