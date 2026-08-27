@@ -312,7 +312,9 @@ def exists(doctype, name):
 
 
 def has_field(doctype, fieldname):
-	return bool(doctype_exists(doctype) and frappe.db.has_column(doctype, fieldname))
+	if not doctype_exists(doctype):
+		return False
+	return frappe.get_meta(doctype).has_field(fieldname)
 
 
 def table(doctype):
