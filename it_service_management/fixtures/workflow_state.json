@@ -1,15 +1,15 @@
 [
- {"doctype":"Workflow State","workflow_state_name":"Draft","style":"Primary"},
- {"doctype":"Workflow State","workflow_state_name":"Pending Approval","style":"Warning"},
- {"doctype":"Workflow State","workflow_state_name":"Approved","style":"Success"},
- {"doctype":"Workflow State","workflow_state_name":"Active","style":"Success"},
- {"doctype":"Workflow State","workflow_state_name":"Suspended","style":"Warning"},
- {"doctype":"Workflow State","workflow_state_name":"Expiring","style":"Warning"},
- {"doctype":"Workflow State","workflow_state_name":"Expired","style":"Danger"},
- {"doctype":"Workflow State","workflow_state_name":"Termination Requested","style":"Warning"},
- {"doctype":"Workflow State","workflow_state_name":"Terminated","style":"Danger"},
- {"doctype":"Workflow State","workflow_state_name":"Completed","style":"Success"},
- {"doctype":"Workflow State","workflow_state_name":"Cancelled","style":"Danger"},
- {"doctype":"Workflow State","workflow_state_name":"Rejected","style":"Danger"},
- {"doctype":"Workflow State","workflow_state_name":"Billed","style":"Success"}
+ {"doctype":"Workflow State","name":"Draft","workflow_state_name":"Draft","style":"Primary"},
+ {"doctype":"Workflow State","name":"Pending Approval","workflow_state_name":"Pending Approval","style":"Warning"},
+ {"doctype":"Workflow State","name":"Approved","workflow_state_name":"Approved","style":"Success"},
+ {"doctype":"Workflow State","name":"Active","workflow_state_name":"Active","style":"Success"},
+ {"doctype":"Workflow State","name":"Suspended","workflow_state_name":"Suspended","style":"Warning"},
+ {"doctype":"Workflow State","name":"Expiring","workflow_state_name":"Expiring","style":"Warning"},
+ {"doctype":"Workflow State","name":"Expired","workflow_state_name":"Expired","style":"Danger"},
+ {"doctype":"Workflow State","name":"Termination Requested","workflow_state_name":"Termination Requested","style":"Warning"},
+ {"doctype":"Workflow State","name":"Terminated","workflow_state_name":"Terminated","style":"Danger"},
+ {"doctype":"Workflow State","name":"Completed","workflow_state_name":"Completed","style":"Success"},
+ {"doctype":"Workflow State","name":"Cancelled","workflow_state_name":"Cancelled","style":"Danger"},
+ {"doctype":"Workflow State","name":"Rejected","workflow_state_name":"Rejected","style":"Danger"},
+ {"doctype":"Workflow State","name":"Billed","workflow_state_name":"Billed","style":"Success"}
 ]

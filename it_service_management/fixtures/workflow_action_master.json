@@ -1,12 +1,12 @@
 [
- {"doctype":"Workflow Action Master","workflow_action_name":"Request Approval"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Approve"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Activate"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Suspend"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Resume"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Request Termination"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Terminate"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Complete"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Reject"},
- {"doctype":"Workflow Action Master","workflow_action_name":"Cancel"}
+ {"doctype":"Workflow Action Master","name":"Request Approval","workflow_action_name":"Request Approval"},
+ {"doctype":"Workflow Action Master","name":"Approve","workflow_action_name":"Approve"},
+ {"doctype":"Workflow Action Master","name":"Activate","workflow_action_name":"Activate"},
+ {"doctype":"Workflow Action Master","name":"Suspend","workflow_action_name":"Suspend"},
+ {"doctype":"Workflow Action Master","name":"Resume","workflow_action_name":"Resume"},
+ {"doctype":"Workflow Action Master","name":"Request Termination","workflow_action_name":"Request Termination"},
+ {"doctype":"Workflow Action Master","name":"Terminate","workflow_action_name":"Terminate"},
+ {"doctype":"Workflow Action Master","name":"Complete","workflow_action_name":"Complete"},
+ {"doctype":"Workflow Action Master","name":"Reject","workflow_action_name":"Reject"},
+ {"doctype":"Workflow Action Master","name":"Cancel","workflow_action_name":"Cancel"}
 ]
