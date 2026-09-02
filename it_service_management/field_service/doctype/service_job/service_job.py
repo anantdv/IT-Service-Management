@@ -5,6 +5,7 @@ from frappe.model.document import Document
 from frappe.utils import flt, get_datetime, now_datetime
 
 from it_service_management.service_contracts.services.entitlement import ServiceEntitlementEngine
+from it_service_management.service_billing.services.batch import create_invoice_for_service_job
 from it_service_management.service_operations.services.billing import ServiceBillingEngine
 from it_service_management.service_operations.services.dispatch import ServiceDispatchService, require_manager, validate_active_technician
 from it_service_management.service_operations.services.stock import ServiceStockService
@@ -291,6 +292,10 @@ class ServiceJob(Document):
 	@frappe.whitelist()
 	def calculate_billing(self):
 		return ServiceBillingEngine(self).calculate()
+
+	@frappe.whitelist()
+	def create_sales_invoice(self):
+		return create_invoice_for_service_job(self.name)
 
 	@frappe.whitelist()
 	def approve_customer_po(self):

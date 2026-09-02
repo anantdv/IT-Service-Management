@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 
 import frappe
-from frappe.utils import cint, flt, now_datetime
+from frappe.utils import cint, flt, getdate, now_datetime, nowdate
 
 
 ACTIVE_REFERENCE_STATUSES = ("Reserved", "Draft Invoiced", "Submitted")
@@ -346,3 +346,193 @@ def _release_invoice_sources(invoice_name):
 				detail.error_message = None
 		batch.status = "Approved for Billing" if cint(frappe.get_single("IT Service Settings").require_service_billing_approval) else "Prepared"
 		batch.save(ignore_permissions=True)
+
+
+class ServiceJobInvoiceService:
+	def __init__(self, job):
+		self.job = job
+		self.settings = frappe.get_single("IT Service Settings")
+
+	def create_invoice(self):
+		self._validate_access()
+		self._validate_job()
+		if self.job.billing_status in (None, "", "Not Calculated"):
+			self.job.calculate_billing()
+			self.job.reload()
+		self._validate_job_ready_for_invoice()
+
+		batch = self._create_batch()
+		charges, adjustments = self._get_sources()
+		self._validate_sources(charges, adjustments)
+		for row in charges:
+			self._reserve(batch.name, row.billable_amount, service_charge_row=row.name)
+		for row in adjustments:
+			amount = -flt(row.amount) if row.adjustment_type in NEGATIVE_ADJUSTMENTS else flt(row.amount)
+			self._reserve(batch.name, amount, adjustment=row.name)
+
+		detail = self._append_detail(batch, charges, adjustments)
+		invoice = ServiceInvoiceService(batch)._create_invoice([detail])
+		detail.invoice = invoice.name
+		detail.result_status = "Invoice Created"
+		batch.status = "Completed"
+		batch.invoices_created = 1
+		batch.completed_at = now_datetime()
+		batch.save(ignore_permissions=True)
+		frappe.db.set_value(
+			"Service Job",
+			self.job.name,
+			{"billing_status": "Draft Invoice Created", "service_billing_batch": batch.name, "sales_invoice": invoice.name},
+			update_modified=False,
+		)
+		self.job.add_comment("Comment", f"Draft Sales Invoice created: {invoice.name}")
+		return invoice.name
+
+	def _validate_access(self):
+		if not {"Service Billing User", "Accounts Manager", "Accounts User", "System Manager"}.intersection(frappe.get_roles()):
+			frappe.throw("Only Service Billing or Accounts users can create service invoices.", frappe.PermissionError)
+
+	def _validate_job(self):
+		if self.job.status != "Completed":
+			frappe.throw("Only completed Service Jobs can be invoiced.")
+		if self.job.sales_invoice and frappe.db.exists("Sales Invoice", self.job.sales_invoice):
+			frappe.throw(f"Sales Invoice already exists for this Service Job: {self.job.sales_invoice}")
+		if frappe.db.exists("Service Billing Reference", {"service_job": self.job.name, "status": ["in", ACTIVE_REFERENCE_STATUSES]}):
+			frappe.throw("This Service Job is already reserved or invoiced in a Service Billing Batch.")
+		if self.job.po_required and self.job.po_status != "Approved":
+			frappe.throw("Approve the Customer PO before creating an invoice.")
+
+	def _validate_job_ready_for_invoice(self):
+		if self.job.billing_status != "Ready for Billing":
+			frappe.throw("Calculate billing before creating an invoice.")
+		if not flt(self.job.total_billable_amount):
+			frappe.throw("There is no billable amount to invoice for this Service Job.")
+
+	def _create_batch(self):
+		company = self._get_company()
+		completion_date = getdate(self.job.completion_datetime) if self.job.completion_datetime else getdate(nowdate())
+		batch = frappe.get_doc(
+			{
+				"doctype": "Service Billing Batch",
+				"company": company,
+				"billing_date": nowdate(),
+				"posting_date": nowdate(),
+				"service_date_from": completion_date,
+				"service_date_to": completion_date,
+				"customer": self.job.customer,
+				"service_zone": self.job.service_zone,
+				"service_contract": self.job.service_contract,
+				"service_team": self.job.service_team,
+				"technician": self.job.assigned_technician,
+				"group_by_customer": 0,
+				"status": "Prepared",
+				"total_jobs": 1,
+				"total_internal_cost": self.job.total_internal_cost,
+				"total_charge": self.job.total_charge_before_coverage,
+				"total_covered": self.job.total_covered_amount,
+				"total_billable": self.job.total_billable_amount,
+			}
+		)
+		batch.insert(ignore_permissions=True)
+		return batch
+
+	def _get_company(self):
+		company = frappe.db.get_value("Service Contract", self.job.service_contract, "company") if self.job.service_contract else None
+		company = company or frappe.defaults.get_user_default("Company")
+		if not company:
+			company = frappe.db.get_single_value("Global Defaults", "default_company")
+		if not company:
+			frappe.throw("Set a default Company or link this Service Job to a Service Contract before invoicing.")
+		return company
+
+	def _get_sources(self):
+		charges = frappe.db.sql(
+			"""select c.parent service_job,c.name,c.charge_type,c.service_charge,c.item_code,c.description,c.billable_amount,
+			sc.item_code service_item_code from `tabService Job Charge` c
+			left join `tabService Charge` sc on sc.name=c.service_charge
+			where c.parent=%(job)s and c.parenttype='Service Job' and c.billable=1 and c.billable_amount>0 and ifnull(c.rental_billed,0)=0""",
+			{"job": self.job.name},
+			as_dict=True,
+		)
+		adjustments = frappe.db.sql(
+			"""select a.service_job,a.name,a.adjustment_type,a.service_charge,a.item_code,a.amount,
+			sc.item_code service_item_code from `tabService Billing Adjustment` a
+			left join `tabService Charge` sc on sc.name=a.service_charge
+			where a.service_job=%(job)s and a.approval_status='Approved'""",
+			{"job": self.job.name},
+			as_dict=True,
+		)
+		return charges, adjustments
+
+	def _validate_sources(self, charges, adjustments):
+		missing = []
+		for row in charges:
+			if not _resolve_service_item(row, self.settings):
+				missing.append(row.charge_type)
+		for row in adjustments:
+			if not row.item_code and not row.service_item_code and not self.settings.default_service_item:
+				missing.append(row.adjustment_type)
+		if missing:
+			frappe.throw(f"Configure ERPNext Items for: {', '.join(sorted(set(missing)))}")
+
+	def _reserve(self, batch, amount, service_charge_row=None, adjustment=None):
+		frappe.get_doc(
+			{
+				"doctype": "Service Billing Reference",
+				"service_job": self.job.name,
+				"service_charge_row": service_charge_row,
+				"adjustment": adjustment,
+				"amount": amount,
+				"billing_batch": batch,
+				"status": "Reserved",
+			}
+		).insert(ignore_permissions=True)
+
+	def _append_detail(self, batch, charges, adjustments):
+		customer_meta = frappe.get_meta("Customer")
+		company_currency = frappe.db.get_value("Company", batch.company, "default_currency")
+		currency = frappe.db.get_value("Customer", self.job.customer, "default_currency") if customer_meta.has_field("default_currency") else None
+		tax_category = frappe.db.get_value("Customer", self.job.customer, "tax_category") if customer_meta.has_field("tax_category") else None
+		cost_center = self.settings.default_service_cost_center or frappe.db.get_value("Company", batch.company, "cost_center")
+		buckets = defaultdict(float)
+		for row in charges:
+			bucket = "parts" if row.charge_type == "Part" else row.charge_type.lower()
+			if bucket not in ("labour", "parts", "travel", "food", "accommodation"):
+				bucket = "other"
+			buckets[bucket] += flt(row.billable_amount)
+		adjustment_total = sum(-flt(row.amount) if row.adjustment_type in NEGATIVE_ADJUSTMENTS else flt(row.amount) for row in adjustments)
+		detail = batch.append(
+			"details",
+			{
+				"service_job": self.job.name,
+				"service_ticket": self.job.service_ticket,
+				"customer": self.job.customer,
+				"customer_site": self.job.customer_site,
+				"customer_equipment": self.job.customer_equipment,
+				"currency": currency or company_currency,
+				"tax_category": tax_category,
+				"cost_center": cost_center,
+				"completion_date": self.job.completion_datetime,
+				"coverage_source": self.job.coverage_source,
+				"po_status": self.job.po_status,
+				"customer_po_no": self.job.customer_po_no,
+				"labour": buckets["labour"],
+				"parts": buckets["parts"],
+				"travel": buckets["travel"],
+				"food": buckets["food"],
+				"accommodation": buckets["accommodation"],
+				"other": buckets["other"] + adjustment_total,
+				"internal_cost": self.job.total_internal_cost,
+				"total_charge": self.job.total_charge_before_coverage,
+				"covered_amount": self.job.total_covered_amount,
+				"billable_amount": flt(self.job.total_billable_amount) + adjustment_total,
+				"billing_status": self.job.billing_status,
+				"selected": 1,
+				"result_status": "Prepared",
+			},
+		)
+		batch.save(ignore_permissions=True)
+		return detail
+
+
+def create_invoice_for_service_job(job_name):
+	return ServiceJobInvoiceService(frappe.get_doc("Service Job", job_name)).create_invoice()

@@ -33,6 +33,13 @@ frappe.ui.form.on("Service Job", {
 		if (frm.doc.po_required && frm.doc.po_status !== "Approved") {
 			frm.add_custom_button(__("Approve Customer PO"), () => frm.call("approve_customer_po").then(() => frm.refresh()));
 		}
+		if (status === "Completed" && !frm.doc.sales_invoice && !frm.doc.service_billing_batch) {
+			frm.add_custom_button(__("Create Invoice"), () => {
+				frm.call("create_sales_invoice").then((r) => {
+					if (r.message) frappe.set_route("Form", "Sales Invoice", r.message);
+				});
+			});
+		}
 		frm.add_custom_button(__("Calculate Billing"), () => frm.call("calculate_billing").then(() => frm.refresh()));
 		frm.add_custom_button(__("Re-evaluate Coverage"), () => frm.call("reevaluate_coverage").then(() => frm.refresh()));
 	},
