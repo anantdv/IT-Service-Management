@@ -8,6 +8,7 @@
   "basic_information_section",
   "zone_name",
   "active",
+  "requires_customer_po",
   "visit_travel_charges_section",
   "default_callout_charge",
   "callout_charge_basis",
@@ -53,6 +54,12 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Active"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_customer_po",
+   "fieldtype": "Check",
+   "label": "Requires Customer PO"
   },
   {
    "fieldname": "visit_travel_charges_section",

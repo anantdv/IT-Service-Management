@@ -38,6 +38,7 @@ class ServiceBillingBatchEngine:
 					"service_job": job.name, "service_ticket": job.service_ticket, "customer": job.customer,
 					"customer_site": job.customer_site, "customer_equipment": job.customer_equipment,
 					"completion_date": job.completion_datetime, "billing_status": job.billing_status,
+					"po_status": job.po_status, "customer_po_no": job.customer_po_no,
 					"selected": 0, "result_status": "Error", "error_message": frappe.get_traceback()[-2000:],
 				})
 
@@ -72,6 +73,7 @@ class ServiceBillingBatchEngine:
 			f"""
 			select sj.name, sj.service_ticket, sj.customer, sj.customer_site, sj.customer_equipment,
 				sj.completion_datetime, sj.coverage_source, sj.billing_status, sj.service_contract, sc.company contract_company,
+				sj.po_required, sj.po_status, sj.customer_po_no,
 				{currency_sql} currency, {tax_category_sql} tax_category, sj.total_internal_cost,
 				sj.total_charge_before_coverage, sj.total_covered_amount, sj.total_billable_amount
 			from `tabService Job` sj
@@ -129,6 +131,7 @@ class ServiceBillingBatchEngine:
 			"customer_site": job.customer_site, "customer_equipment": job.customer_equipment,
 			"currency": job.currency, "tax_category": job.tax_category, "cost_center": self.cost_center,
 			"completion_date": job.completion_datetime, "coverage_source": job.coverage_source,
+			"po_status": job.po_status, "customer_po_no": job.customer_po_no,
 			"labour": buckets["labour"], "parts": buckets["parts"], "travel": buckets["travel"],
 			"food": buckets["food"], "accommodation": buckets["accommodation"], "other": buckets["other"] + adjustment_total,
 			"internal_cost": job.total_internal_cost, "total_charge": job.total_charge_before_coverage,
@@ -141,6 +144,8 @@ class ServiceBillingBatchEngine:
 			frappe.throw(f"Service Job {job.name} has no valid Customer.")
 		if not job.coverage_source:
 			frappe.throw(f"Service Job {job.name} has not completed coverage evaluation.")
+		if job.po_required and job.po_status != "Approved":
+			frappe.throw(f"Service Job {job.name} requires approved Customer PO before billing.")
 		if job.contract_company and job.contract_company != self.batch.company:
 			frappe.throw(f"Service Job {job.name} belongs to Company {job.contract_company}, not {self.batch.company}.")
 		if not self.cost_center:
@@ -237,6 +242,9 @@ class ServiceInvoiceService:
 			"currency": rows[0].currency, "tax_category": rows[0].tax_category,
 			"custom_service_job": jobs[0] if len(jobs) == 1 else None, "items": [],
 		})
+		po_numbers = sorted({row.customer_po_no for row in rows if row.customer_po_no})
+		if len(po_numbers) == 1 and frappe.get_meta("Sales Invoice").has_field("po_no"):
+			invoice.po_no = po_numbers[0]
 		for row in references:
 			invoice.append("items", {
 				"item_code": row.item_code, "description": f"{row.description}\nSource: {row.source_doctype} {row.source_name}\nService Job: {row.service_job}",

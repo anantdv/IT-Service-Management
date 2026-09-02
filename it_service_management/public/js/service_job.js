@@ -30,6 +30,9 @@ frappe.ui.form.on("Service Job", {
 			frm.add_custom_button(__("Complete Job"), () => call_with_gps(frm, "complete_job"));
 		}
 		if (["Awaiting Parts", "Awaiting Customer"].includes(status)) frm.add_custom_button(__("Resume Work"), () => frm.call("resume_work").then(() => frm.refresh()));
+		if (frm.doc.po_required && frm.doc.po_status !== "Approved") {
+			frm.add_custom_button(__("Approve Customer PO"), () => frm.call("approve_customer_po").then(() => frm.refresh()));
+		}
 		frm.add_custom_button(__("Calculate Billing"), () => frm.call("calculate_billing").then(() => frm.refresh()));
 		frm.add_custom_button(__("Re-evaluate Coverage"), () => frm.call("reevaluate_coverage").then(() => frm.refresh()));
 	},

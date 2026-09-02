@@ -49,6 +49,7 @@ class ServiceJob(Document):
 			validate_active_technician(self.assigned_technician)
 			self._default_part_warehouse()
 		self._validate_coverage_override()
+		self._validate_customer_po()
 		self._validate_charging_inputs()
 		self._calculate_child_rows()
 		self._calculate_durations()
@@ -65,6 +66,7 @@ class ServiceJob(Document):
 			"serial_no",
 			"asset",
 			"priority",
+			"service_category",
 			"coverage_source",
 			"coverage_document",
 			"coverage_status",
@@ -74,6 +76,7 @@ class ServiceJob(Document):
 		):
 			if ticket.get(field) is not None and not self.get(field):
 				self.set(field, ticket.get(field))
+		self.service_team = self.service_team or ticket.get("routing_service_team")
 		self.customer_complaint = self.customer_complaint or ticket.customer_complaint
 
 	def _validate_customer(self):
@@ -110,6 +113,27 @@ class ServiceJob(Document):
 		for fieldname in ("chargeable_trips", "chargeable_distance_km", "chargeable_travel_days", "chargeable_nights", "chargeable_technician_count"):
 			if flt(self.get(fieldname)) < 0:
 				frappe.throw(f"{self.meta.get_label(fieldname)} cannot be negative.")
+
+	def _validate_customer_po(self):
+		if self.service_zone and frappe.get_meta("Service Zone").has_field("requires_customer_po"):
+			if frappe.db.get_value("Service Zone", self.service_zone, "requires_customer_po"):
+				self.po_required = 1
+		if not self.po_required:
+			self.po_status = "Not Required"
+			return
+		if not self.po_status or self.po_status == "Not Required":
+			self.po_status = "Pending"
+		if self.po_status == "Approved":
+			old = self.get_doc_before_save()
+			if not self.is_new() and old and old.po_status != "Approved":
+				require_manager("Only Service Manager can approve a customer PO.")
+			if not (self.customer_po_no or self.po_attachment):
+				frappe.throw("Customer PO No or PO Attachment is required before approval.")
+			self.po_approved_by = self.po_approved_by or frappe.session.user
+			self.po_approved_on = self.po_approved_on or now_datetime()
+		else:
+			self.po_approved_by = None
+			self.po_approved_on = None
 
 	def _calculate_child_rows(self):
 		employees = {row.employee for row in self.labour if row.employee and not row.internal_hourly_cost}
@@ -180,11 +204,20 @@ class ServiceJob(Document):
 			frappe.throw("Customer signature is required or a manager override reason must be entered.")
 		if self.signature_override_reason and not self.customer_signature:
 			require_manager("Only Service Manager can override customer signature requirement.")
+		self._validate_po_for_completion()
 		if not self.coverage_source:
 			frappe.throw("Coverage must be evaluated before completion.")
 		for row in self.parts:
 			if row.item_code and not row.stock_entry:
 				frappe.throw("All consumed parts must be processed before completing the job.")
+
+	def _validate_po_for_completion(self):
+		if not self.po_required:
+			return
+		if self.po_status != "Approved":
+			frappe.throw("Customer PO approval is required before completing this Service Job.")
+		if not (self.customer_po_no or self.po_attachment):
+			frappe.throw("Customer PO No or PO Attachment is required before completing this Service Job.")
 
 	def update_ticket_after_completion(self):
 		if not self.service_ticket:
@@ -258,6 +291,20 @@ class ServiceJob(Document):
 	@frappe.whitelist()
 	def calculate_billing(self):
 		return ServiceBillingEngine(self).calculate()
+
+	@frappe.whitelist()
+	def approve_customer_po(self):
+		if not self.po_required:
+			frappe.throw("Customer PO Required must be checked before approval.")
+		require_manager("Only Service Manager can approve a customer PO.")
+		if not (self.customer_po_no or self.po_attachment):
+			frappe.throw("Customer PO No or PO Attachment is required before approval.")
+		self.po_status = "Approved"
+		self.po_approved_by = frappe.session.user
+		self.po_approved_on = now_datetime()
+		self.add_comment("Comment", "Customer PO approved")
+		self.save()
+		return self
 
 	@frappe.whitelist()
 	def reevaluate_coverage(self):

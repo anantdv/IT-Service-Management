@@ -136,6 +136,8 @@ class ServiceTicket(Document):
 		job.serial_no = self.serial_no
 		job.asset = self.asset
 		job.job_type = job_type or ("Remote Support" if self.ticket_type == "Remote Support" else "Onsite Support")
+		job.service_category = self.service_category
+		job.service_team = self.routing_service_team
 		job.priority = self.priority
 		for field in COVERAGE_FIELDS + ("coverage_source", "coverage_document", "coverage_status", "service_contract", "rental_contract"):
 			job.set(field, self.get(field))

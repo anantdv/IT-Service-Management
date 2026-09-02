@@ -41,6 +41,16 @@ class TestPhase2Operations(FrappeTestCase):
 		self.assertEqual(job.customer_equipment, self.equipment.name)
 		self.assertEqual(job.coverage_source, ticket.coverage_source)
 
+	def test_ticket_to_job_copies_routing_details(self):
+		ticket = self._make_ticket()
+		team = self._make_service_team()
+		ticket.service_category = "Network"
+		ticket.routing_service_team = team
+		ticket.save()
+		job = frappe.get_doc("Service Job", ticket.create_service_job())
+		self.assertEqual(job.service_category, "Network")
+		self.assertEqual(job.service_team, team)
+
 	def test_job_invalid_transition_is_blocked(self):
 		job = self._make_job()
 		job.status = "Completed"
@@ -51,6 +61,28 @@ class TestPhase2Operations(FrappeTestCase):
 		job.status = "Work In Progress"
 		job.billing_status = "Not Applicable"
 		self.assertRaises(frappe.ValidationError, job.complete_job)
+
+	def test_job_completion_requires_approved_po_when_required(self):
+		job = self._make_job()
+		frappe.db.set_value("Service Job", job.name, "status", "Work In Progress", update_modified=False)
+		frappe.db.set_value("Service Ticket", job.service_ticket, "status", "Scheduled", update_modified=False)
+		job.reload()
+		job.diagnosis = "Fault isolated"
+		job.po_required = 1
+		job.po_status = "Pending"
+		self.assertRaises(frappe.ValidationError, job.complete_job)
+		job.customer_po_no = "PO-TEST-001"
+		job.approve_customer_po()
+		job.work_performed = "Resolved onsite"
+		job.complete_job()
+		self.assertEqual(job.status, "Completed")
+
+	def test_zone_can_require_customer_po(self):
+		job = self._make_job()
+		job.service_zone = self._make_service_zone(requires_customer_po=1)
+		job.save()
+		self.assertEqual(job.po_required, 1)
+		self.assertEqual(job.po_status, "Pending")
 
 	def test_billing_marks_covered_and_billable_rows(self):
 		job = self._make_job()
@@ -130,5 +162,19 @@ class TestPhase2Operations(FrappeTestCase):
 				"date_of_joining": nowdate(),
 				"is_service_technician": 1,
 				"available_for_assignment": 1,
+			}
+		).insert().name
+
+	def _make_service_team(self):
+		name = "ITSM Ops Team " + frappe.generate_hash(length=8)
+		return frappe.get_doc({"doctype": "Service Team", "team_name": name}).insert().name
+
+	def _make_service_zone(self, requires_customer_po=0):
+		name = "ITSM Ops Zone " + frappe.generate_hash(length=8)
+		return frappe.get_doc(
+			{
+				"doctype": "Service Zone",
+				"zone_name": name,
+				"requires_customer_po": requires_customer_po,
 			}
 		).insert().name

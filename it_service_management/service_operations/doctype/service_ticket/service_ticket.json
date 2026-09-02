@@ -21,6 +21,8 @@
     "asset",
     "ticket_section",
     "ticket_type",
+    "service_category",
+    "routing_service_team",
     "priority",
     "status",
     "subject",
@@ -171,6 +173,22 @@
       "fieldtype": "Select",
       "label": "Ticket Type",
       "options": "Breakdown\nRemote Support\nOnsite Support\nInstallation\nPreventive Maintenance\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "service_category",
+      "fieldtype": "Select",
+      "label": "Service Category",
+      "options": "\nNetwork\nCabling\nPower\nApplication\nHardware\nPrinter\nSoftware\nConnectivity\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "routing_service_team",
+      "fieldtype": "Link",
+      "label": "Routing Service Team",
+      "options": "Service Team",
       "in_standard_filter": 1
     },
     {

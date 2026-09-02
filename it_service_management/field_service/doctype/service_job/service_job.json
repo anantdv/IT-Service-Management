@@ -15,6 +15,7 @@
     "serial_no",
     "asset",
     "job_type",
+    "service_category",
     "priority",
     "status",
     "scheduled_date",
@@ -30,6 +31,14 @@
     "potential_travel_charge",
     "potential_callout_charge",
     "potential_installation_charge",
+    "customer_po_section",
+    "po_required",
+    "po_status",
+    "customer_po_no",
+    "po_attachment",
+    "po_approved_by",
+    "po_approved_on",
+    "po_notes",
     "service_charging_inputs_section",
     "chargeable_trips",
     "chargeable_distance_km",
@@ -185,6 +194,14 @@
       "in_standard_filter": 1
     },
     {
+      "fieldname": "service_category",
+      "fieldtype": "Select",
+      "label": "Service Category",
+      "options": "\nNetwork\nCabling\nPower\nApplication\nHardware\nPrinter\nSoftware\nConnectivity\nOther",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
       "fieldname": "priority",
       "fieldtype": "Select",
       "label": "Priority",
@@ -279,6 +296,57 @@
       "fieldname": "potential_installation_charge",
       "fieldtype": "Currency",
       "label": "Potential Installation Charge"
+    },
+    {
+      "fieldname": "customer_po_section",
+      "fieldtype": "Section Break",
+      "label": "Customer PO Approval"
+    },
+    {
+      "default": "0",
+      "fieldname": "po_required",
+      "fieldtype": "Check",
+      "label": "Customer PO Required"
+    },
+    {
+      "default": "Not Required",
+      "fieldname": "po_status",
+      "fieldtype": "Select",
+      "label": "PO Status",
+      "options": "Not Required\nPending\nApproved\nRejected"
+    },
+    {
+      "depends_on": "eval:doc.po_required",
+      "fieldname": "customer_po_no",
+      "fieldtype": "Data",
+      "label": "Customer PO No"
+    },
+    {
+      "depends_on": "eval:doc.po_required",
+      "fieldname": "po_attachment",
+      "fieldtype": "Attach",
+      "label": "PO Attachment"
+    },
+    {
+      "depends_on": "eval:doc.po_required && doc.po_status == 'Approved'",
+      "fieldname": "po_approved_by",
+      "fieldtype": "Link",
+      "label": "PO Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "depends_on": "eval:doc.po_required && doc.po_status == 'Approved'",
+      "fieldname": "po_approved_on",
+      "fieldtype": "Datetime",
+      "label": "PO Approved On",
+      "read_only": 1
+    },
+    {
+      "depends_on": "eval:doc.po_required",
+      "fieldname": "po_notes",
+      "fieldtype": "Small Text",
+      "label": "PO Notes"
     },
     {
       "fieldname": "service_charging_inputs_section",
