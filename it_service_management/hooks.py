@@ -43,7 +43,7 @@ fixtures = [
 	{"dt": "Workflow State", "filters": [["workflow_state_name", "in", ["Draft", "Pending Approval", "Approved", "Active", "Suspended", "Expiring", "Expired", "Termination Requested", "Terminated", "Completed", "Cancelled", "Rejected", "Billed"]]]},
 	{"dt": "Workflow Action Master", "filters": [["workflow_action_name", "in", ["Request Approval", "Approve", "Activate", "Suspend", "Resume", "Request Termination", "Terminate", "Complete", "Reject", "Cancel"]]]},
 	{"dt": "Notification", "filters": [["name", "in", ["Rental Contract Approved", "Rental Contract Activated", "Rental Termination Requested", "Rental Deployment Scheduled", "Rental Deployment Completed", "Rental Billing Run Ready", "Rental Billing Run Error"]]]},
-	{"dt": "Custom DocPerm", "filters": [["parent", "in", ["Asset", "Subscription", "Customer"]], ["role", "in", ["Rental Manager", "Rental User", "Rental Billing User", "IT Service Analyst", "IT Service Executive"]]]},
+	{"dt": "Custom DocPerm", "filters": [["parent", "in", ["Asset", "Subscription"]], ["role", "in", ["Rental Manager", "Rental User", "Rental Billing User"]]]},
 ]
 
 doctype_js = {

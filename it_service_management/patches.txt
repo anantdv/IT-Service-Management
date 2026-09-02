@@ -3,3 +3,4 @@ it_service_management.patches.v0_0.add_phase4_indexes
 it_service_management.patches.v0_0.migrate_service_zone_charging_basis
 it_service_management.patches.v0_0.migrate_service_expense_redesign
 it_service_management.patches.v0_0.mark_dashboard_charts_custom
+it_service_management.patches.v0_0.remove_customer_custom_docperms
