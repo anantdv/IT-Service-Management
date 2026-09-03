@@ -110,8 +110,8 @@ has_permission = {
 }
 
 override_doctype_dashboards = {
-	"Customer": "it_service_management.config.customer_dashboard.get_data",
-	"Customer Equipment": "it_service_management.config.customer_equipment_dashboard.get_data",
-	"Serial No": "it_service_management.config.serial_no_dashboard.get_data",
-	"Asset": "it_service_management.config.asset_dashboard.get_data",
+	"Customer": "it_service_management.config.customer_dashboard",
+	"Customer Equipment": "it_service_management.config.customer_equipment_dashboard",
+	"Serial No": "it_service_management.config.serial_no_dashboard",
+	"Asset": "it_service_management.config.asset_dashboard",
 }
