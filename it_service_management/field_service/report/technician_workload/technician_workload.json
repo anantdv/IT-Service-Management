@@ -5,5 +5,12 @@
  "name": "Technician Workload",
  "ref_doctype": "Service Job",
  "report_name": "Technician Workload",
- "report_type": "Script Report"
+ "report_type": "Script Report",
+ "roles": [
+  {"role": "Service Manager"},
+  {"role": "Service Dispatcher"},
+  {"role": "IT Service Analyst"},
+  {"role": "IT Service Executive"},
+  {"role": "Service Auditor"}
+ ]
 }

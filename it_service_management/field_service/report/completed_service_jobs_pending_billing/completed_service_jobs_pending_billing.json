@@ -5,5 +5,12 @@
  "name": "Completed Service Jobs Pending Billing",
  "ref_doctype": "Service Job",
  "report_name": "Completed Service Jobs Pending Billing",
- "report_type": "Script Report"
+ "report_type": "Script Report",
+ "roles": [
+  {"role": "Service Manager"},
+  {"role": "Service Billing User"},
+  {"role": "Accounts Manager"},
+  {"role": "IT Service Analyst"},
+  {"role": "IT Service Executive"}
+ ]
 }

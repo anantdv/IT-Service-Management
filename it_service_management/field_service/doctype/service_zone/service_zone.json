@@ -212,17 +212,20 @@
   {
    "role": "Service Manager",
    "read": 1,
+   "report": 1,
    "write": 1,
    "create": 1,
    "delete": 1
   },
   {
    "role": "Service Dispatcher",
-   "read": 1
+   "read": 1,
+   "report": 1
   },
   {
    "role": "Service Technician",
-   "read": 1
+   "read": 1,
+   "report": 1
   }
  ],
  "sort_field": "modified",

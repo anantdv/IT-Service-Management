@@ -5,5 +5,12 @@
  "name": "Service SLA Compliance",
  "ref_doctype": "Service Ticket",
  "report_name": "Service SLA Compliance",
- "report_type": "Script Report"
+ "report_type": "Script Report",
+ "roles": [
+  {"role": "Service Manager"},
+  {"role": "Service Dispatcher"},
+  {"role": "IT Service Analyst"},
+  {"role": "IT Service Executive"},
+  {"role": "Service Auditor"}
+ ]
 }

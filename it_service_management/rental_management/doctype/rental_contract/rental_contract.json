@@ -559,6 +559,7 @@
     {
       "role": "Rental Manager",
       "read": 1,
+      "report": 1,
       "write": 1,
       "create": 1,
       "delete": 1
@@ -566,28 +567,34 @@
     {
       "role": "Rental User",
       "read": 1,
+      "report": 1,
       "write": 1,
       "create": 1
     },
     {
       "role": "Rental Billing User",
-      "read": 1
+      "read": 1,
+      "report": 1
     },
     {
       "role": "Service Manager",
-      "read": 1
+      "read": 1,
+      "report": 1
     },
     {
       "role": "Service Auditor",
-      "read": 1
+      "read": 1,
+      "report": 1
     },
     {
       "role": "IT Service Analyst",
-      "read": 1
+      "read": 1,
+      "report": 1
     },
     {
       "role": "IT Service Executive",
-      "read": 1
+      "read": 1,
+      "report": 1
     }
   ]
 }

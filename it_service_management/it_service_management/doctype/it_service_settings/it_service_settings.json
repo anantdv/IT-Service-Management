@@ -542,27 +542,32 @@
     {
       "role": "System Manager",
       "read": 1,
+      "report": 1,
       "write": 1,
       "create": 1
     },
     {
       "role": "Service Manager",
       "read": 1,
+      "report": 1,
       "write": 1
     },
     {
       "role": "Rental Manager",
       "read": 1,
+      "report": 1,
       "write": 1
     },
     {
       "role": "Accounts Manager",
       "read": 1,
+      "report": 1,
       "write": 1
     },
     {
       "role": "IT Service Analyst",
-      "read": 1
+      "read": 1,
+      "report": 1
     }
   ],
   "sort_field": "modified",
