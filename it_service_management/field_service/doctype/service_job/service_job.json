@@ -31,6 +31,9 @@
     "potential_travel_charge",
     "potential_callout_charge",
     "potential_installation_charge",
+    "quotation_section",
+    "quotation",
+    "quotation_status",
     "customer_po_section",
     "po_required",
     "po_status",
@@ -296,6 +299,26 @@
       "fieldname": "potential_installation_charge",
       "fieldtype": "Currency",
       "label": "Potential Installation Charge"
+    },
+    {
+      "fieldname": "quotation_section",
+      "fieldtype": "Section Break",
+      "label": "Quotation"
+    },
+    {
+      "fieldname": "quotation",
+      "fieldtype": "Link",
+      "label": "Quotation",
+      "options": "Quotation",
+      "read_only": 1
+    },
+    {
+      "default": "Not Created",
+      "fieldname": "quotation_status",
+      "fieldtype": "Select",
+      "label": "Quotation Status",
+      "options": "Not Created\nDraft\nSubmitted\nOrdered\nLost\nCancelled",
+      "read_only": 1
     },
     {
       "fieldname": "customer_po_section",

@@ -536,3 +536,101 @@ class ServiceJobInvoiceService:
 
 def create_invoice_for_service_job(job_name):
 	return ServiceJobInvoiceService(frappe.get_doc("Service Job", job_name)).create_invoice()
+
+
+class ServiceJobQuotationService:
+	def __init__(self, job):
+		self.job = job
+		self.settings = frappe.get_single("IT Service Settings")
+
+	def create_quotation(self):
+		self._validate_access()
+		self._validate_job()
+		if self.job.billing_status in (None, "", "Not Calculated"):
+			self.job.calculate_billing()
+			self.job.reload()
+		if not flt(self.job.total_billable_amount):
+			frappe.throw("There is no billable amount to quote for this Service Job.")
+
+		charges, adjustments = ServiceJobInvoiceService(self.job)._get_sources()
+		self._validate_sources(charges, adjustments)
+		quotation = self._create_quotation(charges, adjustments)
+		frappe.db.set_value(
+			"Service Job",
+			self.job.name,
+			{"quotation": quotation.name, "quotation_status": "Draft"},
+			update_modified=False,
+		)
+		self.job.add_comment("Comment", f"Draft Quotation created: {quotation.name}")
+		return quotation.name
+
+	def _validate_access(self):
+		if not {"Service Billing User", "Accounts Manager", "Accounts User", "Sales User", "Sales Manager", "System Manager"}.intersection(frappe.get_roles()):
+			frappe.throw("Only Service Billing, Accounts, or Sales users can create service quotations.", frappe.PermissionError)
+
+	def _validate_job(self):
+		if self.job.status not in ("Work In Progress", "Awaiting Approval", "Completed"):
+			frappe.throw("Create quotation only after service work has started or been completed.")
+		if self.job.quotation and frappe.db.exists("Quotation", self.job.quotation):
+			frappe.throw(f"Quotation already exists for this Service Job: {self.job.quotation}")
+
+	def _validate_sources(self, charges, adjustments):
+		missing = []
+		for row in charges:
+			if not _resolve_service_item(row, self.settings):
+				missing.append(row.charge_type)
+		for row in adjustments:
+			if not row.item_code and not row.service_item_code and not self.settings.default_service_item:
+				missing.append(row.adjustment_type)
+		if missing:
+			frappe.throw(f"Configure ERPNext Items for: {', '.join(sorted(set(missing)))}")
+
+	def _create_quotation(self, charges, adjustments):
+		company = ServiceJobInvoiceService(self.job)._get_company()
+		quotation_values = {
+			"doctype": "Quotation",
+			"quotation_to": "Customer",
+			"party_name": self.job.customer,
+			"transaction_date": nowdate(),
+			"order_type": "Sales",
+			"items": [],
+		}
+		if frappe.get_meta("Quotation").has_field("company"):
+			quotation_values["company"] = company
+		quotation = frappe.get_doc(quotation_values)
+		quotation_meta = frappe.get_meta("Quotation")
+		if quotation_meta.has_field("custom_service_job"):
+			quotation.custom_service_job = self.job.name
+		if quotation_meta.has_field("custom_customer_equipment"):
+			quotation.custom_customer_equipment = self.job.customer_equipment
+		if self.job.customer_po_no and quotation_meta.has_field("po_no"):
+			quotation.po_no = self.job.customer_po_no
+		for row in charges:
+			item_code = _resolve_service_item(row, self.settings)
+			quotation.append(
+				"items",
+				{
+					"item_code": item_code,
+					"description": f"{row.description or row.charge_type}\nSource: Service Job {self.job.name}",
+					"qty": 1,
+					"rate": row.billable_amount,
+				},
+			)
+		for row in adjustments:
+			item_code = row.item_code or row.service_item_code or self.settings.default_service_item
+			amount = -flt(row.amount) if row.adjustment_type in NEGATIVE_ADJUSTMENTS else flt(row.amount)
+			quotation.append(
+				"items",
+				{
+					"item_code": item_code,
+					"description": f"{row.adjustment_type} from Service Billing Adjustment {row.name}\nSource: Service Job {self.job.name}",
+					"qty": 1,
+					"rate": amount,
+				},
+			)
+		quotation.insert(ignore_permissions=True)
+		return quotation
+
+
+def create_quotation_for_service_job(job_name):
+	return ServiceJobQuotationService(frappe.get_doc("Service Job", job_name)).create_quotation()

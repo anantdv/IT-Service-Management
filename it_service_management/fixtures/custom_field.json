@@ -78,6 +78,28 @@
   },
   {
     "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "custom_service_job",
+    "label": "Service Job",
+    "fieldtype": "Link",
+    "options": "Service Job",
+    "insert_after": "party_name",
+    "module": "IT Service Management",
+    "name": "Quotation-custom_service_job"
+  },
+  {
+    "doctype": "Custom Field",
+    "dt": "Quotation",
+    "fieldname": "custom_customer_equipment",
+    "label": "Customer Equipment",
+    "fieldtype": "Link",
+    "options": "Customer Equipment",
+    "insert_after": "custom_service_job",
+    "module": "IT Service Management",
+    "name": "Quotation-custom_customer_equipment"
+  },
+  {
+    "doctype": "Custom Field",
     "dt": "Sales Invoice",
     "fieldname": "custom_rental_contract",
     "label": "Rental Contract",

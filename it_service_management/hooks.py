@@ -38,7 +38,7 @@ fixtures = [
 	{"dt": "Workspace", "filters": [["name", "in", ["IT Service Management", "Service Operations", "Rental Management", "Service Command Center", "Rental Command Center", "IT Services Executive"]]]},
 	{"dt": "Number Card", "filters": [["module", "=", "IT Service Management"]]},
 	{"dt": "Dashboard Chart", "filters": [["module", "=", "IT Service Management"]]},
-	{"dt": "Custom Field", "filters": [["dt", "in", ["Employee", "Sales Invoice"]], ["module", "=", "IT Service Management"]]},
+	{"dt": "Custom Field", "filters": [["dt", "in", ["Employee", "Quotation", "Sales Invoice"]], ["module", "=", "IT Service Management"]]},
 	{"dt": "Workflow", "filters": [["name", "in", ["Rental Contract Approval", "Rental Ad-Hoc Charge Approval", "Service Billing Adjustment Approval"]]]},
 	{"dt": "Workflow State", "filters": [["workflow_state_name", "in", ["Draft", "Pending Approval", "Approved", "Active", "Suspended", "Expiring", "Expired", "Termination Requested", "Terminated", "Completed", "Cancelled", "Rejected", "Billed"]]]},
 	{"dt": "Workflow Action Master", "filters": [["workflow_action_name", "in", ["Request Approval", "Approve", "Activate", "Suspend", "Resume", "Request Termination", "Terminate", "Complete", "Reject", "Cancel"]]]},

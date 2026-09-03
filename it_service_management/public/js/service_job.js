@@ -33,6 +33,13 @@ frappe.ui.form.on("Service Job", {
 		if (frm.doc.po_required && frm.doc.po_status !== "Approved") {
 			frm.add_custom_button(__("Approve Customer PO"), () => frm.call("approve_customer_po").then(() => frm.refresh()));
 		}
+		if (["Work In Progress", "Awaiting Approval", "Completed"].includes(status) && !frm.doc.quotation) {
+			frm.add_custom_button(__("Create Quotation"), () => {
+				frm.call("create_quotation").then((r) => {
+					if (r.message) frappe.set_route("Form", "Quotation", r.message);
+				});
+			});
+		}
 		if (status === "Completed" && !frm.doc.sales_invoice && !frm.doc.service_billing_batch) {
 			frm.add_custom_button(__("Create Invoice"), () => {
 				frm.call("create_sales_invoice").then((r) => {
