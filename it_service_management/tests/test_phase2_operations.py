@@ -4,6 +4,8 @@ import frappe
 from frappe.tests.utils import FrappeTestCase
 from frappe.utils import add_days, now_datetime, nowdate
 
+from it_service_management.service_operations.services.sla import update_ticket_sla_status
+
 
 class TestPhase2Operations(FrappeTestCase):
 	def setUp(self):
@@ -83,6 +85,19 @@ class TestPhase2Operations(FrappeTestCase):
 		job.save()
 		self.assertEqual(job.po_required, 1)
 		self.assertEqual(job.po_status, "Pending")
+
+	def test_sla_status_handles_form_datetime_strings(self):
+		ticket = frappe._dict(
+			{
+				"reported_datetime": "2026-09-04 14:57:57.787661",
+				"first_response_datetime": None,
+				"response_due": "2026-09-04 18:57:57.787661",
+				"resolution_datetime": "2026-09-04 15:01:08.576064",
+				"resolution_due": now_datetime(),
+			}
+		)
+		update_ticket_sla_status(ticket)
+		self.assertIn(ticket.resolution_sla_status, ("Met", "Breached"))
 
 	def test_billing_marks_covered_and_billable_rows(self):
 		job = self._make_job()

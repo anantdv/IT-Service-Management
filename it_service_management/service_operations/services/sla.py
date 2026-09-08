@@ -102,22 +102,27 @@ def _duration_to_minutes(value):
 
 def update_ticket_sla_status(ticket):
 	now = now_datetime()
-	if ticket.first_response_datetime:
-		ticket.response_sla_status = "Met" if ticket.first_response_datetime <= ticket.response_due else "Breached"
-	elif ticket.response_due and now > ticket.response_due:
+	first_response = get_datetime(ticket.first_response_datetime) if ticket.first_response_datetime else None
+	response_due = get_datetime(ticket.response_due) if ticket.response_due else None
+	resolution = get_datetime(ticket.resolution_datetime) if ticket.resolution_datetime else None
+	resolution_due = get_datetime(ticket.resolution_due) if ticket.resolution_due else None
+
+	if first_response and response_due:
+		ticket.response_sla_status = "Met" if first_response <= response_due else "Breached"
+	elif response_due and now > response_due:
 		ticket.response_sla_status = "Breached"
-	elif ticket.response_due:
-		ticket.response_sla_status = _progress_status(ticket.reported_datetime, ticket.response_due, now)
+	elif response_due:
+		ticket.response_sla_status = _progress_status(ticket.reported_datetime, response_due, now)
 
-	if ticket.resolution_datetime:
-		ticket.resolution_sla_status = "Met" if ticket.resolution_datetime <= ticket.resolution_due else "Breached"
-	elif ticket.resolution_due and now > ticket.resolution_due:
+	if resolution and resolution_due:
+		ticket.resolution_sla_status = "Met" if resolution <= resolution_due else "Breached"
+	elif resolution_due and now > resolution_due:
 		ticket.resolution_sla_status = "Breached"
-	elif ticket.resolution_due:
-		ticket.resolution_sla_status = _progress_status(ticket.reported_datetime, ticket.resolution_due, now)
+	elif resolution_due:
+		ticket.resolution_sla_status = _progress_status(ticket.reported_datetime, resolution_due, now)
 
-	ticket.response_sla_percentage = _percentage(ticket.reported_datetime, ticket.response_due, now)
-	ticket.resolution_sla_percentage = _percentage(ticket.reported_datetime, ticket.resolution_due, now)
+	ticket.response_sla_percentage = _percentage(ticket.reported_datetime, response_due, now)
+	ticket.resolution_sla_percentage = _percentage(ticket.reported_datetime, resolution_due, now)
 
 
 def _progress_status(start, due, now):
