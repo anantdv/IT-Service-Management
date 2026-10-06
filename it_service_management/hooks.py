@@ -20,6 +20,14 @@ add_to_apps_screen = [
 	}
 ]
 
+app_include_css = [
+	"/assets/it_service_management/css/itsm_workspace.css",
+]
+
+app_include_js = [
+	"/assets/it_service_management/js/itsm_workspace.js",
+]
+
 fixtures = [
 	{"dt": "Role", "filters": [["role_name", "in", [
 		"Service Manager",
