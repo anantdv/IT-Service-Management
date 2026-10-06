@@ -1,0 +1,167 @@
+.itsm-service-desk {
+	padding: 24px;
+}
+
+.itsm-service-desk__toolbar {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	margin-bottom: 16px;
+}
+
+.itsm-kpi-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.itsm-kpi-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	padding: 14px 16px;
+	min-height: 86px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: var(--shadow-sm);
+}
+
+.itsm-kpi-card span {
+	color: var(--text-muted);
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.itsm-kpi-card strong {
+	color: var(--text-color);
+	font-size: 28px;
+	line-height: 1;
+}
+
+.itsm-queue-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+	align-items: start;
+}
+
+.itsm-queue-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+}
+
+.itsm-queue-card__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 16px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.itsm-queue-card__head h3 {
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0;
+}
+
+.itsm-queue-card__head span {
+	background: var(--bg-light-gray);
+	border-radius: 999px;
+	color: var(--text-muted);
+	font-size: 12px;
+	min-width: 24px;
+	padding: 2px 8px;
+	text-align: center;
+}
+
+.itsm-ticket-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.itsm-ticket-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--border-color);
+	color: var(--text-color);
+	text-decoration: none;
+}
+
+.itsm-ticket-row:last-child {
+	border-bottom: 0;
+}
+
+.itsm-ticket-row:hover {
+	background: var(--highlight-color);
+	text-decoration: none;
+}
+
+.itsm-ticket-row span {
+	display: flex;
+	gap: 8px;
+	min-width: 0;
+}
+
+.itsm-ticket-row strong {
+	white-space: nowrap;
+}
+
+.itsm-ticket-row em {
+	color: var(--text-muted);
+	font-style: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.itsm-ticket-row small {
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	padding: 3px 8px;
+	white-space: nowrap;
+}
+
+.priority-critical,
+.priority-high {
+	background: var(--red-50);
+	color: var(--red-600);
+}
+
+.priority-medium {
+	background: var(--orange-50);
+	color: var(--orange-600);
+}
+
+.priority-low {
+	background: var(--gray-100);
+	color: var(--text-muted);
+}
+
+.itsm-empty {
+	color: var(--text-muted);
+	padding: 24px 16px;
+}
+
+@media (max-width: 900px) {
+	.itsm-service-desk {
+		padding: 16px;
+	}
+
+	.itsm-queue-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.itsm-service-desk__toolbar {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+}
