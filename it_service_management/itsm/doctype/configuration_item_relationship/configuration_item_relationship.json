@@ -5,22 +5,113 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["parent_ci", "relationship_type", "child_ci", "description", "active"],
+ "field_order": [
+  "parent_ci",
+  "relationship_type",
+  "child_ci",
+  "description",
+  "active"
+ ],
  "fields": [
-  {"fieldname": "parent_ci", "fieldtype": "Link", "in_list_view": 1, "label": "Parent CI", "options": "Configuration Item", "reqd": 1},
-  {"fieldname": "relationship_type", "fieldtype": "Select", "in_list_view": 1, "label": "Relationship Type", "options": "Depends On\nUsed By\nHosted On\nConnected To\nBacked Up By\nProtected By\nRuns On\nMember Of\nProvides Service To\nLocated At", "reqd": 1},
-  {"fieldname": "child_ci", "fieldtype": "Link", "in_list_view": 1, "label": "Child CI", "options": "Configuration Item", "reqd": 1},
-  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
-  {"default": "1", "fieldname": "active", "fieldtype": "Check", "label": "Active"}
+  {
+   "fieldname": "parent_ci",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Parent CI",
+   "options": "Configuration Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "relationship_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Relationship Type",
+   "options": "Depends On\nUsed By\nHosted On\nConnected To\nBacked Up By\nProtected By\nRuns On\nMember Of\nProvides Service To\nLocated At",
+   "reqd": 1
+  },
+  {
+   "fieldname": "child_ci",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Child CI",
+   "options": "Configuration Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "Configuration Item Relationship",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Technician", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Technician",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

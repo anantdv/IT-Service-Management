@@ -5,33 +5,188 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["service_name", "service_code", "company", "service_owner", "technical_owner", "service_type", "status", "description", "business_description", "criticality", "default_service_plan", "support_hours", "support_group", "customer_visible", "portal_visible", "offerings"],
+ "field_order": [
+  "service_name",
+  "service_code",
+  "company",
+  "service_owner",
+  "technical_owner",
+  "service_type",
+  "status",
+  "description",
+  "business_description",
+  "criticality",
+  "default_service_plan",
+  "support_hours",
+  "support_group",
+  "customer_visible",
+  "portal_visible",
+  "offerings"
+ ],
  "fields": [
-  {"fieldname": "service_name", "fieldtype": "Data", "in_list_view": 1, "label": "Service Name", "reqd": 1, "unique": 1},
-  {"fieldname": "service_code", "fieldtype": "Data", "in_list_view": 1, "label": "Service Code"},
-  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company"},
-  {"fieldname": "service_owner", "fieldtype": "Link", "label": "Service Owner", "options": "User"},
-  {"fieldname": "technical_owner", "fieldtype": "Link", "label": "Technical Owner", "options": "User"},
-  {"fieldname": "service_type", "fieldtype": "Select", "in_standard_filter": 1, "label": "Service Type", "options": "Business Service\nTechnical Service\nCustomer Service"},
-  {"default": "Active", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Status", "options": "Design\nActive\nMaintenance\nRetired"},
-  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
-  {"fieldname": "business_description", "fieldtype": "Text Editor", "label": "Business Description"},
-  {"default": "Medium", "fieldname": "criticality", "fieldtype": "Select", "in_list_view": 1, "label": "Criticality", "options": "Critical\nHigh\nMedium\nLow"},
-  {"fieldname": "default_service_plan", "fieldtype": "Link", "label": "Default Service Plan", "options": "Service Plan"},
-  {"fieldname": "support_hours", "fieldtype": "Data", "label": "Support Hours"},
-  {"fieldname": "support_group", "fieldtype": "Link", "label": "Support Group", "options": "ITSM Assignment Group"},
-  {"default": "0", "fieldname": "customer_visible", "fieldtype": "Check", "label": "Customer Visible"},
-  {"default": "0", "fieldname": "portal_visible", "fieldtype": "Check", "label": "Portal Visible"},
-  {"fieldname": "offerings", "fieldtype": "Table", "label": "Offerings", "options": "Service Offering"}
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "service_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Code"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "service_owner",
+   "fieldtype": "Link",
+   "label": "Service Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "technical_owner",
+   "fieldtype": "Link",
+   "label": "Technical Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Service Type",
+   "options": "Business Service\nTechnical Service\nCustomer Service"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Design\nActive\nMaintenance\nRetired"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "business_description",
+   "fieldtype": "Text Editor",
+   "label": "Business Description"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "criticality",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Criticality",
+   "options": "Critical\nHigh\nMedium\nLow"
+  },
+  {
+   "fieldname": "default_service_plan",
+   "fieldtype": "Link",
+   "label": "Default Service Plan",
+   "options": "Service Plan"
+  },
+  {
+   "fieldname": "support_hours",
+   "fieldtype": "Data",
+   "label": "Support Hours"
+  },
+  {
+   "fieldname": "support_group",
+   "fieldtype": "Link",
+   "label": "Support Group",
+   "options": "ITSM Assignment Group"
+  },
+  {
+   "default": "0",
+   "fieldname": "customer_visible",
+   "fieldtype": "Check",
+   "label": "Customer Visible"
+  },
+  {
+   "default": "0",
+   "fieldname": "portal_visible",
+   "fieldtype": "Check",
+   "label": "Portal Visible"
+  },
+  {
+   "fieldname": "offerings",
+   "fieldtype": "Table",
+   "label": "Offerings",
+   "options": "Service Offering"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Service",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1},
-  {"role": "ITSM Technician", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "ITSM Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

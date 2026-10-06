@@ -5,42 +5,245 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["naming_series", "title", "status", "category", "service", "configuration_item_type", "article_type", "summary", "symptoms", "cause", "resolution", "content", "visibility_section", "internal_only", "customer_visible", "author", "reviewer", "published_on", "review_date", "source_section", "source_problem", "source_known_error", "source_incident", "helpful_count", "not_helpful_count"],
+ "field_order": [
+  "naming_series",
+  "title",
+  "status",
+  "category",
+  "service",
+  "configuration_item_type",
+  "article_type",
+  "summary",
+  "symptoms",
+  "cause",
+  "resolution",
+  "content",
+  "visibility_section",
+  "internal_only",
+  "customer_visible",
+  "author",
+  "reviewer",
+  "published_on",
+  "review_date",
+  "source_section",
+  "source_problem",
+  "source_known_error",
+  "source_incident",
+  "helpful_count",
+  "not_helpful_count"
+ ],
  "fields": [
-  {"default": "KB-.YYYY.-.#####", "fieldname": "naming_series", "fieldtype": "Select", "label": "Naming Series", "options": "KB-.YYYY.-.#####", "reqd": 1},
-  {"fieldname": "title", "fieldtype": "Data", "in_list_view": 1, "label": "Title", "reqd": 1},
-  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Draft\nReview\nPublished\nRetired"},
-  {"fieldname": "category", "fieldtype": "Data", "label": "Category"},
-  {"fieldname": "service", "fieldtype": "Link", "label": "Service", "options": "ITSM Service"},
-  {"fieldname": "configuration_item_type", "fieldtype": "Link", "label": "Configuration Item Type", "options": "Configuration Item Type"},
-  {"fieldname": "article_type", "fieldtype": "Select", "label": "Article Type", "options": "How-To\nTroubleshooting\nKnown Issue\nFAQ\nWorkaround\nProcedure"},
-  {"fieldname": "summary", "fieldtype": "Small Text", "label": "Summary"},
-  {"fieldname": "symptoms", "fieldtype": "Text Editor", "label": "Symptoms"},
-  {"fieldname": "cause", "fieldtype": "Text Editor", "label": "Cause"},
-  {"fieldname": "resolution", "fieldtype": "Text Editor", "label": "Resolution"},
-  {"fieldname": "content", "fieldtype": "Text Editor", "label": "Content"},
-  {"fieldname": "visibility_section", "fieldtype": "Section Break", "label": "Visibility"},
-  {"default": "1", "fieldname": "internal_only", "fieldtype": "Check", "label": "Internal Only"},
-  {"default": "0", "fieldname": "customer_visible", "fieldtype": "Check", "label": "Customer Visible"},
-  {"fieldname": "author", "fieldtype": "Link", "label": "Author", "options": "User"},
-  {"fieldname": "reviewer", "fieldtype": "Link", "label": "Reviewer", "options": "User"},
-  {"fieldname": "published_on", "fieldtype": "Date", "label": "Published On"},
-  {"fieldname": "review_date", "fieldtype": "Date", "label": "Review Date"},
-  {"fieldname": "source_section", "fieldtype": "Section Break", "label": "Source"},
-  {"fieldname": "source_problem", "fieldtype": "Link", "label": "Source Problem", "options": "ITSM Problem"},
-  {"fieldname": "source_known_error", "fieldtype": "Link", "label": "Source Known Error", "options": "ITSM Known Error"},
-  {"fieldname": "source_incident", "fieldtype": "Link", "label": "Source Incident", "options": "Service Ticket"},
-  {"default": "0", "fieldname": "helpful_count", "fieldtype": "Int", "label": "Helpful Count", "read_only": 1},
-  {"default": "0", "fieldname": "not_helpful_count", "fieldtype": "Int", "label": "Not Helpful Count", "read_only": 1}
+  {
+   "default": "KB-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "KB-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nReview\nPublished\nRetired"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Link",
+   "label": "Service",
+   "options": "ITSM Service"
+  },
+  {
+   "fieldname": "configuration_item_type",
+   "fieldtype": "Link",
+   "label": "Configuration Item Type",
+   "options": "Configuration Item Type"
+  },
+  {
+   "fieldname": "article_type",
+   "fieldtype": "Select",
+   "label": "Article Type",
+   "options": "How-To\nTroubleshooting\nKnown Issue\nFAQ\nWorkaround\nProcedure"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "symptoms",
+   "fieldtype": "Text Editor",
+   "label": "Symptoms"
+  },
+  {
+   "fieldname": "cause",
+   "fieldtype": "Text Editor",
+   "label": "Cause"
+  },
+  {
+   "fieldname": "resolution",
+   "fieldtype": "Text Editor",
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Text Editor",
+   "label": "Content"
+  },
+  {
+   "fieldname": "visibility_section",
+   "fieldtype": "Section Break",
+   "label": "Visibility"
+  },
+  {
+   "default": "1",
+   "fieldname": "internal_only",
+   "fieldtype": "Check",
+   "label": "Internal Only"
+  },
+  {
+   "default": "0",
+   "fieldname": "customer_visible",
+   "fieldtype": "Check",
+   "label": "Customer Visible"
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Link",
+   "label": "Author",
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "Reviewer",
+   "options": "User"
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Date",
+   "label": "Published On"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_problem",
+   "fieldtype": "Link",
+   "label": "Source Problem",
+   "options": "ITSM Problem"
+  },
+  {
+   "fieldname": "source_known_error",
+   "fieldtype": "Link",
+   "label": "Source Known Error",
+   "options": "ITSM Known Error"
+  },
+  {
+   "fieldname": "source_incident",
+   "fieldtype": "Link",
+   "label": "Source Incident",
+   "options": "Service Ticket"
+  },
+  {
+   "default": "0",
+   "fieldname": "helpful_count",
+   "fieldtype": "Int",
+   "label": "Helpful Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "not_helpful_count",
+   "fieldtype": "Int",
+   "label": "Not Helpful Count",
+   "read_only": 1
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Knowledge Article",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Knowledge Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Knowledge Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

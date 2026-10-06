@@ -5,59 +5,361 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["naming_series", "title", "company", "change_type", "status", "requested_by", "change_owner", "implementation_owner", "implementation_group", "source_section", "source_type", "source_incident", "source_problem", "affected_service", "primary_configuration_item", "description_section", "reason", "business_justification", "change_description", "risk_section", "risk_level", "risk_score", "override_risk_level", "risk_override_reason", "impact", "urgency", "planned_start", "planned_end", "actual_start", "actual_end", "downtime_required", "expected_downtime_minutes", "plans_section", "implementation_plan", "test_plan", "validation_plan", "rollback_plan", "customer_impact", "business_impact", "approval_status", "affected_cis"],
+ "field_order": [
+  "naming_series",
+  "title",
+  "company",
+  "change_type",
+  "status",
+  "requested_by",
+  "change_owner",
+  "implementation_owner",
+  "implementation_group",
+  "source_section",
+  "source_type",
+  "source_incident",
+  "source_problem",
+  "affected_service",
+  "primary_configuration_item",
+  "description_section",
+  "reason",
+  "business_justification",
+  "change_description",
+  "risk_section",
+  "risk_level",
+  "risk_score",
+  "override_risk_level",
+  "risk_override_reason",
+  "impact",
+  "urgency",
+  "planned_start",
+  "planned_end",
+  "actual_start",
+  "actual_end",
+  "downtime_required",
+  "expected_downtime_minutes",
+  "plans_section",
+  "implementation_plan",
+  "test_plan",
+  "validation_plan",
+  "rollback_plan",
+  "customer_impact",
+  "business_impact",
+  "approval_status",
+  "affected_cis"
+ ],
  "fields": [
-  {"default": "CHG-.YYYY.-.#####", "fieldname": "naming_series", "fieldtype": "Select", "label": "Naming Series", "options": "CHG-.YYYY.-.#####", "reqd": 1},
-  {"fieldname": "title", "fieldtype": "Data", "in_list_view": 1, "label": "Title", "reqd": 1},
-  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company"},
-  {"default": "Normal", "fieldname": "change_type", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Change Type", "options": "Standard\nNormal\nEmergency"},
-  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Status", "options": "Draft\nAssessment\nAwaiting Approval\nApproved\nScheduled\nImplementation\nValidation\nCompleted\nRejected\nCancelled\nFailed\nRolled Back"},
-  {"fieldname": "requested_by", "fieldtype": "Link", "label": "Requested By", "options": "User"},
-  {"fieldname": "change_owner", "fieldtype": "Link", "label": "Change Owner", "options": "User"},
-  {"fieldname": "implementation_owner", "fieldtype": "Link", "label": "Implementation Owner", "options": "User"},
-  {"fieldname": "implementation_group", "fieldtype": "Link", "label": "Implementation Group", "options": "ITSM Assignment Group"},
-  {"fieldname": "source_section", "fieldtype": "Section Break", "label": "Source"},
-  {"fieldname": "source_type", "fieldtype": "Select", "label": "Source Type", "options": "\nIncident\nProblem\nMaintenance\nProject\nSecurity\nInfrastructure\nOther"},
-  {"fieldname": "source_incident", "fieldtype": "Link", "label": "Source Incident", "options": "Service Ticket"},
-  {"fieldname": "source_problem", "fieldtype": "Link", "label": "Source Problem", "options": "ITSM Problem"},
-  {"fieldname": "affected_service", "fieldtype": "Link", "label": "Affected Service", "options": "ITSM Service"},
-  {"fieldname": "primary_configuration_item", "fieldtype": "Link", "label": "Primary Configuration Item", "options": "Configuration Item"},
-  {"fieldname": "description_section", "fieldtype": "Section Break", "label": "Description"},
-  {"fieldname": "reason", "fieldtype": "Small Text", "label": "Reason"},
-  {"fieldname": "business_justification", "fieldtype": "Text Editor", "label": "Business Justification"},
-  {"fieldname": "change_description", "fieldtype": "Text Editor", "label": "Change Description"},
-  {"fieldname": "risk_section", "fieldtype": "Section Break", "label": "Risk"},
-  {"default": "Medium", "fieldname": "risk_level", "fieldtype": "Select", "in_list_view": 1, "label": "Risk Level", "options": "Low\nMedium\nHigh\nCritical"},
-  {"fieldname": "risk_score", "fieldtype": "Int", "in_list_view": 1, "label": "Risk Score", "read_only": 1},
-  {"default": "0", "fieldname": "override_risk_level", "fieldtype": "Check", "label": "Override Risk Level"},
-  {"fieldname": "risk_override_reason", "fieldtype": "Small Text", "label": "Risk Override Reason"},
-  {"default": "Medium", "fieldname": "impact", "fieldtype": "Select", "label": "Impact", "options": "Low\nMedium\nHigh\nCritical"},
-  {"default": "Medium", "fieldname": "urgency", "fieldtype": "Select", "label": "Urgency", "options": "Low\nMedium\nHigh\nCritical"},
-  {"fieldname": "planned_start", "fieldtype": "Datetime", "label": "Planned Start"},
-  {"fieldname": "planned_end", "fieldtype": "Datetime", "label": "Planned End"},
-  {"fieldname": "actual_start", "fieldtype": "Datetime", "label": "Actual Start"},
-  {"fieldname": "actual_end", "fieldtype": "Datetime", "label": "Actual End"},
-  {"default": "0", "fieldname": "downtime_required", "fieldtype": "Check", "label": "Downtime Required"},
-  {"fieldname": "expected_downtime_minutes", "fieldtype": "Int", "label": "Expected Downtime Minutes"},
-  {"fieldname": "plans_section", "fieldtype": "Section Break", "label": "Plans"},
-  {"fieldname": "implementation_plan", "fieldtype": "Text Editor", "label": "Implementation Plan"},
-  {"fieldname": "test_plan", "fieldtype": "Text Editor", "label": "Test Plan"},
-  {"fieldname": "validation_plan", "fieldtype": "Text Editor", "label": "Validation Plan"},
-  {"fieldname": "rollback_plan", "fieldtype": "Text Editor", "label": "Rollback Plan"},
-  {"fieldname": "customer_impact", "fieldtype": "Text Editor", "label": "Customer Impact"},
-  {"fieldname": "business_impact", "fieldtype": "Text Editor", "label": "Business Impact"},
-  {"default": "Not Required", "fieldname": "approval_status", "fieldtype": "Select", "label": "Approval Status", "options": "Not Required\nPending\nApproved\nRejected"},
-  {"fieldname": "affected_cis", "fieldtype": "Table", "label": "Affected CIs", "options": "Change Configuration Item"}
+  {
+   "default": "CHG-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "CHG-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "default": "Normal",
+   "fieldname": "change_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Change Type",
+   "options": "Standard\nNormal\nEmergency"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nAssessment\nAwaiting Approval\nApproved\nScheduled\nImplementation\nValidation\nCompleted\nRejected\nCancelled\nFailed\nRolled Back"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User"
+  },
+  {
+   "fieldname": "change_owner",
+   "fieldtype": "Link",
+   "label": "Change Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "implementation_owner",
+   "fieldtype": "Link",
+   "label": "Implementation Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "implementation_group",
+   "fieldtype": "Link",
+   "label": "Implementation Group",
+   "options": "ITSM Assignment Group"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "label": "Source Type",
+   "options": "\nIncident\nProblem\nMaintenance\nProject\nSecurity\nInfrastructure\nOther"
+  },
+  {
+   "fieldname": "source_incident",
+   "fieldtype": "Link",
+   "label": "Source Incident",
+   "options": "Service Ticket"
+  },
+  {
+   "fieldname": "source_problem",
+   "fieldtype": "Link",
+   "label": "Source Problem",
+   "options": "ITSM Problem"
+  },
+  {
+   "fieldname": "affected_service",
+   "fieldtype": "Link",
+   "label": "Affected Service",
+   "options": "ITSM Service"
+  },
+  {
+   "fieldname": "primary_configuration_item",
+   "fieldtype": "Link",
+   "label": "Primary Configuration Item",
+   "options": "Configuration Item"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "business_justification",
+   "fieldtype": "Text Editor",
+   "label": "Business Justification"
+  },
+  {
+   "fieldname": "change_description",
+   "fieldtype": "Text Editor",
+   "label": "Change Description"
+  },
+  {
+   "fieldname": "risk_section",
+   "fieldtype": "Section Break",
+   "label": "Risk"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "risk_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Risk Level",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "risk_score",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Risk Score",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "override_risk_level",
+   "fieldtype": "Check",
+   "label": "Override Risk Level"
+  },
+  {
+   "fieldname": "risk_override_reason",
+   "fieldtype": "Small Text",
+   "label": "Risk Override Reason"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "impact",
+   "fieldtype": "Select",
+   "label": "Impact",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "urgency",
+   "fieldtype": "Select",
+   "label": "Urgency",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "planned_start",
+   "fieldtype": "Datetime",
+   "label": "Planned Start"
+  },
+  {
+   "fieldname": "planned_end",
+   "fieldtype": "Datetime",
+   "label": "Planned End"
+  },
+  {
+   "fieldname": "actual_start",
+   "fieldtype": "Datetime",
+   "label": "Actual Start"
+  },
+  {
+   "fieldname": "actual_end",
+   "fieldtype": "Datetime",
+   "label": "Actual End"
+  },
+  {
+   "default": "0",
+   "fieldname": "downtime_required",
+   "fieldtype": "Check",
+   "label": "Downtime Required"
+  },
+  {
+   "fieldname": "expected_downtime_minutes",
+   "fieldtype": "Int",
+   "label": "Expected Downtime Minutes"
+  },
+  {
+   "fieldname": "plans_section",
+   "fieldtype": "Section Break",
+   "label": "Plans"
+  },
+  {
+   "fieldname": "implementation_plan",
+   "fieldtype": "Text Editor",
+   "label": "Implementation Plan"
+  },
+  {
+   "fieldname": "test_plan",
+   "fieldtype": "Text Editor",
+   "label": "Test Plan"
+  },
+  {
+   "fieldname": "validation_plan",
+   "fieldtype": "Text Editor",
+   "label": "Validation Plan"
+  },
+  {
+   "fieldname": "rollback_plan",
+   "fieldtype": "Text Editor",
+   "label": "Rollback Plan"
+  },
+  {
+   "fieldname": "customer_impact",
+   "fieldtype": "Text Editor",
+   "label": "Customer Impact"
+  },
+  {
+   "fieldname": "business_impact",
+   "fieldtype": "Text Editor",
+   "label": "Business Impact"
+  },
+  {
+   "default": "Not Required",
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "Not Required\nPending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "affected_cis",
+   "fieldtype": "Table",
+   "label": "Affected CIs",
+   "options": "Change Configuration Item"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Change Request",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Change Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM CAB Member", "read": 1, "report": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Change Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM CAB Member",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

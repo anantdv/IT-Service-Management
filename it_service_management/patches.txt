@@ -6,3 +6,4 @@ it_service_management.patches.v0_0.mark_dashboard_charts_custom
 it_service_management.patches.v0_0.remove_customer_custom_docperms
 it_service_management.patches.v0_0.ensure_contact_billing_fields
 it_service_management.patches.v0_0.ensure_itsm_module_mapping
+it_service_management.patches.v0_0.ensure_itsm_role_permissions

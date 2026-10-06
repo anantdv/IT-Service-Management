@@ -5,22 +5,104 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["group_name", "manager", "service", "active", "members"],
+ "field_order": [
+  "group_name",
+  "manager",
+  "service",
+  "active",
+  "members"
+ ],
  "fields": [
-  {"fieldname": "group_name", "fieldtype": "Data", "in_list_view": 1, "label": "Group Name", "reqd": 1, "unique": 1},
-  {"fieldname": "manager", "fieldtype": "Link", "label": "Manager", "options": "User"},
-  {"fieldname": "service", "fieldtype": "Link", "label": "Service", "options": "ITSM Service"},
-  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
-  {"fieldname": "members", "fieldtype": "Table", "label": "Members", "options": "Assignment Group Member"}
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Group Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "manager",
+   "fieldtype": "Link",
+   "label": "Manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "service",
+   "fieldtype": "Link",
+   "label": "Service",
+   "options": "ITSM Service"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "members",
+   "fieldtype": "Table",
+   "label": "Members",
+   "options": "Assignment Group Member"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Assignment Group",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

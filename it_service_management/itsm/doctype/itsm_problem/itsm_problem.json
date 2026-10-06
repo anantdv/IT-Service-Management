@@ -5,49 +5,289 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["naming_series", "title", "company", "status", "priority", "problem_owner", "technical_owner", "assignment_group", "category", "subcategory", "affected_service", "configuration_item", "detected_date", "target_resolution_date", "resolved_date", "description", "business_impact", "symptoms", "rca_section", "rca_method", "root_cause_category", "root_cause", "root_cause_details", "contributing_factors", "workaround", "permanent_fix", "corrective_action", "preventive_action", "known_error", "change_required", "change_request", "incidents"],
+ "field_order": [
+  "naming_series",
+  "title",
+  "company",
+  "status",
+  "priority",
+  "problem_owner",
+  "technical_owner",
+  "assignment_group",
+  "category",
+  "subcategory",
+  "affected_service",
+  "configuration_item",
+  "detected_date",
+  "target_resolution_date",
+  "resolved_date",
+  "description",
+  "business_impact",
+  "symptoms",
+  "rca_section",
+  "rca_method",
+  "root_cause_category",
+  "root_cause",
+  "root_cause_details",
+  "contributing_factors",
+  "workaround",
+  "permanent_fix",
+  "corrective_action",
+  "preventive_action",
+  "known_error",
+  "change_required",
+  "change_request",
+  "incidents"
+ ],
  "fields": [
-  {"default": "PRB-.YYYY.-.#####", "fieldname": "naming_series", "fieldtype": "Select", "label": "Naming Series", "options": "PRB-.YYYY.-.#####", "reqd": 1},
-  {"fieldname": "title", "fieldtype": "Data", "in_list_view": 1, "label": "Title", "reqd": 1},
-  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company"},
-  {"default": "New", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Status", "options": "New\nUnder Investigation\nRoot Cause Identified\nKnown Error\nFix Planned\nResolved\nClosed\nCancelled"},
-  {"default": "Medium", "fieldname": "priority", "fieldtype": "Select", "in_list_view": 1, "label": "Priority", "options": "Critical\nHigh\nMedium\nLow"},
-  {"fieldname": "problem_owner", "fieldtype": "Link", "label": "Problem Owner", "options": "User"},
-  {"fieldname": "technical_owner", "fieldtype": "Link", "label": "Technical Owner", "options": "User"},
-  {"fieldname": "assignment_group", "fieldtype": "Link", "label": "Assignment Group", "options": "ITSM Assignment Group"},
-  {"fieldname": "category", "fieldtype": "Data", "label": "Category"},
-  {"fieldname": "subcategory", "fieldtype": "Data", "label": "Subcategory"},
-  {"fieldname": "affected_service", "fieldtype": "Link", "label": "Affected Service", "options": "ITSM Service"},
-  {"fieldname": "configuration_item", "fieldtype": "Link", "label": "Configuration Item", "options": "Configuration Item"},
-  {"fieldname": "detected_date", "fieldtype": "Date", "label": "Detected Date"},
-  {"fieldname": "target_resolution_date", "fieldtype": "Date", "label": "Target Resolution Date"},
-  {"fieldname": "resolved_date", "fieldtype": "Date", "label": "Resolved Date"},
-  {"fieldname": "description", "fieldtype": "Text Editor", "label": "Description"},
-  {"fieldname": "business_impact", "fieldtype": "Text Editor", "label": "Business Impact"},
-  {"fieldname": "symptoms", "fieldtype": "Text Editor", "label": "Symptoms"},
-  {"fieldname": "rca_section", "fieldtype": "Section Break", "label": "Root Cause Analysis"},
-  {"fieldname": "rca_method", "fieldtype": "Select", "label": "RCA Method", "options": "\n5 Whys\nFishbone\nFault Tree\nVendor Analysis\nTechnical Investigation\nOther"},
-  {"fieldname": "root_cause_category", "fieldtype": "Select", "label": "Root Cause Category", "options": "\nHardware\nSoftware\nNetwork\nConfiguration\nCapacity\nHuman Error\nVendor\nProcess\nSecurity\nEnvironment\nUnknown"},
-  {"fieldname": "root_cause", "fieldtype": "Text Editor", "label": "Root Cause"},
-  {"fieldname": "root_cause_details", "fieldtype": "Text Editor", "label": "Root Cause Details"},
-  {"fieldname": "contributing_factors", "fieldtype": "Text Editor", "label": "Contributing Factors"},
-  {"fieldname": "workaround", "fieldtype": "Text Editor", "label": "Workaround"},
-  {"fieldname": "permanent_fix", "fieldtype": "Text Editor", "label": "Permanent Fix"},
-  {"fieldname": "corrective_action", "fieldtype": "Text Editor", "label": "Corrective Action"},
-  {"fieldname": "preventive_action", "fieldtype": "Text Editor", "label": "Preventive Action"},
-  {"fieldname": "known_error", "fieldtype": "Link", "label": "Known Error", "options": "ITSM Known Error"},
-  {"default": "0", "fieldname": "change_required", "fieldtype": "Check", "label": "Change Required"},
-  {"fieldname": "change_request", "fieldtype": "Link", "label": "Change Request", "options": "ITSM Change Request"},
-  {"fieldname": "incidents", "fieldtype": "Table", "label": "Incidents", "options": "Problem Incident"}
+  {
+   "default": "PRB-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PRB-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "default": "New",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "New\nUnder Investigation\nRoot Cause Identified\nKnown Error\nFix Planned\nResolved\nClosed\nCancelled"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Critical\nHigh\nMedium\nLow"
+  },
+  {
+   "fieldname": "problem_owner",
+   "fieldtype": "Link",
+   "label": "Problem Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "technical_owner",
+   "fieldtype": "Link",
+   "label": "Technical Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "assignment_group",
+   "fieldtype": "Link",
+   "label": "Assignment Group",
+   "options": "ITSM Assignment Group"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "subcategory",
+   "fieldtype": "Data",
+   "label": "Subcategory"
+  },
+  {
+   "fieldname": "affected_service",
+   "fieldtype": "Link",
+   "label": "Affected Service",
+   "options": "ITSM Service"
+  },
+  {
+   "fieldname": "configuration_item",
+   "fieldtype": "Link",
+   "label": "Configuration Item",
+   "options": "Configuration Item"
+  },
+  {
+   "fieldname": "detected_date",
+   "fieldtype": "Date",
+   "label": "Detected Date"
+  },
+  {
+   "fieldname": "target_resolution_date",
+   "fieldtype": "Date",
+   "label": "Target Resolution Date"
+  },
+  {
+   "fieldname": "resolved_date",
+   "fieldtype": "Date",
+   "label": "Resolved Date"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "business_impact",
+   "fieldtype": "Text Editor",
+   "label": "Business Impact"
+  },
+  {
+   "fieldname": "symptoms",
+   "fieldtype": "Text Editor",
+   "label": "Symptoms"
+  },
+  {
+   "fieldname": "rca_section",
+   "fieldtype": "Section Break",
+   "label": "Root Cause Analysis"
+  },
+  {
+   "fieldname": "rca_method",
+   "fieldtype": "Select",
+   "label": "RCA Method",
+   "options": "\n5 Whys\nFishbone\nFault Tree\nVendor Analysis\nTechnical Investigation\nOther"
+  },
+  {
+   "fieldname": "root_cause_category",
+   "fieldtype": "Select",
+   "label": "Root Cause Category",
+   "options": "\nHardware\nSoftware\nNetwork\nConfiguration\nCapacity\nHuman Error\nVendor\nProcess\nSecurity\nEnvironment\nUnknown"
+  },
+  {
+   "fieldname": "root_cause",
+   "fieldtype": "Text Editor",
+   "label": "Root Cause"
+  },
+  {
+   "fieldname": "root_cause_details",
+   "fieldtype": "Text Editor",
+   "label": "Root Cause Details"
+  },
+  {
+   "fieldname": "contributing_factors",
+   "fieldtype": "Text Editor",
+   "label": "Contributing Factors"
+  },
+  {
+   "fieldname": "workaround",
+   "fieldtype": "Text Editor",
+   "label": "Workaround"
+  },
+  {
+   "fieldname": "permanent_fix",
+   "fieldtype": "Text Editor",
+   "label": "Permanent Fix"
+  },
+  {
+   "fieldname": "corrective_action",
+   "fieldtype": "Text Editor",
+   "label": "Corrective Action"
+  },
+  {
+   "fieldname": "preventive_action",
+   "fieldtype": "Text Editor",
+   "label": "Preventive Action"
+  },
+  {
+   "fieldname": "known_error",
+   "fieldtype": "Link",
+   "label": "Known Error",
+   "options": "ITSM Known Error"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_required",
+   "fieldtype": "Check",
+   "label": "Change Required"
+  },
+  {
+   "fieldname": "change_request",
+   "fieldtype": "Link",
+   "label": "Change Request",
+   "options": "ITSM Change Request"
+  },
+  {
+   "fieldname": "incidents",
+   "fieldtype": "Table",
+   "label": "Incidents",
+   "options": "Problem Incident"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Problem",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Problem Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Problem Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

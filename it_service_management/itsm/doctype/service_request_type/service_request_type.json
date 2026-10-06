@@ -5,31 +5,170 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["request_type_name", "service_catalog_item", "category", "description", "approval_section", "approval_required", "approval_role", "default_assignment_group", "default_priority", "target_fulfilment_hours", "billing_section", "billable", "default_item", "default_rate", "active"],
+ "field_order": [
+  "request_type_name",
+  "service_catalog_item",
+  "category",
+  "description",
+  "approval_section",
+  "approval_required",
+  "approval_role",
+  "default_assignment_group",
+  "default_priority",
+  "target_fulfilment_hours",
+  "billing_section",
+  "billable",
+  "default_item",
+  "default_rate",
+  "active"
+ ],
  "fields": [
-  {"fieldname": "request_type_name", "fieldtype": "Data", "in_list_view": 1, "label": "Request Type Name", "reqd": 1, "unique": 1},
-  {"fieldname": "service_catalog_item", "fieldtype": "Link", "label": "Service Catalog Item", "options": "ITSM Service"},
-  {"fieldname": "category", "fieldtype": "Data", "in_list_view": 1, "label": "Category"},
-  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
-  {"fieldname": "approval_section", "fieldtype": "Section Break", "label": "Approval"},
-  {"default": "0", "fieldname": "approval_required", "fieldtype": "Check", "label": "Approval Required"},
-  {"fieldname": "approval_role", "fieldtype": "Link", "label": "Approval Role", "options": "Role"},
-  {"fieldname": "default_assignment_group", "fieldtype": "Link", "label": "Default Assignment Group", "options": "ITSM Assignment Group"},
-  {"default": "Medium", "fieldname": "default_priority", "fieldtype": "Select", "label": "Default Priority", "options": "Low\nMedium\nHigh\nCritical"},
-  {"fieldname": "target_fulfilment_hours", "fieldtype": "Float", "label": "Target Fulfilment Hours"},
-  {"fieldname": "billing_section", "fieldtype": "Section Break", "label": "Billing"},
-  {"default": "0", "fieldname": "billable", "fieldtype": "Check", "label": "Billable"},
-  {"fieldname": "default_item", "fieldtype": "Link", "label": "Default Item", "options": "Item"},
-  {"fieldname": "default_rate", "fieldtype": "Currency", "label": "Default Rate"},
-  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+  {
+   "fieldname": "request_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Request Type Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "service_catalog_item",
+   "fieldtype": "Link",
+   "label": "Service Catalog Item",
+   "options": "ITSM Service"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Category"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "default": "0",
+   "fieldname": "approval_required",
+   "fieldtype": "Check",
+   "label": "Approval Required"
+  },
+  {
+   "fieldname": "approval_role",
+   "fieldtype": "Link",
+   "label": "Approval Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "default_assignment_group",
+   "fieldtype": "Link",
+   "label": "Default Assignment Group",
+   "options": "ITSM Assignment Group"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "default_priority",
+   "fieldtype": "Select",
+   "label": "Default Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "target_fulfilment_hours",
+   "fieldtype": "Float",
+   "label": "Target Fulfilment Hours"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "default": "0",
+   "fieldname": "billable",
+   "fieldtype": "Check",
+   "label": "Billable"
+  },
+  {
+   "fieldname": "default_item",
+   "fieldtype": "Link",
+   "label": "Default Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "default_rate",
+   "fieldtype": "Currency",
+   "label": "Default Rate"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "Service Request Type",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

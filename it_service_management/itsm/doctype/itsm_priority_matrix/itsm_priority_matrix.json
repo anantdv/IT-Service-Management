@@ -5,24 +5,116 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["impact", "urgency", "priority", "response_minutes", "resolution_minutes", "active", "description"],
+ "field_order": [
+  "impact",
+  "urgency",
+  "priority",
+  "response_minutes",
+  "resolution_minutes",
+  "active",
+  "description"
+ ],
  "fields": [
-  {"fieldname": "impact", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Impact", "options": "Low\nMedium\nHigh\nCritical", "reqd": 1},
-  {"fieldname": "urgency", "fieldtype": "Select", "in_list_view": 1, "in_standard_filter": 1, "label": "Urgency", "options": "Low\nMedium\nHigh\nCritical", "reqd": 1},
-  {"fieldname": "priority", "fieldtype": "Select", "in_list_view": 1, "label": "Priority", "options": "Low\nMedium\nHigh\nCritical", "reqd": 1},
-  {"fieldname": "response_minutes", "fieldtype": "Int", "label": "Response SLA Minutes"},
-  {"fieldname": "resolution_minutes", "fieldtype": "Int", "label": "Resolution SLA Minutes"},
-  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
-  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"}
+  {
+   "fieldname": "impact",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Impact",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "reqd": 1
+  },
+  {
+   "fieldname": "urgency",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Urgency",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "reqd": 1
+  },
+  {
+   "fieldname": "response_minutes",
+   "fieldtype": "Int",
+   "label": "Response SLA Minutes"
+  },
+  {
+   "fieldname": "resolution_minutes",
+   "fieldtype": "Int",
+   "label": "Resolution SLA Minutes"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Priority Matrix",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "IT Service Analyst", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

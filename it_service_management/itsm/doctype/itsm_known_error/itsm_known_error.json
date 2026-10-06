@@ -5,32 +5,176 @@
  "creation": "2026-10-06 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["naming_series", "title", "problem", "status", "affected_service", "configuration_item_type", "category", "symptoms", "cause", "workaround", "permanent_fix", "customer_visible", "technician_visible", "published_on", "review_date"],
+ "field_order": [
+  "naming_series",
+  "title",
+  "problem",
+  "status",
+  "affected_service",
+  "configuration_item_type",
+  "category",
+  "symptoms",
+  "cause",
+  "workaround",
+  "permanent_fix",
+  "customer_visible",
+  "technician_visible",
+  "published_on",
+  "review_date"
+ ],
  "fields": [
-  {"default": "KE-.YYYY.-.#####", "fieldname": "naming_series", "fieldtype": "Select", "label": "Naming Series", "options": "KE-.YYYY.-.#####", "reqd": 1},
-  {"fieldname": "title", "fieldtype": "Data", "in_list_view": 1, "label": "Title", "reqd": 1},
-  {"fieldname": "problem", "fieldtype": "Link", "label": "Problem", "options": "ITSM Problem"},
-  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Draft\nPublished\nRetired"},
-  {"fieldname": "affected_service", "fieldtype": "Link", "label": "Affected Service", "options": "ITSM Service"},
-  {"fieldname": "configuration_item_type", "fieldtype": "Link", "label": "Configuration Item Type", "options": "Configuration Item Type"},
-  {"fieldname": "category", "fieldtype": "Data", "label": "Category"},
-  {"fieldname": "symptoms", "fieldtype": "Text Editor", "label": "Symptoms"},
-  {"fieldname": "cause", "fieldtype": "Text Editor", "label": "Cause"},
-  {"fieldname": "workaround", "fieldtype": "Text Editor", "label": "Workaround"},
-  {"fieldname": "permanent_fix", "fieldtype": "Text Editor", "label": "Permanent Fix"},
-  {"default": "0", "fieldname": "customer_visible", "fieldtype": "Check", "label": "Customer Visible"},
-  {"default": "1", "fieldname": "technician_visible", "fieldtype": "Check", "label": "Technician Visible"},
-  {"fieldname": "published_on", "fieldtype": "Date", "label": "Published On"},
-  {"fieldname": "review_date", "fieldtype": "Date", "label": "Review Date"}
+  {
+   "default": "KE-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "KE-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "problem",
+   "fieldtype": "Link",
+   "label": "Problem",
+   "options": "ITSM Problem"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nPublished\nRetired"
+  },
+  {
+   "fieldname": "affected_service",
+   "fieldtype": "Link",
+   "label": "Affected Service",
+   "options": "ITSM Service"
+  },
+  {
+   "fieldname": "configuration_item_type",
+   "fieldtype": "Link",
+   "label": "Configuration Item Type",
+   "options": "Configuration Item Type"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "symptoms",
+   "fieldtype": "Text Editor",
+   "label": "Symptoms"
+  },
+  {
+   "fieldname": "cause",
+   "fieldtype": "Text Editor",
+   "label": "Cause"
+  },
+  {
+   "fieldname": "workaround",
+   "fieldtype": "Text Editor",
+   "label": "Workaround"
+  },
+  {
+   "fieldname": "permanent_fix",
+   "fieldtype": "Text Editor",
+   "label": "Permanent Fix"
+  },
+  {
+   "default": "0",
+   "fieldname": "customer_visible",
+   "fieldtype": "Check",
+   "label": "Customer Visible"
+  },
+  {
+   "default": "1",
+   "fieldname": "technician_visible",
+   "fieldtype": "Check",
+   "label": "Technician Visible"
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Date",
+   "label": "Published On"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "label": "Review Date"
+  }
  ],
  "modified": "2026-10-06 00:00:00.000000",
  "module": "ITSM",
  "name": "ITSM Known Error",
  "permissions": [
-  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
-  {"role": "ITSM Problem Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Manager", "read": 1, "report": 1, "write": 1, "create": 1},
-  {"role": "ITSM Service Desk User", "read": 1, "report": 1}
+  {
+   "role": "ITSM Administrator",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ITSM Problem Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ITSM Service Desk User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Dispatcher",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Technician",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Analyst",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Service Auditor",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "IT Service Executive",
+   "read": 1,
+   "report": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
