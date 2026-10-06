@@ -81,7 +81,8 @@ class CommandCenter {
 	make_tabs() {
 		this.$tabs = $(`<div class="itsm-tabs" role="tablist"></div>`).appendTo(this.$root);
 		this.tabs.forEach((tab) => {
-			const $tab = $(`<button class="itsm-tab" role="tab" data-tab="${tab}">${__(frappe.model.unscrub(tab))}</button>`);
+			const label = tab === "itsm" ? "ITSM" : frappe.model.unscrub(tab);
+			const $tab = $(`<button class="itsm-tab" role="tab" data-tab="${tab}">${__(label)}</button>`);
 			$tab.on("click", () => {
 				this.active_tab = tab;
 				this.$tabs.find(".itsm-tab").removeClass("active");
