@@ -136,8 +136,7 @@
       "fieldname": "customer_site",
       "fieldtype": "Link",
       "label": "Customer Site",
-      "options": "Customer Site",
-      "in_standard_filter": 1
+      "options": "Customer Site"
     },
     {
       "fieldname": "contact_person",
@@ -167,7 +166,6 @@
       "label": "Customer Equipment",
       "options": "Customer Equipment",
       "in_list_view": 1,
-      "in_standard_filter": 1,
       "search_index": 1
     },
     {
@@ -209,8 +207,7 @@
     {
       "fieldname": "incident_category",
       "fieldtype": "Data",
-      "label": "Incident Category",
-      "in_standard_filter": 1
+      "label": "Incident Category"
     },
     {
       "fieldname": "incident_subcategory",
@@ -235,8 +232,7 @@
       "fieldname": "urgency",
       "fieldtype": "Select",
       "label": "Urgency",
-      "options": "\nLow\nMedium\nHigh\nCritical",
-      "in_standard_filter": 1
+      "options": "\nLow\nMedium\nHigh\nCritical"
     },
     {
       "fieldname": "service_category",
@@ -251,37 +247,32 @@
       "fieldname": "affected_service",
       "fieldtype": "Link",
       "label": "Affected Service",
-      "options": "ITSM Service",
-      "in_standard_filter": 1
+      "options": "ITSM Service"
     },
     {
       "fieldname": "configuration_item",
       "fieldtype": "Link",
       "label": "Configuration Item",
       "options": "Configuration Item",
-      "in_standard_filter": 1,
       "search_index": 1
     },
     {
       "fieldname": "routing_service_team",
       "fieldtype": "Link",
       "label": "Routing Service Team",
-      "options": "Service Team",
-      "in_standard_filter": 1
+      "options": "Service Team"
     },
     {
       "fieldname": "assignment_group",
       "fieldtype": "Link",
       "label": "Assignment Group",
-      "options": "ITSM Assignment Group",
-      "in_standard_filter": 1
+      "options": "ITSM Assignment Group"
     },
     {
       "fieldname": "assigned_to",
       "fieldtype": "Link",
       "label": "Assigned To",
-      "options": "User",
-      "in_standard_filter": 1
+      "options": "User"
     },
     {
       "fieldname": "priority",
@@ -290,7 +281,6 @@
       "options": "Critical\nHigh\nMedium\nLow",
       "default": "Medium",
       "in_list_view": 1,
-      "in_standard_filter": 1,
       "search_index": 1
     },
     {
@@ -372,7 +362,6 @@
       "fieldtype": "Datetime",
       "label": "Reported Datetime",
       "in_list_view": 1,
-      "in_standard_filter": 1,
       "search_index": 1
     },
     {
@@ -529,8 +518,7 @@
       "fieldtype": "Datetime",
       "label": "Resolution Due",
       "read_only": 1,
-      "search_index": 1,
-      "in_standard_filter": 1
+      "search_index": 1
     },
     {
       "fieldname": "first_response_datetime",
@@ -639,7 +627,6 @@
       "fieldtype": "Link",
       "label": "Assigned Technician",
       "options": "Employee",
-      "in_standard_filter": 1,
       "search_index": 1
     },
     {
