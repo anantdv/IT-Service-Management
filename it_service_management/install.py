@@ -12,12 +12,14 @@ APP_ROUTE = "it-service-management"
 
 
 def after_install():
+	ensure_itsm_module()
 	ensure_navigation()
 	ensure_itsm_defaults()
 	run_optional_hook("it_service_management.rental_management.install", "after_install")
 
 
 def after_migrate():
+	ensure_itsm_module()
 	ensure_navigation()
 	ensure_itsm_defaults()
 	run_optional_hook("it_service_management.rental_management.install", "after_migrate")
@@ -45,6 +47,18 @@ def ensure_navigation():
 	ensure_workspace("IT Service Management", build_main_workspace())
 	ensure_workspace("Service Operations", build_operations_workspace())
 	frappe.clear_cache()
+
+
+def ensure_itsm_module():
+	if not frappe.db.exists("DocType", "Module Def"):
+		return
+	if frappe.db.exists("Module Def", "ITSM"):
+		frappe.db.set_value("Module Def", "ITSM", "app_name", APP_NAME, update_modified=False)
+		return
+	module = frappe.new_doc("Module Def")
+	module.module_name = "ITSM"
+	module.app_name = APP_NAME
+	module.insert(ignore_permissions=True)
 
 
 def ensure_itsm_defaults():
