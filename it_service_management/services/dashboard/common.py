@@ -733,8 +733,9 @@ def get_contracts_requiring_attention(filters, limit=10):
 			values,
 			as_dict=True,
 		))
+	review_cutoff = getdate(add_days(today(), 30))
 	for row in rows:
-		row.status = "Review" if getdate(row.expiry) <= add_days(today(), 30) else "Monitor"
+		row.status = "Review" if row.expiry and getdate(row.expiry) <= review_cutoff else "Monitor"
 		row.route = route_doctype(row.type, {"name": row.contract})
 	return rows[:limit]
 

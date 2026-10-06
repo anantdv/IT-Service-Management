@@ -8,6 +8,7 @@ from it_service_management.services.dashboard.common import (
 	ManagementAlertEngine,
 	DashboardFilters,
 	alert,
+	get_contracts_requiring_attention,
 	get_period_dates,
 	kpi,
 	route_doctype,
@@ -41,6 +42,11 @@ class TestCommandCenter(FrappeTestCase):
 		]
 		rows = sorted(rows, key=lambda row: {"critical": 0, "warning": 1, "info": 2}.get(row["severity"], 3))
 		self.assertEqual([row["severity"] for row in rows], ["critical", "warning", "info"])
+
+	def test_contract_attention_normalizes_date_cutoff(self):
+		filters = DashboardFilters(None, None, None, None, "2026-01-01", "2026-01-31", "Custom")
+		rows = get_contracts_requiring_attention(filters, limit=1)
+		self.assertIsInstance(rows, list)
 
 	def test_dashboard_endpoint_returns_payload_shape(self):
 		if frappe.session.user == "Guest":
