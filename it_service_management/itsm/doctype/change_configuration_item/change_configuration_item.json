@@ -1,0 +1,19 @@
+{
+ "creation": "2026-10-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["configuration_item", "relationship", "impact", "planned_action"],
+ "fields": [
+  {"fieldname": "configuration_item", "fieldtype": "Link", "in_list_view": 1, "label": "Configuration Item", "options": "Configuration Item", "reqd": 1},
+  {"fieldname": "relationship", "fieldtype": "Data", "label": "Relationship"},
+  {"fieldname": "impact", "fieldtype": "Select", "in_list_view": 1, "label": "Impact", "options": "Low\nMedium\nHigh\nCritical"},
+  {"fieldname": "planned_action", "fieldtype": "Small Text", "label": "Planned Action"}
+ ],
+ "istable": 1,
+ "modified": "2026-10-06 00:00:00.000000",
+ "module": "ITSM",
+ "name": "Change Configuration Item",
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}

@@ -21,16 +21,40 @@
     "asset",
     "ticket_section",
     "ticket_type",
+    "incident_category",
+    "incident_subcategory",
+    "service_request_type",
+    "impact",
+    "urgency",
     "service_category",
+    "affected_service",
+    "configuration_item",
     "routing_service_team",
+    "assignment_group",
+    "assigned_to",
     "priority",
+    "override_reason",
+    "major_incident",
+    "major_incident_reference",
+    "problem",
+    "known_error",
+    "change_request",
     "status",
+    "pending_reason",
     "subject",
     "description",
     "customer_complaint",
     "reported_by",
     "reported_datetime",
     "source",
+    "detection_source",
+    "alert_section",
+    "alert_source",
+    "external_alert_id",
+    "monitoring_system",
+    "alert_severity",
+    "alert_started_at",
+    "alert_cleared_at",
     "coverage_section",
     "coverage_source",
     "coverage_document",
@@ -52,6 +76,10 @@
     "resolution_due",
     "first_response_datetime",
     "resolution_datetime",
+    "acknowledged_at",
+    "paused_sla_minutes",
+    "actual_response_minutes",
+    "actual_resolution_minutes",
     "response_sla_status",
     "resolution_sla_status",
     "response_sla_percentage",
@@ -65,6 +93,9 @@
     "assignment_section",
     "assigned_technician",
     "resolution_section",
+    "resolution_code",
+    "root_cause_summary",
+    "workaround",
     "resolution",
     "resolved_datetime",
     "closed_datetime",
@@ -172,7 +203,39 @@
       "fieldname": "ticket_type",
       "fieldtype": "Select",
       "label": "Ticket Type",
-      "options": "Breakdown\nRemote Support\nOnsite Support\nInstallation\nPreventive Maintenance\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther",
+      "options": "Incident\nService Request\nAlert\nPreventive Maintenance\nGeneral Support\nBreakdown\nRemote Support\nOnsite Support\nInstallation\nWarranty Claim\nAMC Support\nRental Support\nConsumable Request\nConfiguration\nNetwork Support\nSoftware Support\nOther",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "incident_category",
+      "fieldtype": "Data",
+      "label": "Incident Category",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "incident_subcategory",
+      "fieldtype": "Data",
+      "label": "Incident Subcategory"
+    },
+    {
+      "fieldname": "service_request_type",
+      "fieldtype": "Link",
+      "label": "Service Request Type",
+      "options": "Service Request Type",
+      "depends_on": "eval:doc.ticket_type=='Service Request'"
+    },
+    {
+      "fieldname": "impact",
+      "fieldtype": "Select",
+      "label": "Impact",
+      "options": "\nLow\nMedium\nHigh\nCritical",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "urgency",
+      "fieldtype": "Select",
+      "label": "Urgency",
+      "options": "\nLow\nMedium\nHigh\nCritical",
       "in_standard_filter": 1
     },
     {
@@ -185,10 +248,39 @@
       "search_index": 1
     },
     {
+      "fieldname": "affected_service",
+      "fieldtype": "Link",
+      "label": "Affected Service",
+      "options": "ITSM Service",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "configuration_item",
+      "fieldtype": "Link",
+      "label": "Configuration Item",
+      "options": "Configuration Item",
+      "in_standard_filter": 1,
+      "search_index": 1
+    },
+    {
       "fieldname": "routing_service_team",
       "fieldtype": "Link",
       "label": "Routing Service Team",
       "options": "Service Team",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "assignment_group",
+      "fieldtype": "Link",
+      "label": "Assignment Group",
+      "options": "ITSM Assignment Group",
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "assigned_to",
+      "fieldtype": "Link",
+      "label": "Assigned To",
+      "options": "User",
       "in_standard_filter": 1
     },
     {
@@ -202,14 +294,56 @@
       "search_index": 1
     },
     {
+      "fieldname": "override_reason",
+      "fieldtype": "Small Text",
+      "label": "Priority Override Reason",
+      "description": "Required when an authorized service manager overrides the impact/urgency priority matrix."
+    },
+    {
+      "fieldname": "major_incident",
+      "fieldtype": "Check",
+      "label": "Major Incident"
+    },
+    {
+      "fieldname": "major_incident_reference",
+      "fieldtype": "Link",
+      "label": "Major Incident Reference",
+      "options": "Major Incident"
+    },
+    {
+      "fieldname": "problem",
+      "fieldtype": "Link",
+      "label": "Problem",
+      "options": "ITSM Problem"
+    },
+    {
+      "fieldname": "known_error",
+      "fieldtype": "Link",
+      "label": "Known Error",
+      "options": "ITSM Known Error"
+    },
+    {
+      "fieldname": "change_request",
+      "fieldtype": "Link",
+      "label": "Change Request",
+      "options": "ITSM Change Request"
+    },
+    {
       "fieldname": "status",
       "fieldtype": "Select",
       "label": "Status",
-      "options": "Open\nAssigned\nRemote Support\nRemote Resolved\nOnsite Required\nScheduled\nAwaiting Customer\nAwaiting Parts\nWork In Progress\nResolved\nClosed\nCancelled",
+      "options": "New\nOpen\nAcknowledged\nAssigned\nRemote Support\nRemote Resolved\nOnsite Required\nScheduled\nIn Progress\nPending\nAwaiting Customer\nAwaiting Parts\nWork In Progress\nResolved\nClosed\nCancelled",
       "default": "Open",
       "in_list_view": 1,
       "in_standard_filter": 1,
       "search_index": 1
+    },
+    {
+      "fieldname": "pending_reason",
+      "fieldtype": "Select",
+      "label": "Pending Reason",
+      "options": "\nWaiting for Customer\nWaiting for Vendor\nWaiting for Parts\nWaiting for Change\nWaiting for Problem Investigation\nScheduled\nOther",
+      "depends_on": "eval:['Pending','Awaiting Customer','Awaiting Parts','Scheduled'].includes(doc.status)"
     },
     {
       "fieldname": "subject",
@@ -247,6 +381,49 @@
       "label": "Source",
       "options": "Phone\nEmail\nWalk-In\nERPNext\nCustomer Portal\nInternal\nMonitoring System\nOther",
       "default": "Phone"
+    },
+    {
+      "fieldname": "detection_source",
+      "fieldtype": "Select",
+      "label": "Detection Source",
+      "options": "\nUser\nService Desk\nMonitoring\nEmail\nPortal\nTechnician\nSystem\nOther"
+    },
+    {
+      "fieldname": "alert_section",
+      "fieldtype": "Section Break",
+      "label": "Alert",
+      "depends_on": "eval:doc.ticket_type=='Alert'"
+    },
+    {
+      "fieldname": "alert_source",
+      "fieldtype": "Data",
+      "label": "Alert Source"
+    },
+    {
+      "fieldname": "external_alert_id",
+      "fieldtype": "Data",
+      "label": "External Alert ID"
+    },
+    {
+      "fieldname": "monitoring_system",
+      "fieldtype": "Data",
+      "label": "Monitoring System"
+    },
+    {
+      "fieldname": "alert_severity",
+      "fieldtype": "Select",
+      "label": "Alert Severity",
+      "options": "\nInfo\nWarning\nMinor\nMajor\nCritical"
+    },
+    {
+      "fieldname": "alert_started_at",
+      "fieldtype": "Datetime",
+      "label": "Alert Started At"
+    },
+    {
+      "fieldname": "alert_cleared_at",
+      "fieldtype": "Datetime",
+      "label": "Alert Cleared At"
     },
     {
       "fieldname": "coverage_section",
@@ -366,6 +543,29 @@
       "label": "Resolution Datetime"
     },
     {
+      "fieldname": "acknowledged_at",
+      "fieldtype": "Datetime",
+      "label": "Acknowledged At"
+    },
+    {
+      "fieldname": "paused_sla_minutes",
+      "fieldtype": "Int",
+      "label": "Paused SLA Minutes",
+      "read_only": 1
+    },
+    {
+      "fieldname": "actual_response_minutes",
+      "fieldtype": "Int",
+      "label": "Actual Response Minutes",
+      "read_only": 1
+    },
+    {
+      "fieldname": "actual_resolution_minutes",
+      "fieldtype": "Int",
+      "label": "Actual Resolution Minutes",
+      "read_only": 1
+    },
+    {
       "fieldname": "response_sla_status",
       "fieldtype": "Select",
       "label": "Response Sla Status",
@@ -446,6 +646,22 @@
       "fieldname": "resolution_section",
       "fieldtype": "Section Break",
       "label": "Resolution"
+    },
+    {
+      "fieldname": "resolution_code",
+      "fieldtype": "Select",
+      "label": "Resolution Code",
+      "options": "\nResolved Permanently\nWorkaround Applied\nKnown Error\nConfiguration Change\nUser Education\nNo Fault Found\nDuplicate\nOther"
+    },
+    {
+      "fieldname": "root_cause_summary",
+      "fieldtype": "Small Text",
+      "label": "Root Cause Summary"
+    },
+    {
+      "fieldname": "workaround",
+      "fieldtype": "Text Editor",
+      "label": "Workaround"
     },
     {
       "fieldname": "resolution",

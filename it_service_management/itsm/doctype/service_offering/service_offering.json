@@ -1,0 +1,20 @@
+{
+ "creation": "2026-10-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["offering_name", "description", "service_request_type", "service_plan", "active"],
+ "fields": [
+  {"fieldname": "offering_name", "fieldtype": "Data", "in_list_view": 1, "label": "Offering Name", "reqd": 1},
+  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
+  {"fieldname": "service_request_type", "fieldtype": "Link", "label": "Service Request Type", "options": "Service Request Type"},
+  {"fieldname": "service_plan", "fieldtype": "Link", "label": "Service Plan", "options": "Service Plan"},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"}
+ ],
+ "istable": 1,
+ "modified": "2026-10-06 00:00:00.000000",
+ "module": "ITSM",
+ "name": "Service Offering",
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}

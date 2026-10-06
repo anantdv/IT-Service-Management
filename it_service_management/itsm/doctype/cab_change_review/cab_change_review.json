@@ -1,0 +1,19 @@
+{
+ "creation": "2026-10-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["change_request", "risk", "decision", "comments"],
+ "fields": [
+  {"fieldname": "change_request", "fieldtype": "Link", "in_list_view": 1, "label": "Change Request", "options": "ITSM Change Request", "reqd": 1},
+  {"fieldname": "risk", "fieldtype": "Data", "in_list_view": 1, "label": "Risk"},
+  {"fieldname": "decision", "fieldtype": "Select", "in_list_view": 1, "label": "Decision", "options": "Approved\nRejected\nDeferred\nMore Information Required"},
+  {"fieldname": "comments", "fieldtype": "Small Text", "label": "Comments"}
+ ],
+ "istable": 1,
+ "modified": "2026-10-06 00:00:00.000000",
+ "module": "ITSM",
+ "name": "CAB Change Review",
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}

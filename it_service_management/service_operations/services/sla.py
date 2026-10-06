@@ -47,10 +47,26 @@ class ServiceSLAEngine:
 		).as_dict()
 
 	def _minutes(self) -> tuple[int, int]:
+		matrix_minutes = self._matrix_minutes()
 		contract_minutes = self._contract_minutes()
 		plan_minutes = self._plan_minutes()
 		settings_minutes = self._settings_minutes()
-		return contract_minutes or plan_minutes or settings_minutes or PRIORITY_FALLBACKS[self.priority]
+		return contract_minutes or plan_minutes or settings_minutes or matrix_minutes or PRIORITY_FALLBACKS.get(self.priority, PRIORITY_FALLBACKS["Medium"])
+
+	def _matrix_minutes(self):
+		if not getattr(self.ticket, "impact", None) or not getattr(self.ticket, "urgency", None):
+			return None
+		if not frappe.db.exists("DocType", "ITSM Priority Matrix"):
+			return None
+		row = frappe.db.get_value(
+			"ITSM Priority Matrix",
+			{"impact": self.ticket.impact, "urgency": self.ticket.urgency, "active": 1},
+			["response_minutes", "resolution_minutes"],
+			as_dict=True,
+		)
+		if row and row.response_minutes and row.resolution_minutes:
+			return int(row.response_minutes), int(row.resolution_minutes)
+		return None
 
 	def _contract_minutes(self):
 		if not self.ticket.service_contract:
@@ -109,6 +125,7 @@ def update_ticket_sla_status(ticket):
 
 	if first_response and response_due:
 		ticket.response_sla_status = "Met" if first_response <= response_due else "Breached"
+		ticket.actual_response_minutes = _elapsed_minutes(ticket.reported_datetime, first_response)
 	elif response_due and now > response_due:
 		ticket.response_sla_status = "Breached"
 	elif response_due:
@@ -116,6 +133,7 @@ def update_ticket_sla_status(ticket):
 
 	if resolution and resolution_due:
 		ticket.resolution_sla_status = "Met" if resolution <= resolution_due else "Breached"
+		ticket.actual_resolution_minutes = _elapsed_minutes(ticket.reported_datetime, resolution)
 	elif resolution_due and now > resolution_due:
 		ticket.resolution_sla_status = "Breached"
 	elif resolution_due:
@@ -139,3 +157,11 @@ def _percentage(start, due, now):
 	if total <= 0:
 		return 100
 	return min(100, max(0, ((now - start).total_seconds() / total) * 100))
+
+
+def _elapsed_minutes(start, end):
+	if not start or not end:
+		return 0
+	start = get_datetime(start)
+	end = get_datetime(end)
+	return max(0, int((end - start).total_seconds() // 60))

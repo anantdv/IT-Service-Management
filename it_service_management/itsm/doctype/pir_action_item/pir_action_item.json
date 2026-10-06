@@ -1,0 +1,21 @@
+{
+ "creation": "2026-10-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["action", "owner", "due_date", "status", "problem", "change_request"],
+ "fields": [
+  {"fieldname": "action", "fieldtype": "Small Text", "in_list_view": 1, "label": "Action", "reqd": 1},
+  {"fieldname": "owner", "fieldtype": "Link", "in_list_view": 1, "label": "Owner", "options": "User"},
+  {"fieldname": "due_date", "fieldtype": "Date", "in_list_view": 1, "label": "Due Date"},
+  {"default": "Open", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Open\nIn Progress\nCompleted\nCancelled"},
+  {"fieldname": "problem", "fieldtype": "Link", "label": "Problem", "options": "ITSM Problem"},
+  {"fieldname": "change_request", "fieldtype": "Link", "label": "Change Request", "options": "ITSM Change Request"}
+ ],
+ "istable": 1,
+ "modified": "2026-10-06 00:00:00.000000",
+ "module": "ITSM",
+ "name": "PIR Action Item",
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC"
+}

@@ -5,18 +5,24 @@ from frappe.model.document import Document
 from frappe.utils import get_datetime, now_datetime
 
 from it_service_management.service_contracts.services.entitlement import ServiceEntitlementEngine
+from it_service_management.itsm.services.priority import apply_ticket_priority
+from it_service_management.itsm.services.problem import get_recurring_incident_suggestion
 from it_service_management.service_operations.services.sla import ServiceSLAEngine, update_ticket_sla_status
 
 
 VALID_TRANSITIONS = {
-	None: {"Open"},
-	"": {"Open"},
-	"Open": {"Assigned", "Remote Support", "Onsite Required", "Awaiting Customer", "Cancelled", "Open"},
-	"Assigned": {"Remote Support", "Scheduled", "Work In Progress", "Awaiting Customer", "Cancelled", "Assigned"},
+	None: {"New", "Open"},
+	"": {"New", "Open"},
+	"New": {"Open", "Acknowledged", "Assigned", "Pending", "Cancelled", "New"},
+	"Open": {"Acknowledged", "Assigned", "Remote Support", "Onsite Required", "Pending", "Awaiting Customer", "Cancelled", "Open"},
+	"Acknowledged": {"Assigned", "In Progress", "Remote Support", "Onsite Required", "Pending", "Cancelled", "Acknowledged"},
+	"Assigned": {"Remote Support", "Scheduled", "In Progress", "Work In Progress", "Pending", "Awaiting Customer", "Cancelled", "Assigned"},
 	"Remote Support": {"Remote Resolved", "Onsite Required", "Awaiting Customer", "Cancelled", "Remote Support"},
 	"Remote Resolved": {"Resolved", "Onsite Required", "Remote Resolved"},
 	"Onsite Required": {"Scheduled", "Assigned", "Cancelled", "Onsite Required"},
-	"Scheduled": {"Work In Progress", "Awaiting Parts", "Awaiting Customer", "Resolved", "Cancelled", "Scheduled"},
+	"Scheduled": {"In Progress", "Work In Progress", "Awaiting Parts", "Awaiting Customer", "Resolved", "Cancelled", "Scheduled"},
+	"In Progress": {"Pending", "Awaiting Customer", "Awaiting Parts", "Resolved", "Cancelled", "In Progress"},
+	"Pending": {"Assigned", "In Progress", "Work In Progress", "Resolved", "Cancelled", "Pending"},
 	"Awaiting Customer": {"Assigned", "Remote Support", "Work In Progress", "Resolved", "Cancelled", "Awaiting Customer"},
 	"Awaiting Parts": {"Scheduled", "Work In Progress", "Resolved", "Cancelled", "Awaiting Parts"},
 	"Work In Progress": {"Awaiting Customer", "Awaiting Parts", "Resolved", "Cancelled", "Work In Progress"},
@@ -40,6 +46,7 @@ COVERAGE_FIELDS = (
 
 class ServiceTicket(Document):
 	def before_insert(self):
+		self.ticket_type = self.ticket_type or "General Support"
 		self.reported_datetime = self.reported_datetime or now_datetime()
 
 	def after_insert(self):
@@ -49,6 +56,9 @@ class ServiceTicket(Document):
 		self._validate_customer()
 		self._populate_from_equipment()
 		self._validate_status_transition()
+		self._set_itsm_timestamps()
+		self._apply_request_type_defaults()
+		apply_ticket_priority(self)
 		if not self.coverage_source:
 			self.evaluate_coverage(add_comment=False)
 		self.calculate_sla()
@@ -75,6 +85,26 @@ class ServiceTicket(Document):
 		self.asset = self.asset or equipment.asset
 		self.warranty_active = equipment.warranty_status == "Under Warranty"
 		self.service_contract = self.service_contract or equipment.service_contract
+
+	def _set_itsm_timestamps(self):
+		now = now_datetime()
+		if self.status in {"Acknowledged", "Assigned", "In Progress", "Work In Progress"} and not self.acknowledged_at:
+			self.acknowledged_at = now
+		if self.acknowledged_at and not self.first_response_datetime:
+			self.first_response_datetime = self.acknowledged_at
+		if self.status == "Resolved":
+			self.resolution_datetime = self.resolution_datetime or self.resolved_datetime or now
+			self.resolved_datetime = self.resolved_datetime or self.resolution_datetime
+		if self.status == "Closed":
+			self.closed_datetime = self.closed_datetime or now
+
+	def _apply_request_type_defaults(self):
+		if self.ticket_type != "Service Request" or not self.service_request_type:
+			return
+		request_type = frappe.get_cached_doc("Service Request Type", self.service_request_type)
+		self.assignment_group = self.assignment_group or request_type.default_assignment_group
+		self.priority = self.priority or request_type.default_priority
+		self.affected_service = self.affected_service or request_type.service_catalog_item
 
 	def _validate_status_transition(self):
 		if self.is_new():
@@ -162,3 +192,76 @@ class ServiceTicket(Document):
 		self.add_comment("Comment", "Ticket Closed")
 		self.save()
 		return self.name
+
+	@frappe.whitelist()
+	def declare_major_incident(self, title=None):
+		major_incident = frappe.new_doc("Major Incident")
+		major_incident.title = title or self.subject
+		major_incident.company = frappe.defaults.get_user_default("Company")
+		major_incident.priority = self.priority
+		major_incident.affected_service = self.affected_service
+		major_incident.primary_configuration_item = self.configuration_item
+		major_incident.business_impact = self.customer_complaint or self.description
+		major_incident.append(
+			"linked_tickets",
+			{
+				"service_ticket": self.name,
+				"customer": self.customer,
+				"site": self.customer_site,
+				"configuration_item": self.configuration_item,
+				"status": self.status,
+			},
+		)
+		major_incident.insert()
+		self.major_incident = 1
+		self.major_incident_reference = major_incident.name
+		self.save()
+		return major_incident.name
+
+	@frappe.whitelist()
+	def create_problem(self):
+		problem = frappe.new_doc("ITSM Problem")
+		problem.title = self.subject
+		problem.company = frappe.defaults.get_user_default("Company")
+		problem.priority = self.priority
+		problem.category = self.incident_category or self.service_category
+		problem.subcategory = self.incident_subcategory
+		problem.affected_service = self.affected_service
+		problem.configuration_item = self.configuration_item
+		problem.description = self.description
+		problem.business_impact = self.customer_complaint
+		problem.symptoms = self.description
+		problem.append(
+			"incidents",
+			{
+				"service_ticket": self.name,
+				"incident_date": self.reported_datetime,
+				"priority": self.priority,
+				"customer": self.customer,
+				"configuration_item": self.configuration_item,
+				"relationship_type": "Related",
+			},
+		)
+		problem.insert()
+		self.problem = problem.name
+		self.save()
+		return problem.name
+
+	@frappe.whitelist()
+	def create_knowledge_article(self):
+		article = frappe.new_doc("ITSM Knowledge Article")
+		article.title = self.subject
+		article.category = self.incident_category or self.service_category
+		article.service = self.affected_service
+		article.summary = self.customer_complaint
+		article.symptoms = self.description
+		article.cause = self.root_cause_summary
+		article.resolution = self.resolution
+		article.content = self.resolution
+		article.source_incident = self.name
+		article.insert()
+		return article.name
+
+	@frappe.whitelist()
+	def get_recurring_incident_suggestion(self):
+		return get_recurring_incident_suggestion(self)

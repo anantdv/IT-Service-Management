@@ -12,6 +12,18 @@ def get_data():
 					"label": _("Management Command Center"),
 					"description": _("Executive and operational dashboard for IT service management."),
 				},
+				{
+					"type": "page",
+					"name": "itsm-service-desk",
+					"label": _("ITSM Service Desk"),
+					"description": _("Operational incident, request, SLA, and queue console."),
+				},
+				{
+					"type": "page",
+					"name": "itsm-change-calendar",
+					"label": _("Change Calendar"),
+					"description": _("Calendar-style list of scheduled and active changes."),
+				},
 			],
 		},
 		{
@@ -22,6 +34,36 @@ def get_data():
 					"name": "Service Ticket",
 					"label": _("Service Tickets"),
 					"description": _("Log, triage, and resolve customer service requests."),
+				},
+				{
+					"type": "doctype",
+					"name": "Major Incident",
+					"label": _("Major Incidents"),
+					"description": _("Coordinate high-impact incidents and communications."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Problem",
+					"label": _("Problems"),
+					"description": _("Investigate recurring incidents and root causes."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Known Error",
+					"label": _("Known Errors"),
+					"description": _("Publish known issue workarounds for service desk users."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Change Request",
+					"label": _("Change Requests"),
+					"description": _("Assess, approve, schedule, and validate service changes."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Knowledge Article",
+					"label": _("Knowledge Articles"),
+					"description": _("Capture procedures, workarounds, and troubleshooting guidance."),
 				},
 				{
 					"type": "doctype",
@@ -106,6 +148,36 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Configuration Item",
+					"label": _("Configuration Items"),
+					"description": _("Track ITSM service-management context for assets and equipment."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Service",
+					"label": _("ITSM Services"),
+					"description": _("Maintain business and technical service catalog records."),
+				},
+				{
+					"type": "doctype",
+					"name": "Service Request Type",
+					"label": _("Service Request Types"),
+					"description": _("Configure request fulfilment defaults."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Assignment Group",
+					"label": _("Assignment Groups"),
+					"description": _("Route work to service desk and support groups."),
+				},
+				{
+					"type": "doctype",
+					"name": "ITSM Priority Matrix",
+					"label": _("Priority Matrix"),
+					"description": _("Configure impact and urgency to priority mapping."),
+				},
+				{
+					"type": "doctype",
 					"name": "Customer Site",
 					"label": _("Customer Sites"),
 					"description": _("Maintain customer service locations and site details."),
@@ -130,6 +202,12 @@ def get_data():
 				{
 					"type": "report",
 					"name": "Open Service Tickets",
+					"doctype": "Service Ticket",
+					"is_query_report": True,
+				},
+				{
+					"type": "report",
+					"name": "Incident Summary",
 					"doctype": "Service Ticket",
 					"is_query_report": True,
 				},

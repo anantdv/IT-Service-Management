@@ -11,7 +11,35 @@ frappe.ui.form.on("Service Ticket", {
 			}
 			if (frm.doc.status === "Resolved") {
 				frm.add_custom_button(__("Close Ticket"), () => frm.call("close_ticket").then(() => frm.refresh()));
+				frm.add_custom_button(__("Create Knowledge Article"), () => {
+					frm.call("create_knowledge_article").then((r) => {
+						if (r.message) frappe.set_route("Form", "ITSM Knowledge Article", r.message);
+					});
+				});
 			}
+			if (frm.doc.ticket_type === "Incident") {
+				frm.add_custom_button(__("Create Problem"), () => {
+					frm.call("create_problem").then((r) => {
+						if (r.message) frappe.set_route("Form", "ITSM Problem", r.message);
+					});
+				}, __("ITSM"));
+				frm.add_custom_button(__("Declare Major Incident"), () => {
+					frm.call("declare_major_incident").then((r) => {
+						if (r.message) frappe.set_route("Form", "Major Incident", r.message);
+					});
+				}, __("ITSM"));
+			}
+		}
+	},
+	impact(frm) {
+		frm.trigger("show_priority_hint");
+	},
+	urgency(frm) {
+		frm.trigger("show_priority_hint");
+	},
+	show_priority_hint(frm) {
+		if (frm.doc.impact && frm.doc.urgency && !frm.doc.override_reason) {
+			frm.dashboard.set_headline(__("Priority is calculated server-side from Impact and Urgency on save."));
 		}
 	},
 	customer_equipment(frm) {

@@ -38,6 +38,27 @@ class CustomerEquipment(Document):
 			"Under Warranty" if getdate(self.warranty_end_date) >= getdate(nowdate()) else "Expired"
 		)
 
+	@frappe.whitelist()
+	def create_configuration_item(self):
+		existing = frappe.db.exists("Configuration Item", {"customer_equipment": self.name})
+		if existing:
+			return existing
+
+		ci = frappe.new_doc("Configuration Item")
+		ci.ci_name = self.equipment_name or self.equipment_id or self.serial_no or self.name
+		ci.customer = self.customer
+		ci.customer_site = self.customer_site
+		ci.customer_equipment = self.name
+		ci.asset = self.asset
+		ci.item_code = self.item_code
+		ci.serial_no = self.serial_no
+		ci.manufacturer = self.manufacturer
+		ci.model = self.model
+		ci.warranty_end = self.warranty_end_date
+		ci.status = "Operational" if self.equipment_status == "Operational" else "Maintenance"
+		ci.insert()
+		return ci.name
+
 
 def _settings_allow_auto_create() -> bool:
 	return bool(

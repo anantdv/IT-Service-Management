@@ -1,0 +1,29 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:CAB-{meeting_date}",
+ "creation": "2026-10-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["meeting_date", "chairperson", "status", "participants", "agenda", "minutes", "change_reviews"],
+ "fields": [
+  {"fieldname": "meeting_date", "fieldtype": "Date", "in_list_view": 1, "label": "Meeting Date", "reqd": 1},
+  {"fieldname": "chairperson", "fieldtype": "Link", "label": "Chairperson", "options": "User"},
+  {"default": "Planned", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Planned\nIn Progress\nCompleted\nCancelled"},
+  {"fieldname": "participants", "fieldtype": "Small Text", "label": "Participants"},
+  {"fieldname": "agenda", "fieldtype": "Text Editor", "label": "Agenda"},
+  {"fieldname": "minutes", "fieldtype": "Text Editor", "label": "Minutes"},
+  {"fieldname": "change_reviews", "fieldtype": "Table", "label": "Change Reviews", "options": "CAB Change Review"}
+ ],
+ "modified": "2026-10-06 00:00:00.000000",
+ "module": "ITSM",
+ "name": "CAB Meeting",
+ "permissions": [
+  {"role": "ITSM Administrator", "read": 1, "report": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "ITSM Change Manager", "read": 1, "report": 1, "write": 1, "create": 1},
+  {"role": "ITSM CAB Member", "read": 1, "report": 1, "write": 1}
+ ],
+ "sort_field": "meeting_date",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

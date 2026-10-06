@@ -10,7 +10,7 @@ class CommandCenter {
 			title: __("IT Service Management"),
 			single_column: true,
 		});
-		this.tabs = ["overview", "service", "rental", "contracts", "equipment", "financial"];
+		this.tabs = ["overview", "service", "itsm", "rental", "contracts", "equipment", "financial"];
 		this.active_tab = "overview";
 		this.filters = { period: "This Month" };
 		this.currency = frappe.defaults.get_default("currency") || "";

@@ -34,6 +34,14 @@ fixtures = [
 		"Service Auditor",
 		"IT Service Analyst",
 		"IT Service Executive",
+		"ITSM Service Desk User",
+		"ITSM Technician",
+		"ITSM Problem Manager",
+		"ITSM Change Manager",
+		"ITSM CAB Member",
+		"ITSM Knowledge Manager",
+		"ITSM Service Manager",
+		"ITSM Administrator",
 	]]]},
 	{"dt": "Workspace", "filters": [["name", "in", ["IT Service Management", "Service Operations", "Rental Management", "Service Command Center", "Rental Command Center", "IT Services Executive"]]]},
 	{"dt": "Number Card", "filters": [["module", "=", "IT Service Management"]]},
@@ -88,6 +96,7 @@ doc_events = {
 scheduler_events = {
 	"hourly": [
 		"it_service_management.service_operations.services.notifications.evaluate_active_ticket_slas",
+		"it_service_management.itsm.services.scheduler.evaluate_open_incidents",
 	],
 	"daily": [
 		"it_service_management.service_contracts.doctype.service_contract.service_contract.update_contract_statuses",

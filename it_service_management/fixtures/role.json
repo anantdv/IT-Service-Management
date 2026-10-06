@@ -10,5 +10,13 @@
   {"doctype": "Role", "name": "Rental Billing User", "role_name": "Rental Billing User", "desk_access": 1},
   {"doctype": "Role", "name": "Service Auditor", "role_name": "Service Auditor", "desk_access": 1},
   {"doctype": "Role", "name": "IT Service Analyst", "role_name": "IT Service Analyst", "desk_access": 1},
-  {"doctype": "Role", "name": "IT Service Executive", "role_name": "IT Service Executive", "desk_access": 1}
+  {"doctype": "Role", "name": "IT Service Executive", "role_name": "IT Service Executive", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Service Desk User", "role_name": "ITSM Service Desk User", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Technician", "role_name": "ITSM Technician", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Problem Manager", "role_name": "ITSM Problem Manager", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Change Manager", "role_name": "ITSM Change Manager", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM CAB Member", "role_name": "ITSM CAB Member", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Knowledge Manager", "role_name": "ITSM Knowledge Manager", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Service Manager", "role_name": "ITSM Service Manager", "desk_access": 1},
+  {"doctype": "Role", "name": "ITSM Administrator", "role_name": "ITSM Administrator", "desk_access": 1}
 ]
