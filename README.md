@@ -41,4 +41,11 @@ Phase 4 finance controls and management analytics:
 - Service Command Center, Rental Command Center, and IT Services Executive workspaces
 - Read-only Analyst and Executive roles, short-lived dashboard caching, reporting indexes, and Phase 4 tests
 
+Email ticketing:
+
+- Configure ERPNext Email Account with `Append To` set to `Service Ticket`.
+- Set fallback email defaults in `IT Service Settings`: customer, ticket type, and priority.
+- The app sends a Service Ticket email acknowledgement through the standard Notification fixture.
+- Customer replies to the acknowledgement normally follow ERPNext email threading. If a reply is imported as a new Service Ticket, the app detects the existing ticket ID in the subject/body, appends the reply to that ticket, and cancels the duplicate reply ticket.
+
 Hire Purchase and external frontends are intentionally out of scope.

@@ -144,7 +144,7 @@
     "event": "New",
     "channel": "Email",
     "enabled": 1,
-    "condition": "doc.contact_email and doc.source == 'Email'",
+    "condition": "doc.contact_email and doc.source == 'Email' and not doc.reply_to_ticket",
     "message": "<p>Dear Customer,</p><p>Thank you for contacting the service desk. Your request has been logged as <b>{{ doc.name }}</b>.</p><p><b>Subject:</b> {{ doc.subject }}</p><p>Our team will review the ticket and respond as per the applicable priority and SLA.</p><p>Regards,<br>IT Service Desk</p>",
     "recipients": [
       {

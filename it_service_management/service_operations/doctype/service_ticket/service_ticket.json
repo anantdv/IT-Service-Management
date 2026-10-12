@@ -48,6 +48,9 @@
     "reported_datetime",
     "source",
     "detection_source",
+    "email_thread_section",
+    "reply_to_ticket",
+    "email_reply_processed",
     "alert_section",
     "alert_source",
     "external_alert_id",
@@ -376,6 +379,28 @@
       "fieldtype": "Select",
       "label": "Detection Source",
       "options": "\nUser\nService Desk\nMonitoring\nEmail\nPortal\nTechnician\nSystem\nOther"
+    },
+    {
+      "fieldname": "email_thread_section",
+      "fieldtype": "Section Break",
+      "label": "Email Threading",
+      "collapsible": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "reply_to_ticket",
+      "fieldtype": "Link",
+      "label": "Reply To Ticket",
+      "options": "Service Ticket",
+      "read_only": 1,
+      "no_copy": 1
+    },
+    {
+      "fieldname": "email_reply_processed",
+      "fieldtype": "Check",
+      "label": "Email Reply Processed",
+      "read_only": 1,
+      "no_copy": 1
     },
     {
       "fieldname": "alert_section",

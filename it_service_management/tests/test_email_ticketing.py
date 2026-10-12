@@ -3,13 +3,17 @@ from __future__ import annotations
 import frappe
 from frappe.tests.utils import FrappeTestCase
 
-from it_service_management.service_operations.services.email import extract_sender_email, prepare_ticket_from_email
+from it_service_management.service_operations.services.email import extract_sender_email, extract_ticket_names, prepare_ticket_from_email
 
 
 class TestEmailTicketing(FrappeTestCase):
 	def test_extract_sender_email_from_display_name(self):
 		ticket = frappe._dict({"sender": "Support User <user@example.com>"})
 		self.assertEqual(extract_sender_email(ticket), "user@example.com")
+
+	def test_extract_ticket_names_from_email_subject(self):
+		names = extract_ticket_names("Re: Service Ticket ST-2026-00001 received, related to st-2026-00002")
+		self.assertEqual(names, ["ST-2026-00001", "ST-2026-00002"])
 
 	def test_prepare_ticket_sets_email_defaults(self):
 		ticket = frappe._dict(

@@ -7,7 +7,7 @@ from frappe.utils import get_datetime, now_datetime
 from it_service_management.service_contracts.services.entitlement import ServiceEntitlementEngine
 from it_service_management.itsm.services.priority import apply_ticket_priority
 from it_service_management.itsm.services.problem import get_recurring_incident_suggestion
-from it_service_management.service_operations.services.email import prepare_ticket_from_email
+from it_service_management.service_operations.services.email import append_email_reply_to_ticket, find_existing_ticket_for_email, prepare_ticket_from_email
 from it_service_management.service_operations.services.sla import ServiceSLAEngine, update_ticket_sla_status
 
 
@@ -49,6 +49,7 @@ class ServiceTicket(Document):
 	def before_insert(self):
 		if self._looks_like_email_ticket():
 			prepare_ticket_from_email(self)
+			self.reply_to_ticket = self.reply_to_ticket or find_existing_ticket_for_email(self)
 		default_type = frappe.db.get_single_value("IT Service Settings", "default_email_ticket_type")
 		default_priority = frappe.db.get_single_value("IT Service Settings", "default_email_ticket_priority")
 		self.ticket_type = self.ticket_type or default_type or "General Support"
@@ -56,6 +57,10 @@ class ServiceTicket(Document):
 		self.reported_datetime = self.reported_datetime or now_datetime()
 
 	def after_insert(self):
+		if self.reply_to_ticket:
+			append_email_reply_to_ticket(self, self.reply_to_ticket)
+			frappe.db.set_value(self.doctype, self.name, {"status": "Cancelled", "email_reply_processed": 1}, update_modified=False)
+			return
 		self.add_comment("Comment", "Ticket Created")
 
 	def validate(self):
