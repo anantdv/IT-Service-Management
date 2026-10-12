@@ -7,6 +7,7 @@ from frappe.utils import get_datetime, now_datetime
 from it_service_management.service_contracts.services.entitlement import ServiceEntitlementEngine
 from it_service_management.itsm.services.priority import apply_ticket_priority
 from it_service_management.itsm.services.problem import get_recurring_incident_suggestion
+from it_service_management.service_operations.services.email import prepare_ticket_from_email
 from it_service_management.service_operations.services.sla import ServiceSLAEngine, update_ticket_sla_status
 
 
@@ -46,7 +47,12 @@ COVERAGE_FIELDS = (
 
 class ServiceTicket(Document):
 	def before_insert(self):
-		self.ticket_type = self.ticket_type or "General Support"
+		if self._looks_like_email_ticket():
+			prepare_ticket_from_email(self)
+		default_type = frappe.db.get_single_value("IT Service Settings", "default_email_ticket_type")
+		default_priority = frappe.db.get_single_value("IT Service Settings", "default_email_ticket_priority")
+		self.ticket_type = self.ticket_type or default_type or "General Support"
+		self.priority = self.priority or default_priority or "Medium"
 		self.reported_datetime = self.reported_datetime or now_datetime()
 
 	def after_insert(self):
@@ -66,11 +72,23 @@ class ServiceTicket(Document):
 
 	def _validate_customer(self):
 		if not self.customer:
-			frappe.throw("Service Ticket requires Customer.")
+			if self._looks_like_email_ticket():
+				prepare_ticket_from_email(self)
+		if not self.customer:
+			frappe.throw("Service Ticket requires Customer. For email-created tickets, set Default Email Ticket Customer in IT Service Settings or link sender emails to Customer Contacts.")
 		if self.customer_equipment:
 			equipment_customer = frappe.db.get_value("Customer Equipment", self.customer_equipment, "customer")
 			if equipment_customer and equipment_customer != self.customer:
 				frappe.throw("Customer Equipment must belong to the ticket customer.")
+
+	def _looks_like_email_ticket(self):
+		return bool(
+			self.get("sender")
+			or self.get("email_sender")
+			or self.contact_email
+			or self.source == "Email"
+			or self.detection_source == "Email"
+		)
 
 	def _populate_from_equipment(self):
 		if not self.customer_equipment:

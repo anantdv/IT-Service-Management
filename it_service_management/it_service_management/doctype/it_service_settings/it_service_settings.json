@@ -55,6 +55,11 @@
     "service_manager_email",
     "rental_manager_email",
     "billing_control_email",
+    "email_ticket_section",
+    "default_email_ticket_customer",
+    "default_email_ticket_type",
+    "default_email_ticket_priority",
+    "email_ticket_auto_reply_enabled",
     "meter_section",
     "enable_meter_billing",
     "default_meter_billing_day",
@@ -532,6 +537,38 @@
       "fieldtype": "Select",
       "label": "Dashboard Default Period",
       "options": "Today\nThis Week\nThis Month\nThis Quarter\nThis Fiscal Year\nLast 30 Days\nLast 90 Days"
+    },
+    {
+      "fieldname": "email_ticket_section",
+      "fieldtype": "Section Break",
+      "label": "Email Ticketing"
+    },
+    {
+      "fieldname": "default_email_ticket_customer",
+      "fieldtype": "Link",
+      "label": "Default Email Ticket Customer",
+      "options": "Customer",
+      "description": "Fallback customer used when an inbound email sender is not linked to a Contact or Customer."
+    },
+    {
+      "default": "Incident",
+      "fieldname": "default_email_ticket_type",
+      "fieldtype": "Select",
+      "label": "Default Email Ticket Type",
+      "options": "Incident\nService Request\nAlert\nGeneral Support"
+    },
+    {
+      "default": "Medium",
+      "fieldname": "default_email_ticket_priority",
+      "fieldtype": "Select",
+      "label": "Default Email Ticket Priority",
+      "options": "Low\nMedium\nHigh\nCritical"
+    },
+    {
+      "default": "1",
+      "fieldname": "email_ticket_auto_reply_enabled",
+      "fieldtype": "Check",
+      "label": "Enable Email Ticket Auto Reply"
     }
   ],
   "issingle": 1,
